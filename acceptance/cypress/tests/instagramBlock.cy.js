@@ -31,7 +31,9 @@ context('Instagram Block Acceptance Tests', () => {
 
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .social .button.instagramBlock').click({ force: true });
+      cy.get('.blocks-chooser .social .button.instagramBlock').click({
+        force: true,
+      });
 
       cy.get('.block.inner.instagramBlock .input-wrapper .ui.input input')
         .invoke('val', 'https://www.instagr.am/p/CjTBnwju6XY/')
@@ -39,6 +41,5 @@ context('Instagram Block Acceptance Tests', () => {
 
       cy.get('#toolbar-save').click();
     });
-
   });
 });

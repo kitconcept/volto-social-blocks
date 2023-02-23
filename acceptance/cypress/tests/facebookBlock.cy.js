@@ -31,14 +31,18 @@ context('Facebook Block Acceptance Tests', () => {
 
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .social .button.facebookBlock').click({ force: true });
+      cy.get('.blocks-chooser .social .button.facebookBlock').click({
+        force: true,
+      });
 
       cy.get('.block.inner.facebookBlock .input-wrapper .ui.input input')
-        .invoke('val', 'https://www.facebook.com/photo/?fbid=529862562613664&set=a.428837142716207')
+        .invoke(
+          'val',
+          'https://www.facebook.com/photo/?fbid=529862562613664&set=a.428837142716207',
+        )
         .type('{enter}');
 
       cy.get('#toolbar-save').click();
     });
-
   });
 });

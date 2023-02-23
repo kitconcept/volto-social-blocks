@@ -31,14 +31,18 @@ context('Twitter Block Acceptance Tests', () => {
 
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .social .button.tweetBlock').click({ force: true });
+      cy.get('.blocks-chooser .social .button.tweetBlock').click({
+        force: true,
+      });
 
       cy.get('.block.inner.tweetBlock .input-wrapper .ui.input input')
-        .invoke('val', 'https://twitter.com/ploneconf/status/1542568225527005184')
+        .invoke(
+          'val',
+          'https://twitter.com/ploneconf/status/1542568225527005184',
+        )
         .type('{enter}');
 
       cy.get('#toolbar-save').click();
     });
-
   });
 });

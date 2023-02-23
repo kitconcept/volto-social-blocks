@@ -16,7 +16,6 @@ const SocialContentWrapper = ({
   linkText,
   children,
 }) => {
-  console.log(children);
   const display = checkConsent(tool);
   return display ? (
     <div
@@ -28,7 +27,7 @@ const SocialContentWrapper = ({
         align,
       )}
     >
-      { children }
+      {children}
     </div>
   ) : (
     <div

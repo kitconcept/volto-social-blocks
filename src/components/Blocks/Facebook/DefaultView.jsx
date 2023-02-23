@@ -21,11 +21,7 @@ const FacebookView = (props) => {
         url={facebookId}
         linkText={linkText}
       >
-        <FacebookEmbed
-          url={facebookId}
-          width={width}
-          linkText={linkText}
-        />
+        <FacebookEmbed url={facebookId} width={width} linkText={linkText} />
       </SocialContentWrapper>
     )
   );
