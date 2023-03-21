@@ -41,13 +41,13 @@ const FlickrView = (props) => {
             data-flickr-embed={true}
             data-footer={galleryData?.links[0].dataset.footer}
             data-header={galleryData?.links[0].dataset.header}
-            href={galleryData?.links[0].href}
+            href={galleryData?.links[0].href ?? ''}
             title={galleryData?.links[0].title}
           >
             <img
               src={galleryData?.images[0].src}
               width="100%"
-              alt={galleryData?.images[0].alt}
+              alt={galleryData?.images[0].alt ?? ''}
             />
           </a>
         </figure>

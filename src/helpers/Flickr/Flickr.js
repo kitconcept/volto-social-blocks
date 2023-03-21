@@ -7,5 +7,5 @@ export const isValidFlickrId = (value) => {
   const linkRegex = /https:\/\/www.flickr.com\/photos\/.*/gim;
   const imgRegex = /https:\/\/live.staticflickr.com\/.*/gim;
 
-  return (linkRegex.test(linkHref) && imgRegex.test(imgSrc));
+  return linkRegex.test(linkHref) && imgRegex.test(imgSrc);
 };

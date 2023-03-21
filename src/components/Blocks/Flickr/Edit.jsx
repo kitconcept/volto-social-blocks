@@ -31,10 +31,7 @@ const FlickrBlockEdit = (props) => {
   const intl = useIntl();
 
   useEffect(() => {
-    if (
-      data.flickrId !== flickrId &&
-      isValidFlickrId(data.flickrId)
-    ) {
+    if (data.flickrId !== flickrId && isValidFlickrId(data.flickrId)) {
       setFlickrId(data.flickrId);
     }
   }, [data, flickrId]);
