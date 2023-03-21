@@ -10,6 +10,10 @@ import twitterSVG from './icons/twitter.svg';
 import TweetBlockView from './components/Blocks/Tweet/View';
 import TweetBlockEdit from './components/Blocks/Tweet/Edit';
 
+import flickrSVG from './icons/flickr.svg';
+import FlickrBlockView from './components/Blocks/Flickr/View';
+import FlickrBlockEdit from './components/Blocks/Flickr/Edit';
+
 const blocks = {
   facebookBlock: {
     id: 'facebookBlock',
@@ -46,6 +50,17 @@ const blocks = {
     defaultLanguage: 'en',
     defaultTheme: 'light',
   },
+  flickrBlock: {
+    id: 'flickrBlock',
+    title: 'Flickr',
+    icon: flickrSVG,
+    group: 'social',
+    view: FlickrBlockView,
+    edit: FlickrBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  },
 };
 
 const applyConfig = (config) => {
@@ -65,6 +80,7 @@ const applyConfig = (config) => {
       'facebookBlock',
       'instagramBlock',
       'tweetBlock',
+      'flickrBlock',
     ];
   }
   return config;
