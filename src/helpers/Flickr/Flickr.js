@@ -1,4 +1,7 @@
 export const isValidFlickrId = (value) => {
+  if (__SERVER__) {
+    throw new Error('isValidFlickrId is only implemented on the client');
+  }
   const parser = __CLIENT__ ? new DOMParser() : undefined;
   const inputData = parser?.parseFromString(value, 'text/html');
   const linkHref = inputData?.links[0]?.href ?? '';

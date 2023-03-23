@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import iconSVG from '../../../icons/flickr.svg';
 import { isValidFlickrId } from '../../../helpers';
@@ -29,12 +29,6 @@ const FlickrBlockEdit = (props) => {
   const [flickrId, setFlickrId] = useState(data.flickrId);
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
-
-  useEffect(() => {
-    if (data.flickrId !== flickrId && isValidFlickrId(data.flickrId)) {
-      setFlickrId(data.flickrId);
-    }
-  }, [data, flickrId]);
 
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
