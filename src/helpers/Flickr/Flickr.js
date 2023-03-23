@@ -1,5 +1,5 @@
 export const isValidFlickrId = (value) => {
-  if (__SERVER__) {
+  if (!__CLIENT__) {
     throw new Error('isValidFlickrId is only implemented on the client');
   }
   const parser = __CLIENT__ ? new DOMParser() : undefined;
