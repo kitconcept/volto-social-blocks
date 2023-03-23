@@ -2,15 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 
-const SIZES = {
-  s: 350,
-  m: 450,
-  l: 500,
-};
-
 const FlickrView = (props) => {
-  const { flickrId, align, size } = props;
-  const width = size ? SIZES[size] : SIZES['l'];
+  const { flickrId, align } = props;
   const linkText = 'View post on Flickr';
   const parser = __CLIENT__ ? new DOMParser() : undefined;
   const galleryData = parser?.parseFromString(flickrId, 'text/html');
@@ -36,7 +29,7 @@ const FlickrView = (props) => {
         url={flickrId}
         linkText={linkText}
       >
-        <figure style={{ width: `${width}px` }} className="flickr content">
+        <figure className="flickr-content">
           <a
             data-flickr-embed={true}
             data-footer={galleryData?.links[0].dataset.footer}
@@ -73,7 +66,6 @@ FlickrView.propTypes = {
  */
 FlickrView.defaultProps = {
   align: 'center',
-  size: 'l',
 };
 
 export default FlickrView;

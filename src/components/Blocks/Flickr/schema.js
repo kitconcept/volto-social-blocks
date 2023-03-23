@@ -13,14 +13,6 @@ const messages = defineMessages({
     id: 'Alignment',
     defaultMessage: 'Alignment',
   },
-  size: {
-    id: 'Size',
-    defaultMessage: 'Size',
-  },
-  captioned: {
-    id: 'Captioned',
-    defaultMessage: 'Captioned',
-  },
   styleFieldset: {
     id: 'Style',
     defaultMessage: 'Style',
@@ -39,7 +31,7 @@ export const flickrSchema = (props) => {
       {
         id: 'style',
         title: props.intl.formatMessage(messages.styleFieldset),
-        fields: ['captioned', 'align', 'size'],
+        fields: ['align'],
       },
     ],
 
@@ -47,18 +39,9 @@ export const flickrSchema = (props) => {
       flickrId: {
         title: props.intl.formatMessage(messages.flickrId),
       },
-      captioned: {
-        title: props.intl.formatMessage(messages.captioned),
-        default: true,
-        type: 'boolean',
-      },
       align: {
         title: props.intl.formatMessage(messages.align),
         widget: 'align',
-      },
-      size: {
-        title: props.intl.formatMessage(messages.size),
-        widget: 'image_size',
       },
     },
     required: ['flickrId'],
