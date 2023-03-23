@@ -1,23 +1,14 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { PlaceholderEmbed } from 'react-social-media-embed';
 import './Style.less';
+import config from '@plone/volto/registry';
 
-const checkConsent = (tool) => {
-  // TODO: Check if we have consent to display this tool
-  return true;
-};
+const SocialContentWrapper = ({ align = 'center', tool, children }) => {
+  const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent')
+    .component;
 
-const SocialContentWrapper = ({
-  align = 'center',
-  tool,
-  url,
-  linkText,
-  children,
-}) => {
-  const display = checkConsent(tool);
-  return display ? (
+  return (
     <div
       className={cx(
         'block socialcontent align',
@@ -27,19 +18,11 @@ const SocialContentWrapper = ({
         align,
       )}
     >
-      {children}
-    </div>
-  ) : (
-    <div
-      className={cx(
-        'block socialcontent align',
-        {
-          center: !Boolean(align),
-        },
-        align,
+      {CheckPrivacyConsent ? (
+        <CheckPrivacyConsent module={tool}>{children}</CheckPrivacyConsent>
+      ) : (
+        <>{children}</>
       )}
-    >
-      <PlaceholderEmbed linkText={linkText} url={url} />
     </div>
   );
 };
@@ -52,8 +35,6 @@ const SocialContentWrapper = ({
 SocialContentWrapper.propTypes = {
   align: PropTypes.string,
   tool: PropTypes.string,
-  url: PropTypes.string,
-  linkText: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
