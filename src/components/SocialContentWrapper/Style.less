@@ -1,19 +1,23 @@
 .block.socialcontent.align {
-  display: flex;
+  clear: both;
 
   &.left {
-    margin-right: 1em !important;
-    margin-bottom: 1em;
-    float: left;
+    .rsme-embed {
+      margin: 0 1rem 1rem 0 !important;
+      float: left;
+    }
   }
 
   &.right {
-    margin-bottom: 1em;
-    margin-left: 1em !important;
-    float: right;
+    .rsme-embed {
+      margin: 0 1rem 0 1rem !important;
+      float: right;
+    }
   }
 
-  &.center {
+  &.center,
+  &.full {
+    display: flex;
     justify-content: center;
   }
 }
