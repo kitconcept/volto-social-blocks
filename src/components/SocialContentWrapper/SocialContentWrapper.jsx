@@ -4,9 +4,27 @@ import PropTypes from 'prop-types';
 import './Style.less';
 import config from '@plone/volto/registry';
 
-const SocialContentWrapper = ({ align = 'center', tool, children }) => {
+const SocialContentWrapper = ({ align = 'center', tool, children, data }) => {
   const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent')
     .component;
+
+  const SocialContentProviders = {
+    twitter: {
+      cookie: 'twitter',
+      name: 'Twitter.com',
+      website: 'https://twitter.com',
+    },
+    instagram: {
+      cookie: 'instagram',
+      name: 'Instagram.com',
+      website: 'https://instagram.com',
+    },
+    facebook: {
+      cookie: 'facebook',
+      name: 'Facebook.com',
+      website: 'https://facebook.com',
+    },
+  };
 
   return (
     <div
@@ -19,7 +37,12 @@ const SocialContentWrapper = ({ align = 'center', tool, children }) => {
       )}
     >
       {CheckPrivacyConsent ? (
-        <CheckPrivacyConsent module={tool}>{children}</CheckPrivacyConsent>
+        <CheckPrivacyConsent
+          module={SocialContentProviders[tool]}
+          data={data ?? {}}
+        >
+          {children}
+        </CheckPrivacyConsent>
       ) : (
         <>{children}</>
       )}
