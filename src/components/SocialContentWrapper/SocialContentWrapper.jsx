@@ -1,23 +1,32 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { PlaceholderEmbed } from 'react-social-media-embed';
 import './Style.less';
+import config from '@plone/volto/registry';
 
-const checkConsent = (tool) => {
-  // TODO: Check if we have consent to display this tool
-  return true;
+const SocialContentProviders = {
+  twitter: {
+    cookie: 'twitter',
+    name: 'Twitter.com',
+    website: 'https://twitter.com',
+  },
+  instagram: {
+    cookie: 'instagram',
+    name: 'Instagram.com',
+    website: 'https://instagram.com',
+  },
+  facebook: {
+    cookie: 'facebook',
+    name: 'Facebook.com',
+    website: 'https://facebook.com',
+  },
 };
 
-const SocialContentWrapper = ({
-  align = 'center',
-  tool,
-  url,
-  linkText,
-  children,
-}) => {
-  const display = checkConsent(tool);
-  return display ? (
+const SocialContentWrapper = ({ align = 'center', tool, children, data }) => {
+  const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent')
+    .component;
+
+  return (
     <div
       className={cx(
         'block socialcontent align',
@@ -27,19 +36,16 @@ const SocialContentWrapper = ({
         align,
       )}
     >
-      {children}
-    </div>
-  ) : (
-    <div
-      className={cx(
-        'block socialcontent align',
-        {
-          center: !Boolean(align),
-        },
-        align,
+      {CheckPrivacyConsent ? (
+        <CheckPrivacyConsent
+          module={SocialContentProviders[tool]}
+          data={data ?? {}}
+        >
+          {children}
+        </CheckPrivacyConsent>
+      ) : (
+        <>{children}</>
       )}
-    >
-      <PlaceholderEmbed linkText={linkText} url={url} />
     </div>
   );
 };
@@ -52,8 +58,6 @@ const SocialContentWrapper = ({
 SocialContentWrapper.propTypes = {
   align: PropTypes.string,
   tool: PropTypes.string,
-  url: PropTypes.string,
-  linkText: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
