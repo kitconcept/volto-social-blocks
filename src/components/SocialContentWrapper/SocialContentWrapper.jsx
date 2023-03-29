@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import './Style.less';
 import config from '@plone/volto/registry';
 
-const SocialContentWrapper = ({ align = 'center', tool, children, data }) => {
-  const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent')
-    .component;
+const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent')
+  .component;
 
+const SocialContentWrapper = ({ align = 'center', tool, children, data }) => {
   const SocialContentProviders = {
     twitter: {
       cookie: 'twitter',
