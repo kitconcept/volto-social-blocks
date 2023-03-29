@@ -4,27 +4,27 @@ import PropTypes from 'prop-types';
 import './Style.less';
 import config from '@plone/volto/registry';
 
-const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent')
-  .component;
+const SocialContentProviders = {
+  twitter: {
+    cookie: 'twitter',
+    name: 'Twitter.com',
+    website: 'https://twitter.com',
+  },
+  instagram: {
+    cookie: 'instagram',
+    name: 'Instagram.com',
+    website: 'https://instagram.com',
+  },
+  facebook: {
+    cookie: 'facebook',
+    name: 'Facebook.com',
+    website: 'https://facebook.com',
+  },
+};
 
 const SocialContentWrapper = ({ align = 'center', tool, children, data }) => {
-  const SocialContentProviders = {
-    twitter: {
-      cookie: 'twitter',
-      name: 'Twitter.com',
-      website: 'https://twitter.com',
-    },
-    instagram: {
-      cookie: 'instagram',
-      name: 'Instagram.com',
-      website: 'https://instagram.com',
-    },
-    facebook: {
-      cookie: 'facebook',
-      name: 'Facebook.com',
-      website: 'https://facebook.com',
-    },
-  };
+  const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent')
+    .component;
 
   return (
     <div
