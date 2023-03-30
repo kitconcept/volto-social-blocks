@@ -55,6 +55,7 @@ export const instagramSchema = (props) => {
       align: {
         title: props.intl.formatMessage(messages.align),
         widget: 'align',
+        actions: ['left', 'right', 'center'],
       },
       size: {
         title: props.intl.formatMessage(messages.size),
