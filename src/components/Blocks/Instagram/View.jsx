@@ -3,8 +3,8 @@ import { withBlockExtensions } from '@plone/volto/helpers';
 import InstagramView from './DefaultView';
 
 const InstagramBlockView = (props) => {
-  const { data } = props;
-  return <InstagramView {...data} />;
+  const { data, className } = props;
+  return <InstagramView {...data} className={className} />;
 };
 
 export default withBlockExtensions(InstagramBlockView);

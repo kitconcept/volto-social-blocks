@@ -22,7 +22,13 @@ const SocialContentProviders = {
   },
 };
 
-const SocialContentWrapper = ({ align = 'center', tool, children, data }) => {
+const SocialContentWrapper = ({
+  align = 'center',
+  tool,
+  children,
+  data,
+  className,
+}) => {
   const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent')
     .component;
 
@@ -30,6 +36,7 @@ const SocialContentWrapper = ({ align = 'center', tool, children, data }) => {
     <div
       className={cx(
         'block socialcontent align',
+        className,
         {
           center: !Boolean(align),
         },

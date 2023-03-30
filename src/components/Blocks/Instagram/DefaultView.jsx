@@ -10,7 +10,7 @@ const SIZES = {
 };
 
 const InstagramView = (props) => {
-  const { instagramId, align, size, captioned } = props;
+  const { instagramId, align, size, captioned, className } = props;
   const width = size ? SIZES[size] : SIZES['l'];
   const linkText = 'View post on instagram';
   return (
@@ -20,6 +20,7 @@ const InstagramView = (props) => {
         tool="instagram"
         url={instagramId}
         linkText={linkText}
+        className={className}
       >
         <InstagramEmbed
           url={instagramId}
