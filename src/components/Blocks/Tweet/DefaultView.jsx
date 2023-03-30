@@ -10,7 +10,7 @@ const SIZES = {
 };
 
 const TweetView = (props) => {
-  const { tweetId, align, size, theme, lang, dnt } = props;
+  const { tweetId, align, size, theme, lang, dnt, className } = props;
   const url = `https://twitter.com/statuses/${tweetId}`;
   const width = size ? SIZES[size] : SIZES['l'];
   const options = {
@@ -28,6 +28,7 @@ const TweetView = (props) => {
         tool="twitter"
         url={url}
         linkText={linkText}
+        className={className}
       >
         <TwitterEmbed
           url={tweetId}

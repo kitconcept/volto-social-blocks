@@ -3,8 +3,8 @@ import { withBlockExtensions } from '@plone/volto/helpers';
 import FacebookView from './DefaultView';
 
 const FacebookBlockView = (props) => {
-  const { data } = props;
-  return <FacebookView {...data} />;
+  const { data, className } = props;
+  return <FacebookView {...data} className={className} />;
 };
 
 export default withBlockExtensions(FacebookBlockView);
