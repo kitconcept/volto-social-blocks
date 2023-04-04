@@ -1,6 +1,6 @@
 {
   "name": "@kitconcept/volto-social-blocks",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "Volto add-on providing a code block with syntax highlighting.",
   "author": "kitconcept",
   "homepage": "https://github.com/kitconcept/volto-social-blocks",
