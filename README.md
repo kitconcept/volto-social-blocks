@@ -7,28 +7,23 @@ Addon implementing social network blocks for [Plone](https://plone.org) projects
 [![Code analysis checks](https://github.com/kitconcept/volto-social-blocks/actions/workflows/code.yml/badge.svg)](https://github.com/kitconcept/volto-social-blocks/actions/workflows/code.yml)
 [![Unit tests](https://github.com/kitconcept/volto-social-blocks/actions/workflows/unit.yml/badge.svg)](https://github.com/kitconcept/volto-social-blocks/actions/workflows/unit.yml)
 
-## Screenshots
+## Features
 
-TODO
-
-## Examples
-
-TODO
+- Tweet block
+- Instagram block
+- Facebook block
 
 ## Install
 
-### New Volto Project
+Create a new Volto project (you can skip this step if you already have one):
 
-Create a Volto project, install the new add-on and restart Volto:
-
-```shell
-yarn install
-yarn start
+```
+npm install -g yo @plone/generator-volto
+yo @plone/volto my-volto-project --addon @kitconcept/volto-social-blocks
+cd my-volto-project
 ```
 
-### Existing Volto Project
-
-If you already have a Volto project, just update `package.json`:
+Add `@kitconcept/volto-social-blocks` to your package.json:
 
 ```JSON
 "addons": [
@@ -40,13 +35,41 @@ If you already have a Volto project, just update `package.json`:
 }
 ```
 
+Download and install the new add-on by running:
+
+```
+yarn install
+```
+
+Start volto with:
+
+```
+yarn start
+```
 
 ### Test it
 
-Go to http://localhost:3000/
+Go to http://localhost:3000/, login, create a new page. The social blocks will show up in the Volto blocks chooser.
+
+### Custom Privacy Consent Notice
+
+You can register a custom React component to check for privacy consent and show the user a prompt to confirm accessing the external services. This is useful to meet European GDPR requirements, for example.
+
+```
+config.registerComponent({
+  name: 'CheckPrivacyConsent',
+  component: IfConfirm,  # use your own component here
+});
+```
+
+The [@kitconcept/volto-dsgvo-banner](https://github.com/kitconcept/volto-dsgvo-banner) addon provides one possible implementation of the `CheckPrivacyConsent` component.
 
 ## Credits
 
 The development of this add-on was sponsored by kitconcept GmbH.
 
 ![kitconcept GmbH](https://raw.githubusercontent.com/kitconcept/volto-form-builder/master/kitconcept.png)
+
+## License
+
+The project is licensed under the MIT license.
