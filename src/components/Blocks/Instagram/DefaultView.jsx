@@ -13,24 +13,22 @@ const InstagramView = (props) => {
   const { instagramId, align, size, captioned, className } = props;
   const width = size ? SIZES[size] : SIZES['l'];
   const linkText = 'View post on instagram';
-  return (
-    instagramId && (
-      <SocialContentWrapper
-        align={align}
-        tool="instagram"
+  return instagramId ? (
+    <SocialContentWrapper
+      align={align}
+      tool="instagram"
+      url={instagramId}
+      linkText={linkText}
+      className={className}
+    >
+      <InstagramEmbed
         url={instagramId}
+        width={width}
+        captioned={captioned}
         linkText={linkText}
-        className={className}
-      >
-        <InstagramEmbed
-          url={instagramId}
-          width={width}
-          captioned={captioned}
-          linkText={linkText}
-        />
-      </SocialContentWrapper>
-    )
-  );
+      />
+    </SocialContentWrapper>
+  ) : null;
 };
 
 /**

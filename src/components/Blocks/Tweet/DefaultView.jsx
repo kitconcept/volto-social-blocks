@@ -21,24 +21,22 @@ const TweetView = (props) => {
     },
   };
   const linkText = 'View post on Twitter';
-  return (
-    tweetId && (
-      <SocialContentWrapper
-        align={align}
-        tool="twitter"
-        url={url}
+  return tweetId ? (
+    <SocialContentWrapper
+      align={align}
+      tool="twitter"
+      url={url}
+      linkText={linkText}
+      className={className}
+    >
+      <TwitterEmbed
+        url={tweetId}
+        width={width}
         linkText={linkText}
-        className={className}
-      >
-        <TwitterEmbed
-          url={tweetId}
-          width={width}
-          linkText={linkText}
-          twitterTweetEmbedProps={options}
-        />
-      </SocialContentWrapper>
-    )
-  );
+        twitterTweetEmbedProps={options}
+      />
+    </SocialContentWrapper>
+  ) : null;
 };
 
 /**
