@@ -56,22 +56,22 @@ msgstr "Tweet einzubetten"
 #: components/Blocks/Facebook/schema
 # defaultMessage: Facebook
 msgid "Facebook"
-msgstr "Facebook"
+msgstr ""
 
 #: components/Blocks/Facebook/schema
 # defaultMessage: Facebook url
 msgid "Facebook url"
-msgstr "Facebook url"
+msgstr ""
 
 #: components/Blocks/Instagram/schema
 # defaultMessage: Instagram
 msgid "Instagram"
-msgstr "Instagram"
+msgstr ""
 
 #: components/Blocks/Instagram/schema
 # defaultMessage: Instagram url
 msgid "Instagram url"
-msgstr "Instagram url"
+msgstr ""
 
 #: components/Blocks/Tweet/schema
 # defaultMessage: Language
@@ -135,9 +135,9 @@ msgstr "Thema"
 #: components/Blocks/Tweet/schema
 # defaultMessage: Tweet
 msgid "Tweet"
-msgstr "Tweet"
+msgstr ""
 
 #: components/Blocks/Tweet/schema
-# defaultMessage: Tweet ID
-msgid "Tweet ID"
-msgstr "Tweet ID"
+# defaultMessage: Tweet URL
+msgid "Tweet URL"
+msgstr ""

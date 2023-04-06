@@ -8,8 +8,8 @@ const messages = defineMessages({
     defaultMessage: 'Tweet',
   },
   tweetId: {
-    id: 'Tweet ID',
-    defaultMessage: 'Tweet ID',
+    id: 'Tweet URL',
+    defaultMessage: 'Tweet URL',
   },
   align: {
     id: 'Alignment',

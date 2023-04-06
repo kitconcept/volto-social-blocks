@@ -138,6 +138,6 @@ msgid "Tweet"
 msgstr ""
 
 #: components/Blocks/Tweet/schema
-# defaultMessage: Tweet ID
-msgid "Tweet ID"
+# defaultMessage: Tweet URL
+msgid "Tweet URL"
 msgstr ""
