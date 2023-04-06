@@ -14,7 +14,7 @@ msgstr ""
 #: components/Blocks/Tweet/schema
 # defaultMessage: Advanced
 msgid "Advanced"
-msgstr "Erweiterte Einstellungen"
+msgstr "Weitere Einstellungen"
 
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
