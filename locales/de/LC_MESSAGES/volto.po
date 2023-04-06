@@ -14,130 +14,130 @@ msgstr ""
 #: components/Blocks/Tweet/schema
 # defaultMessage: Advanced
 msgid "Advanced"
-msgstr ""
+msgstr "Erweiterte Einstellungen"
 
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
 #: components/Blocks/Tweet/schema
 # defaultMessage: Alignment
 msgid "Alignment"
-msgstr ""
+msgstr "Ausrichtung"
 
 #: components/Blocks/Instagram/schema
 # defaultMessage: Captioned
 msgid "Captioned"
-msgstr ""
+msgstr "Beschriftet"
 
 #: components/Blocks/Tweet/schema
 # defaultMessage: Dark
 msgid "Dark"
-msgstr ""
+msgstr "Dunkel"
 
 #: components/Blocks/Tweet/schema
 # defaultMessage: Do not track
 msgid "Do not track"
-msgstr ""
+msgstr "Nicht verfolgen"
 
 #: components/Blocks/Facebook/Edit
 # defaultMessage: Embed a Facebook Post
 msgid "Embed a Facebook Post"
-msgstr ""
+msgstr "Facebook-Beitrag einzubetten"
 
 #: components/Blocks/Instagram/Edit
 # defaultMessage: Embed a Instagram Post
 msgid "Embed a Instagram Post"
-msgstr ""
+msgstr "Instagram-Beitrag einzubetten"
 
 #: components/Blocks/Tweet/Edit
 # defaultMessage: Embed a Tweet
 msgid "Embed a Tweet"
-msgstr ""
+msgstr "Tweet einzubetten"
 
 #: components/Blocks/Facebook/schema
 # defaultMessage: Facebook
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: components/Blocks/Facebook/schema
 # defaultMessage: Facebook url
 msgid "Facebook url"
-msgstr ""
+msgstr "Facebook url"
 
 #: components/Blocks/Instagram/schema
 # defaultMessage: Instagram
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: components/Blocks/Instagram/schema
 # defaultMessage: Instagram url
 msgid "Instagram url"
-msgstr ""
+msgstr "Instagram url"
 
 #: components/Blocks/Tweet/schema
 # defaultMessage: Language
 msgid "Language"
-msgstr ""
+msgstr "Sprache"
 
 #: components/Blocks/Tweet/schema
 # defaultMessage: Light
 msgid "Light"
-msgstr ""
+msgstr "Hell"
 
 #: components/Blocks/Facebook/Edit
 # defaultMessage: Please provide a valid Facebook Post url
 msgid "Please provide a valid Facebook Post url"
-msgstr ""
+msgstr "Bitte geben Sie eine gültige Facebook-Post-URL an"
 
 #: components/Blocks/Instagram/Edit
 # defaultMessage: Please provide a valid Instagram Post url
 msgid "Please provide a valid Instagram Post url"
-msgstr ""
+msgstr "Bitte geben Sie eine gültige Instagram-Post-URL an"
 
 #: components/Blocks/Tweet/Edit
 # defaultMessage: Please provide a valid Tweet ID or Twitter URL
 msgid "Please provide a valid Tweet ID or Twitter URL"
-msgstr ""
+msgstr "Bitte gib eine gültige Tweet-ID oder Twitter-URL an"
 
 #: components/Blocks/Facebook/Edit
 # defaultMessage: Provide a url to the Facebook Post
 msgid "Provide a url to the Facebook Post"
-msgstr ""
+msgstr "Geben Sie eine URL zum Facebook-Post an"
 
 #: components/Blocks/Instagram/Edit
 # defaultMessage: Provide a url to the Instagram Post
 msgid "Provide a url to the Instagram Post"
-msgstr ""
+msgstr "Geben Sie eine URL zum Instagram-Post an"
 
 #: components/Blocks/Tweet/Edit
 # defaultMessage: Provide a url to the Tweet or the Tweet ID
 msgid "Provide a url to the Tweet or the Tweet ID"
-msgstr ""
+msgstr "Geben Sie eine URL zum Tweet oder die Tweet-ID an"
 
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
 #: components/Blocks/Tweet/schema
 # defaultMessage: Size
 msgid "Size"
-msgstr ""
+msgstr "Größe"
 
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
 #: components/Blocks/Tweet/schema
 # defaultMessage: Style
 msgid "Style"
-msgstr ""
+msgstr "Stil"
 
 #: components/Blocks/Tweet/schema
 # defaultMessage: Theme
 msgid "Theme"
-msgstr ""
+msgstr "Thema"
 
 #: components/Blocks/Tweet/schema
 # defaultMessage: Tweet
 msgid "Tweet"
-msgstr ""
+msgstr "Tweet"
 
 #: components/Blocks/Tweet/schema
 # defaultMessage: Tweet ID
 msgid "Tweet ID"
-msgstr ""
+msgstr "Tweet ID"
