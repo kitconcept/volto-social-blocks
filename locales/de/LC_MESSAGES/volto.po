@@ -41,17 +41,17 @@ msgstr "Nicht verfolgen"
 #: components/Blocks/Facebook/Edit
 # defaultMessage: Embed a Facebook Post
 msgid "Embed a Facebook Post"
-msgstr "Facebook-Beitrag einzubetten"
+msgstr "Facebook-Beitrag einbetten"
 
 #: components/Blocks/Instagram/Edit
 # defaultMessage: Embed a Instagram Post
 msgid "Embed a Instagram Post"
-msgstr "Instagram-Beitrag einzubetten"
+msgstr "Instagram-Beitrag einbetten"
 
 #: components/Blocks/Tweet/Edit
 # defaultMessage: Embed a Tweet
 msgid "Embed a Tweet"
-msgstr "Tweet einzubetten"
+msgstr "Tweet einbetten"
 
 #: components/Blocks/Facebook/schema
 # defaultMessage: Facebook
@@ -96,7 +96,7 @@ msgstr "Bitte geben Sie eine gültige Instagram-Post-URL an"
 #: components/Blocks/Tweet/Edit
 # defaultMessage: Please provide a valid Tweet ID or Twitter URL
 msgid "Please provide a valid Tweet ID or Twitter URL"
-msgstr "Bitte gib eine gültige Tweet-ID oder Twitter-URL an"
+msgstr "Bitte geben Sie eine gültige Tweet-ID oder Twitter-URL an"
 
 #: components/Blocks/Facebook/Edit
 # defaultMessage: Provide a url to the Facebook Post
