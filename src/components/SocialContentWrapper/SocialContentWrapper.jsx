@@ -4,24 +4,6 @@ import PropTypes from 'prop-types';
 import './Style.less';
 import config from '@plone/volto/registry';
 
-const SocialContentProviders = {
-  twitter: {
-    cookie: 'twitter',
-    name: 'Twitter.com',
-    website: 'https://twitter.com',
-  },
-  instagram: {
-    cookie: 'instagram',
-    name: 'Instagram.com',
-    website: 'https://instagram.com',
-  },
-  facebook: {
-    cookie: 'facebook',
-    name: 'Facebook.com',
-    website: 'https://facebook.com',
-  },
-};
-
 const SocialContentWrapper = ({
   align = 'center',
   tool,
@@ -44,10 +26,7 @@ const SocialContentWrapper = ({
       )}
     >
       {CheckPrivacyConsent ? (
-        <CheckPrivacyConsent
-          module={SocialContentProviders[tool]}
-          data={data ?? {}}
-        >
+        <CheckPrivacyConsent module={tool} data={data ?? {}}>
           {children}
         </CheckPrivacyConsent>
       ) : (
