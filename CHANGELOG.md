@@ -1,15 +1,9 @@
 # Changelog
 
-## 1.0.0-alpha.3 (unreleased)
-
-### Breaking
-
-### Feature
+## 1.0.0-alpha.3 (2023-04-13)
 
 ### Bugfix
 - Change module attribute in CheckPrivacyConsent to string type @danalvrz
-
-### Internal
 
 ## [1.0.0-alpha.2](https://github.com/kitconcept/volto-social-blocks/compare/1.0.0-alpha.1...1.0.0-alpha.2) (2023-04-06)
 
