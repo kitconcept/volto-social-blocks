@@ -7,7 +7,7 @@
 ### Feature
 
 ### Bugfix
-- Change module atributte in CheckPrivacyConsent to string type @danalvrz
+- Change module attribute in CheckPrivacyConsent to string type @danalvrz
 
 ### Internal
 
