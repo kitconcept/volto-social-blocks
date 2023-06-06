@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-alpha.4](https://github.com/kitconcept/volto-social-blocks/compare/1.0.0-alpha.3...1.0.0-alpha.4) (2023-06-06)
+
+
+### Features
+
+* Add Brazilian Portuguese translation ([fe1dfbc](https://github.com/kitconcept/volto-social-blocks/commit/fe1dfbc51436b82b8108a01c973657d5dfe4b42c))
+
 ## 1.0.0-alpha.3 (2023-04-13)
 
 ### Bugfix
