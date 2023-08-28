@@ -17,7 +17,7 @@ const EditForm = ({
 }) => {
   const error = invalidValue ? formErrorMessage : null;
   return (
-    <Message className="">
+    <Message className="social-blocks-message">
       <center>
         <Icon
           name={formIcon}
