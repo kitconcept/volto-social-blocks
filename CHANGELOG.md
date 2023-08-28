@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.0-alpha.5](https://github.com/kitconcept/volto-social-blocks/compare/1.0.0-alpha.4...1.0.0-alpha.5) (2023-08-28)
+
 ## [1.0.0-alpha.4](https://github.com/kitconcept/volto-social-blocks/compare/1.0.0-alpha.3...1.0.0-alpha.4) (2023-06-06)
 
 
