@@ -12,6 +12,9 @@ describe('Instagram', () => {
       expect(isValidInstagramId('https://www.instagr.am/p/CjTBnwju6XY/')).toBe(
         true,
       );
+      expect(
+        isValidInstagramId('https://www.instagram.com/reel/CjTBnwju6XY/'),
+      ).toBe(true);
     });
     it('fails for instagram profiles', () => {
       expect(isValidInstagramId('https://www.instagram.com/plonebr')).toBe(
