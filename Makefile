@@ -22,7 +22,7 @@ RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
 PLONE_VERSION=6
-VOLTO_VERSION=16.12.0
+VOLTO_VERSION=16.30.2
 
 ADDON_NAME='@kitconcept/volto-social-blocks'
 ADDON_PATH='volto-social-blocks'
