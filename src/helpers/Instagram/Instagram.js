@@ -1,6 +1,6 @@
 export const isValidInstagramId = (value) => {
   const regex = [
-    /(?:(?:http|https):\/\/)?(?:www.)?(?:instagram.com|instagr.am|instagr.com)\/p\/(\w+)/gim,
+    /(?:(?:http|https):\/\/)?(?:www.)?(?:instagram.com|instagr.am|instagr.com)\/(?:p|reel)\/(\w+)/gim,
   ];
   let match;
   for (const re of regex) {
