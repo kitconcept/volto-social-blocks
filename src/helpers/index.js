@@ -6,4 +6,5 @@
  */
 export { isValidFacebookId } from './Facebook/Facebook';
 export { isValidInstagramId } from './Instagram/Instagram';
+export { isValidSpotifyId } from './Spotify/Spotify';
 export { extractTweetId } from './Tweet/Tweet';

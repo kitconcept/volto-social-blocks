@@ -6,6 +6,10 @@ import instagramSVG from './icons/instagram.svg';
 import InstagramBlockView from './components/Blocks/Instagram/View';
 import InstagramBlockEdit from './components/Blocks/Instagram/Edit';
 
+import spotifySVG from './icons/spotify.svg';
+import SpotifyBlockView from './components/Blocks/Spotify/View';
+import SpotifyBlockEdit from './components/Blocks/Spotify/Edit';
+
 import twitterSVG from './icons/twitter.svg';
 import TweetBlockView from './components/Blocks/Tweet/View';
 import TweetBlockEdit from './components/Blocks/Tweet/Edit';
@@ -29,6 +33,17 @@ const blocks = {
     group: 'social',
     view: InstagramBlockView,
     edit: InstagramBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  },
+  spotifyBlock: {
+    id: 'spotifyBlock',
+    title: 'Spotify',
+    icon: spotifySVG,
+    group: 'social',
+    view: SpotifyBlockView,
+    edit: SpotifyBlockEdit,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
@@ -64,6 +79,7 @@ const applyConfig = (config) => {
       ...gridBlock.gridAllowedBlocks,
       'facebookBlock',
       'instagramBlock',
+      'spotifyBlock',
       'tweetBlock',
     ];
   }
