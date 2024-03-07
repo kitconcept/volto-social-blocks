@@ -27,16 +27,7 @@ const SpotifyBlockData = (props) => {
     });
   };
 
-  return (
-    <BlockDataForm
-      schema={schema}
-      title={schema.title}
-      onChangeField={onChangeField}
-      onChangeBlock={onChangeBlock}
-      formData={data}
-      block={block}
-    />
-  );
+  return <BlockDataForm schema={schema} title={schema.title} onChangeField={onChangeField} onChangeBlock={onChangeBlock} formData={data} block={block} />;
 };
 
 export default SpotifyBlockData;

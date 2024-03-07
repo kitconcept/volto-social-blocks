@@ -56,8 +56,7 @@ const THEMES = [
 
 export const tweetSchema = (props) => {
   const defaultTheme = config.blocks?.blocksConfig?.tweetBlock?.defaultTheme;
-  const defaultLanguage =
-    config.blocks?.blocksConfig?.tweetBlock?.defaultLanguage;
+  const defaultLanguage = config.blocks?.blocksConfig?.tweetBlock?.defaultLanguage;
   const availableThemes = () => {
     return THEMES.map((item) => [item[0], props.intl.formatMessage(item[1])]);
   };

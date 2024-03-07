@@ -14,35 +14,12 @@ const STYLE = {
 
 const SpotifyView = (props) => {
   const { spotifyId, align, size, className } = props;
-  const href =
-    spotifyId !== undefined
-      ? spotifyId.replace(
-          'https://open.spotify.com/',
-          'https://open.spotify.com/embed/',
-        )
-      : '';
+  const href = spotifyId !== undefined ? spotifyId.replace('https://open.spotify.com/', 'https://open.spotify.com/embed/') : '';
   const height = size ? SIZES[size] : SIZES['l'];
   const linkText = 'Listen to content on Spotify';
   return href ? (
-    <SocialContentWrapper
-      align={align}
-      tool="spotify"
-      url={href}
-      linkText={linkText}
-      className={className}
-    >
-      <iframe
-        style={STYLE}
-        src={href}
-        width={'100%'}
-        height={height}
-        frameBorder={'0'}
-        allow={
-          'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-        }
-        title={'Spotify Player'}
-        loading={'lazy'}
-      />
+    <SocialContentWrapper align={align} tool="spotify" url={href} linkText={linkText} className={className}>
+      <iframe style={STYLE} src={href} width={'100%'} height={height} frameBorder={'0'} allow={'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'} title={'Spotify Player'} loading={'lazy'} />
     </SocialContentWrapper>
   ) : null;
 };

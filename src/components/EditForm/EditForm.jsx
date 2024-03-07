@@ -4,37 +4,16 @@ import { Icon } from '@plone/volto/components';
 import { Input, Header, Message } from 'semantic-ui-react';
 import './EditForm.css';
 
-const EditForm = ({
-  formHeader,
-  formPlaceholder,
-  formErrorMessage,
-  formIcon,
-  formIconColor,
-  value,
-  onChange,
-  onKeyDown,
-  invalidValue,
-}) => {
+const EditForm = ({ formHeader, formPlaceholder, formErrorMessage, formIcon, formIconColor, value, onChange, onKeyDown, invalidValue }) => {
   const error = invalidValue ? formErrorMessage : null;
   return (
     <Message className="social-blocks-message">
       <center>
-        <Icon
-          name={formIcon}
-          className="blockIcon"
-          size={'50px'}
-          color={formIconColor}
-        />
+        <Icon name={formIcon} className="blockIcon" size={'50px'} color={formIconColor} />
         <Header>{formHeader}</Header>
       </center>
       <div className="input-wrapper">
-        <Input
-          error={error}
-          onKeyDown={onKeyDown}
-          onChange={onChange}
-          placeholder={formPlaceholder}
-          value={value}
-        />
+        <Input error={error} onKeyDown={onKeyDown} onChange={onChange} placeholder={formPlaceholder} value={value} />
       </div>
     </Message>
   );

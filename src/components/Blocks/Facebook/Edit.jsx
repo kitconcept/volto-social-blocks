@@ -64,24 +64,11 @@ const FacebookBlockEdit = (props) => {
     <>
       <FacebookBlockView {...props} isEditMode />
       <SidebarPortal selected={selected}>
-        <FacebookBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-        />
+        <FacebookBlockData data={data} block={block} onChangeBlock={onChangeBlock} />
       </SidebarPortal>
     </>
   ) : (
-    <EditForm
-      formHeader={intl.formatMessage(messages.editFormHeader)}
-      formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)}
-      formErrorMessage={intl.formatMessage(messages.errorMessage)}
-      formIcon={iconSVG}
-      onKeyDown={onKeyDown}
-      onChange={onChange}
-      value={facebookId}
-      invalidValue={hasError}
-    />
+    <EditForm formHeader={intl.formatMessage(messages.editFormHeader)} formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)} formErrorMessage={intl.formatMessage(messages.errorMessage)} formIcon={iconSVG} onKeyDown={onKeyDown} onChange={onChange} value={facebookId} invalidValue={hasError} />
   );
 };
 
