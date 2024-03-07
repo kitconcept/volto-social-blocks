@@ -1,145 +1,176 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-06T16:01:32.969Z\n"
+"PO-Revision-Date: \n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Language: \n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
 "Language-Code: pt_BR\n"
 "Language-Name: Português do Brasil\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
 
+#. Default: "Advanced"
 #: components/Blocks/Tweet/schema
-# defaultMessage: Advanced
 msgid "Advanced"
 msgstr "Avançado"
 
+#. Default: "Alignment"
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
-# defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Alinhamento"
 
+#. Default: "Captioned"
 #: components/Blocks/Instagram/schema
-# defaultMessage: Captioned
 msgid "Captioned"
 msgstr "Com legendas"
 
+#. Default: "Dark"
 #: components/Blocks/Tweet/schema
-# defaultMessage: Dark
 msgid "Dark"
 msgstr "Escuro"
 
+#. Default: "Do not track"
 #: components/Blocks/Tweet/schema
-# defaultMessage: Do not track
 msgid "Do not track"
 msgstr "Não rastrear"
 
+#. Default: "Embed a Facebook Post"
 #: components/Blocks/Facebook/Edit
-# defaultMessage: Embed a Facebook Post
 msgid "Embed a Facebook Post"
 msgstr "Incluir uma postagem do Facebook"
 
+#. Default: "Embed a Instagram Post"
 #: components/Blocks/Instagram/Edit
-# defaultMessage: Embed a Instagram Post
 msgid "Embed a Instagram Post"
 msgstr "Incluir uma postagem do Instagram"
 
+#. Default: "Embed a Spotify Content"
+#: components/Blocks/Spotify/Edit
+msgid "Embed a Spotify Content"
+msgstr ""
+
+#. Default: "Embed a Tweet"
 #: components/Blocks/Tweet/Edit
-# defaultMessage: Embed a Tweet
 msgid "Embed a Tweet"
 msgstr "Incluir um Tweet"
 
+#. Default: "Facebook"
 #: components/Blocks/Facebook/schema
-# defaultMessage: Facebook
 msgid "Facebook"
 msgstr "Facebook"
 
+#. Default: "Facebook url"
 #: components/Blocks/Facebook/schema
-# defaultMessage: Facebook url
 msgid "Facebook url"
 msgstr "Endereço"
 
+#. Default: "Instagram"
 #: components/Blocks/Instagram/schema
-# defaultMessage: Instagram
 msgid "Instagram"
 msgstr "Instagram"
 
+#. Default: "Instagram url"
 #: components/Blocks/Instagram/schema
-# defaultMessage: Instagram url
 msgid "Instagram url"
 msgstr "Endereço"
 
+#. Default: "Language"
 #: components/Blocks/Tweet/schema
-# defaultMessage: Language
 msgid "Language"
 msgstr "Idioma"
 
+#. Default: "Light"
 #: components/Blocks/Tweet/schema
-# defaultMessage: Light
 msgid "Light"
 msgstr "Claro"
 
+#. Default: "Please provide a valid Spotify Content url"
+#: components/Blocks/Spotify/Edit
+msgid "Please provide a valid Content Post url"
+msgstr ""
+
+#. Default: "Please provide a valid Facebook Post url"
 #: components/Blocks/Facebook/Edit
-# defaultMessage: Please provide a valid Facebook Post url
 msgid "Please provide a valid Facebook Post url"
 msgstr "Por favor informe uma url válida para a postagem do Facebook"
 
+#. Default: "Please provide a valid Instagram Post url"
 #: components/Blocks/Instagram/Edit
-# defaultMessage: Please provide a valid Instagram Post url
 msgid "Please provide a valid Instagram Post url"
 msgstr "Por favor informe uma url válida para a postagem do Instagram"
 
+#. Default: "Please provide a valid Tweet ID or Twitter URL"
 #: components/Blocks/Tweet/Edit
-# defaultMessage: Please provide a valid Tweet ID or Twitter URL
 msgid "Please provide a valid Tweet ID or Twitter URL"
 msgstr "Por favor informe uma url válida para o Tweet ou o id do Tweet"
 
+#. Default: "Provide a url to the Facebook Post"
 #: components/Blocks/Facebook/Edit
-# defaultMessage: Provide a url to the Facebook Post
 msgid "Provide a url to the Facebook Post"
 msgstr "Informe a url da postagem no Facebook"
 
+#. Default: "Provide a url to the Instagram Post"
 #: components/Blocks/Instagram/Edit
-# defaultMessage: Provide a url to the Instagram Post
 msgid "Provide a url to the Instagram Post"
 msgstr "Informe a url da postagem no Instagram"
 
+#. Default: "Provide a url to the Spotify Content"
+#: components/Blocks/Spotify/Edit
+msgid "Provide a url to the Spotify Content"
+msgstr ""
+
+#. Default: "Provide a url to the Tweet or the Tweet ID"
 #: components/Blocks/Tweet/Edit
-# defaultMessage: Provide a url to the Tweet or the Tweet ID
 msgid "Provide a url to the Tweet or the Tweet ID"
 msgstr "Informe a url do Tweet ou o Tweet ID"
 
+#. Default: "Size"
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
-# defaultMessage: Size
 msgid "Size"
 msgstr "Tamanho"
 
+#. Default: "Spotify"
+#: components/Blocks/Spotify/schema
+msgid "Spotify"
+msgstr ""
+
+#. Default: "Spotify url"
+#: components/Blocks/Spotify/schema
+msgid "Spotify url"
+msgstr ""
+
+#. Default: "Style"
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
-# defaultMessage: Style
 msgid "Style"
 msgstr "Estilo"
 
+#. Default: "Theme"
 #: components/Blocks/Tweet/schema
-# defaultMessage: Theme
 msgid "Theme"
 msgstr "Tema"
 
+#. Default: "Tweet"
 #: components/Blocks/Tweet/schema
-# defaultMessage: Tweet
 msgid "Tweet"
 msgstr "Tweet"
 
+#. Default: "Tweet URL"
 #: components/Blocks/Tweet/schema
-# defaultMessage: Tweet URL
 msgid "Tweet URL"
 msgstr "Endereço do Tweet"

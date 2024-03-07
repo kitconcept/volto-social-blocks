@@ -1,2 +1,4 @@
-export EditForm from './EditForm/EditForm';
-export SocialContentWrapper from './SocialContentWrapper/SocialContentWrapper';
+import EditForm from './EditForm/EditForm';
+import SocialContentWrapper from './SocialContentWrapper/SocialContentWrapper';
+
+export { EditForm, SocialContentWrapper };
