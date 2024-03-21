@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import iconSVG from '../../../icons/facebook.svg';
 import { isValidFacebookId } from '../../../helpers';
-import { EditForm } from '../../../components';
+import EditForm from '../../EditForm/EditForm';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { SidebarPortal } from '@plone/volto/components';
 
@@ -64,24 +64,11 @@ const FacebookBlockEdit = (props) => {
     <>
       <FacebookBlockView {...props} isEditMode />
       <SidebarPortal selected={selected}>
-        <FacebookBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-        />
+        <FacebookBlockData data={data} block={block} onChangeBlock={onChangeBlock} />
       </SidebarPortal>
     </>
   ) : (
-    <EditForm
-      formHeader={intl.formatMessage(messages.editFormHeader)}
-      formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)}
-      formErrorMessage={intl.formatMessage(messages.errorMessage)}
-      formIcon={iconSVG}
-      onKeyDown={onKeyDown}
-      onChange={onChange}
-      value={facebookId}
-      invalidValue={hasError}
-    />
+    <EditForm formHeader={intl.formatMessage(messages.editFormHeader)} formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)} formErrorMessage={intl.formatMessage(messages.errorMessage)} formIcon={iconSVG} onKeyDown={onKeyDown} onChange={onChange} value={facebookId} invalidValue={hasError} />
   );
 };
 

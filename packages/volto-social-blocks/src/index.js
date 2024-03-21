@@ -53,19 +53,11 @@ const applyConfig = (config) => {
     ...config.blocks.blocksConfig,
     ...blocks,
   };
-  config.blocks.groupBlocksOrder = [
-    ...config.blocks.groupBlocksOrder,
-    { id: 'social', title: 'Social' },
-  ];
+  config.blocks.groupBlocksOrder = [...config.blocks.groupBlocksOrder, { id: 'social', title: 'Social' }];
   // Check for @kitconcept/volto-blocks-grid
   const gridBlock = config.blocks.blocksConfig.__grid;
   if (gridBlock !== undefined) {
-    config.blocks.blocksConfig.__grid.gridAllowedBlocks = [
-      ...gridBlock.gridAllowedBlocks,
-      'facebookBlock',
-      'instagramBlock',
-      'tweetBlock',
-    ];
+    config.blocks.blocksConfig.__grid.gridAllowedBlocks = [...gridBlock.gridAllowedBlocks, 'facebookBlock', 'instagramBlock', 'tweetBlock'];
   }
   return config;
 };

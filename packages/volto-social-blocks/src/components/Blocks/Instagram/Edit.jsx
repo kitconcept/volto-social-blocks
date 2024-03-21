@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import iconSVG from '../../../icons/instagram.svg';
 import { isValidInstagramId } from '../../../helpers';
-import { EditForm } from '../../../components';
+import EditForm from '../../EditForm/EditForm';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { SidebarPortal } from '@plone/volto/components';
 
@@ -31,10 +31,7 @@ const InstagramBlockEdit = (props) => {
   const intl = useIntl();
 
   useEffect(() => {
-    if (
-      data.instagramId !== instagramId &&
-      isValidInstagramId(data.instagramId)
-    ) {
+    if (data.instagramId !== instagramId && isValidInstagramId(data.instagramId)) {
       setInstagramId(data.instagramId);
     }
   }, [data, instagramId]);
@@ -67,24 +64,11 @@ const InstagramBlockEdit = (props) => {
     <>
       <InstagramBlockView {...props} isEditMode />
       <SidebarPortal selected={selected}>
-        <InstagramBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-        />
+        <InstagramBlockData data={data} block={block} onChangeBlock={onChangeBlock} />
       </SidebarPortal>
     </>
   ) : (
-    <EditForm
-      formHeader={intl.formatMessage(messages.editFormHeader)}
-      formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)}
-      formErrorMessage={intl.formatMessage(messages.errorMessage)}
-      formIcon={iconSVG}
-      onKeyDown={onKeyDown}
-      onChange={onChange}
-      value={instagramId}
-      invalidValue={hasError}
-    />
+    <EditForm formHeader={intl.formatMessage(messages.editFormHeader)} formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)} formErrorMessage={intl.formatMessage(messages.errorMessage)} formIcon={iconSVG} onKeyDown={onKeyDown} onChange={onChange} value={instagramId} invalidValue={hasError} />
   );
 };
 

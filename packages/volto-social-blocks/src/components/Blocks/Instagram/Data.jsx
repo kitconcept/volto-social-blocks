@@ -27,15 +27,7 @@ const InstagramBlockData = (props) => {
     });
   };
 
-  return (
-    <BlockDataForm
-      schema={schema}
-      title={schema.title}
-      onChangeField={onChangeField}
-      formData={data}
-      block={block}
-    />
-  );
+  return <BlockDataForm schema={schema} title={schema.title} onChangeField={onChangeField} formData={data} block={block} />;
 };
 
 export default InstagramBlockData;

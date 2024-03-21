@@ -14,13 +14,7 @@ const FacebookView = (props) => {
   const width = size ? SIZES[size] : SIZES['l'];
   const linkText = 'View post on Facebook';
   return facebookId ? (
-    <SocialContentWrapper
-      align={align}
-      tool="facebook"
-      url={facebookId}
-      linkText={linkText}
-      className={className}
-    >
+    <SocialContentWrapper align={align} tool="facebook" url={facebookId} linkText={linkText} className={className}>
       <FacebookEmbed url={facebookId} width={width} linkText={linkText} />
     </SocialContentWrapper>
   ) : null;
