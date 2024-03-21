@@ -1,5 +1,12 @@
 name: Code analysis checks
-on: [push]
+on:
+  push:
+    paths:
+      - "*.js"
+      - "*.json"
+      - "*.yaml"
+      - "packages/**"
+
 jobs:
   codeanalysis:
     runs-on: ubuntu-latest
