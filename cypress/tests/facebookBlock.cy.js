@@ -1,8 +1,7 @@
 context('Facebook Block Acceptance Tests', () => {
   describe('Facebook Block Tests', () => {
     beforeEach(() => {
-      // given a logged in editor and a page in edit mode
-      cy.visit('/');
+      // Given a logged in editor
       cy.viewport('macbook-16');
       cy.createContent({
         contentType: 'Document',
@@ -13,6 +12,7 @@ context('Facebook Block Acceptance Tests', () => {
     });
 
     it('As editor I can add a Facebook Block', function () {
+      cy.visit('/document');
       cy.navigate('/document/edit');
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });

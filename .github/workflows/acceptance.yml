@@ -1,11 +1,6 @@
 name: Acceptance tests
 on: [push]
 
-env:
-  ADDON_NAME: "@kitconcept/volto-social-blocks"
-  ADDON_PATH: "volto-social-blocks"
-  VOLTO_VERSION: "18.0.0-alpha.23"
-
 jobs:
 
   acceptance:
