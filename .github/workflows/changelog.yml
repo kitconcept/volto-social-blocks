@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: python -m pip install --upgrade pip nox
+        run: python -m pip install --upgrade pip towncrier
 
       - name: Check for presence of a Change Log fragment (only pull requests)
         run: |
