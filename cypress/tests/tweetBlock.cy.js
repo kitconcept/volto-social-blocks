@@ -16,10 +16,6 @@ context('Twitter Block Acceptance Tests', () => {
         path: '/document',
       });
       cy.visit('/document');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('document');
       cy.navigate('/document/edit');
     });
@@ -35,12 +31,7 @@ context('Twitter Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.tweetBlock .input-wrapper .ui.input input')
-        .invoke(
-          'val',
-          'https://twitter.com/ploneconf/status/1542568225527005184',
-        )
-        .type('{enter}');
+      cy.get('.block.inner.tweetBlock .input-wrapper .ui.input input').invoke('val', 'https://twitter.com/ploneconf/status/1542568225527005184').type('{enter}');
 
       cy.get('#toolbar-save').click();
     });

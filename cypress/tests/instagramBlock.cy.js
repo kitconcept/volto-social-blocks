@@ -16,10 +16,6 @@ context('Instagram Block Acceptance Tests', () => {
         path: '/document',
       });
       cy.visit('/document');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('document');
       cy.navigate('/document/edit');
     });
@@ -35,9 +31,7 @@ context('Instagram Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.instagramBlock .input-wrapper .ui.input input')
-        .invoke('val', 'https://www.instagr.am/p/CjTBnwju6XY/')
-        .type('{enter}');
+      cy.get('.block.inner.instagramBlock .input-wrapper .ui.input input').invoke('val', 'https://www.instagr.am/p/CjTBnwju6XY/').type('{enter}');
 
       cy.get('#toolbar-save').click();
     });
