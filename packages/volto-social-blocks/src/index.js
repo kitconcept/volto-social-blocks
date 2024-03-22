@@ -16,6 +16,10 @@ import spotifySVG from './icons/spotify.svg';
 import SpotifyBlockView from './components/Blocks/Spotify/View';
 import SpotifyBlockEdit from './components/Blocks/Spotify/Edit';
 
+import soundcloudSVG from './icons/soundcloud.svg';
+import SoundcloudBlockView from './components/Blocks/Soundcloud/View';
+import SoundcloudBlockEdit from './components/Blocks/Soundcloud/Edit';
+
 const blocks = {
   facebookBlock: {
     id: 'facebookBlock',
@@ -63,6 +67,17 @@ const blocks = {
     mostUsed: false,
     sidebarTab: 1,
   },
+  soundcloudBlock: {
+    id: 'soundcloudBlock',
+    title: 'Soundcloud',
+    icon: soundcloudSVG,
+    group: 'social',
+    view: SoundcloudBlockView,
+    edit: SoundcloudBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  },
 };
 
 const applyConfig = (config) => {
@@ -78,7 +93,7 @@ const applyConfig = (config) => {
   ['__grid', 'gridBlock', 'accordion'].forEach((blockId) => {
     const block = config.blocks.blocksConfig[blockId];
     if (block !== undefined) {
-      const localBlocks = ['facebookBlock', 'instagramBlock', 'tweetBlock', 'spotifyBlock'];
+      const localBlocks = ['facebookBlock', 'instagramBlock', 'tweetBlock', 'spotifyBlock', 'soundcloudBlock'];
       block.allowedBlocks = [...block.allowedBlocks, ...localBlocks];
       localBlocks.forEach((blockId) => {
         block.blocksConfig[blockId] = cloneDeep(config.blocks.blocksConfig[blockId]);
