@@ -68,11 +68,24 @@ const SoundcloudBlockEdit = (props) => {
     <>
       <SoundcloudBlockView {...props} isEditMode />
       <SidebarPortal selected={selected}>
-        <SoundcloudBlockData data={data} block={block} onChangeBlock={onChangeBlock} />
+        <SoundcloudBlockData
+          data={data}
+          block={block}
+          onChangeBlock={onChangeBlock}
+        />
       </SidebarPortal>
     </>
   ) : (
-    <EditForm formHeader={intl.formatMessage(messages.editFormHeader)} formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)} formErrorMessage={intl.formatMessage(messages.errorMessage)} formIcon={iconSVG} onKeyDown={onKeyDown} onChange={onChange} value={soundcloudId} invalidValue={hasError} />
+    <EditForm
+      formHeader={intl.formatMessage(messages.editFormHeader)}
+      formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)}
+      formErrorMessage={intl.formatMessage(messages.errorMessage)}
+      formIcon={iconSVG}
+      onKeyDown={onKeyDown}
+      onChange={onChange}
+      value={soundcloudId}
+      invalidValue={hasError}
+    />
   );
 };
 

@@ -4,8 +4,16 @@ import PropTypes from 'prop-types';
 import './Style.less';
 import config from '@plone/volto/registry';
 
-const SocialContentWrapper = ({ align = 'center', tool, children, data, className }) => {
-  const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent').component;
+const SocialContentWrapper = ({
+  align = 'center',
+  tool,
+  children,
+  data,
+  className,
+}) => {
+  const CheckPrivacyConsent = config.getComponent(
+    'CheckPrivacyConsent',
+  ).component;
 
   return (
     <div
@@ -37,7 +45,10 @@ const SocialContentWrapper = ({ align = 'center', tool, children, data, classNam
 SocialContentWrapper.propTypes = {
   align: PropTypes.string,
   tool: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default SocialContentWrapper;

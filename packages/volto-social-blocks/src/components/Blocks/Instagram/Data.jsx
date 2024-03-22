@@ -5,7 +5,8 @@ import { instagramSchema } from './schema';
 import { useIntl } from 'react-intl';
 
 const InstagramBlockData = (props) => {
-  const { data, block, onChangeBlock } = props;
+  const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
+    props;
   const intl = useIntl();
   const schema = instagramSchema({ ...props, intl });
   Object.keys(schema.properties).forEach((key) => {
@@ -27,7 +28,19 @@ const InstagramBlockData = (props) => {
     });
   };
 
-  return <BlockDataForm schema={schema} title={schema.title} onChangeField={onChangeField} formData={data} block={block} />;
+  return (
+    <BlockDataForm
+      schema={schema}
+      title={schema.title}
+      onChangeField={onChangeField}
+      onChangeBlock={onChangeBlock}
+      formData={data}
+      block={block}
+      blocksConfig={blocksConfig}
+      navRoot={navRoot}
+      contentType={contentType}
+    />
+  );
 };
 
 export default InstagramBlockData;

@@ -64,11 +64,24 @@ const FlickrBlockEdit = (props) => {
     <>
       <FlickrBlockView {...props} isEditMode />
       <SidebarPortal selected={selected}>
-        <FlickrBlockData data={data} block={block} onChangeBlock={onChangeBlock} />
+        <FlickrBlockData
+          data={data}
+          block={block}
+          onChangeBlock={onChangeBlock}
+        />
       </SidebarPortal>
     </>
   ) : (
-    <EditForm formHeader={intl.formatMessage(messages.editFormHeader)} formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)} formErrorMessage={intl.formatMessage(messages.errorMessage)} formIcon={iconSVG} onKeyDown={onKeyDown} onChange={onChange} value={flickrId} invalidValue={hasError} />
+    <EditForm
+      formHeader={intl.formatMessage(messages.editFormHeader)}
+      formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)}
+      formErrorMessage={intl.formatMessage(messages.errorMessage)}
+      formIcon={iconSVG}
+      onKeyDown={onKeyDown}
+      onChange={onChange}
+      value={flickrId}
+      invalidValue={hasError}
+    />
   );
 };
 

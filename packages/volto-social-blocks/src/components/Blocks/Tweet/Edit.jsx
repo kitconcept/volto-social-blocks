@@ -65,11 +65,24 @@ const TweetBlockEdit = (props) => {
     <>
       <TweetBlockView {...props} isEditMode />
       <SidebarPortal selected={selected}>
-        <TweetBlockData data={data} block={block} onChangeBlock={onChangeBlock} />
+        <TweetBlockData
+          data={data}
+          block={block}
+          onChangeBlock={onChangeBlock}
+        />
       </SidebarPortal>
     </>
   ) : (
-    <EditForm formHeader={intl.formatMessage(messages.editFormHeader)} formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)} formErrorMessage={intl.formatMessage(messages.errorMessage)} formIcon={iconSVG} onKeyDown={onKeyDown} onChange={onChange} value={tweetId} invalidValue={hasError} />
+    <EditForm
+      formHeader={intl.formatMessage(messages.editFormHeader)}
+      formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)}
+      formErrorMessage={intl.formatMessage(messages.errorMessage)}
+      formIcon={iconSVG}
+      onKeyDown={onKeyDown}
+      onChange={onChange}
+      value={tweetId}
+      invalidValue={hasError}
+    />
   );
 };
 

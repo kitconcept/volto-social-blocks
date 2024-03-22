@@ -100,7 +100,10 @@ const applyConfig = (config) => {
     ...config.blocks.blocksConfig,
     ...blocks,
   };
-  config.blocks.groupBlocksOrder = [...config.blocks.groupBlocksOrder, { id: 'social', title: 'Social' }];
+  config.blocks.groupBlocksOrder = [
+    ...config.blocks.groupBlocksOrder,
+    { id: 'social', title: 'Social' },
+  ];
 
   // Add Blocks to gridBlock and accordionBlock
   // It's important to maintain the chain, and do not introduce pass by reference in
@@ -108,10 +111,19 @@ const applyConfig = (config) => {
   ['__grid', 'gridBlock', 'accordion'].forEach((blockId) => {
     const block = config.blocks.blocksConfig[blockId];
     if (block !== undefined) {
-      const localBlocks = ['facebookBlock', 'flickr', 'instagramBlock', 'tweetBlock', 'spotifyBlock', 'soundcloudBlock'];
+      const localBlocks = [
+        'facebookBlock',
+        'flickr',
+        'instagramBlock',
+        'tweetBlock',
+        'spotifyBlock',
+        'soundcloudBlock',
+      ];
       block.allowedBlocks = [...block.allowedBlocks, ...localBlocks];
       localBlocks.forEach((blockId) => {
-        block.blocksConfig[blockId] = cloneDeep(config.blocks.blocksConfig[blockId]);
+        block.blocksConfig[blockId] = cloneDeep(
+          config.blocks.blocksConfig[blockId],
+        );
       });
     }
   });

@@ -64,11 +64,24 @@ const SpotifyBlockEdit = (props) => {
     <>
       <SpotifyBlockView {...props} isEditMode />
       <SidebarPortal selected={selected}>
-        <SpotifyBlockData data={data} block={block} onChangeBlock={onChangeBlock} />
+        <SpotifyBlockData
+          data={data}
+          block={block}
+          onChangeBlock={onChangeBlock}
+        />
       </SidebarPortal>
     </>
   ) : (
-    <EditForm formHeader={intl.formatMessage(messages.editFormHeader)} formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)} formErrorMessage={intl.formatMessage(messages.errorMessage)} formIcon={iconSVG} onKeyDown={onKeyDown} onChange={onChange} value={spotifyId} invalidValue={hasError} />
+    <EditForm
+      formHeader={intl.formatMessage(messages.editFormHeader)}
+      formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)}
+      formErrorMessage={intl.formatMessage(messages.errorMessage)}
+      formIcon={iconSVG}
+      onKeyDown={onKeyDown}
+      onChange={onChange}
+      value={spotifyId}
+      invalidValue={hasError}
+    />
   );
 };
 

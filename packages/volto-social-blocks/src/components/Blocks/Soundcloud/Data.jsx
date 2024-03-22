@@ -5,7 +5,8 @@ import { soundcloudSchema } from './schema';
 import { useIntl } from 'react-intl';
 
 const SoundcloudBlockData = (props) => {
-  const { data, block, onChangeBlock } = props;
+  const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
+    props;
   const intl = useIntl();
   const schema = soundcloudSchema({ ...props, intl });
   Object.keys(schema.properties).forEach((key) => {
@@ -29,7 +30,19 @@ const SoundcloudBlockData = (props) => {
     });
   };
 
-  return <BlockDataForm schema={schema} title={schema.title} onChangeField={onChangeField} onChangeBlock={onChangeBlock} formData={data} block={block} />;
+  return (
+    <BlockDataForm
+      schema={schema}
+      title={schema.title}
+      onChangeField={onChangeField}
+      onChangeBlock={onChangeBlock}
+      formData={data}
+      block={block}
+      blocksConfig={blocksConfig}
+      navRoot={navRoot}
+      contentType={contentType}
+    />
+  );
 };
 
 export default SoundcloudBlockData;
