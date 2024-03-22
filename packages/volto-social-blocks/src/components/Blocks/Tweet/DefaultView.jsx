@@ -22,8 +22,19 @@ const TweetView = (props) => {
   };
   const linkText = 'View post on Twitter';
   return tweetId ? (
-    <SocialContentWrapper align={align} tool="twitter" url={url} linkText={linkText} className={className}>
-      <TwitterEmbed url={url} width={width} linkText={linkText} twitterTweetEmbedProps={options} />
+    <SocialContentWrapper
+      align={align}
+      tool="twitter"
+      url={url}
+      linkText={linkText}
+      className={className}
+    >
+      <TwitterEmbed
+        url={url}
+        width={width}
+        linkText={linkText}
+        twitterTweetEmbedProps={options}
+      />
     </SocialContentWrapper>
   ) : null;
 };

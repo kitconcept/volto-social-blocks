@@ -5,7 +5,8 @@ import { facebookSchema } from './schema';
 import { useIntl } from 'react-intl';
 
 const FacebookBlockData = (props) => {
-  const { data, block, onChangeBlock } = props;
+  const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
+    props;
   const intl = useIntl();
   const schema = facebookSchema({ ...props, intl });
   Object.keys(schema.properties).forEach((key) => {
@@ -27,7 +28,19 @@ const FacebookBlockData = (props) => {
     });
   };
 
-  return <BlockDataForm schema={schema} title={schema.title} onChangeField={onChangeField} formData={data} block={block} />;
+  return (
+    <BlockDataForm
+      schema={schema}
+      title={schema.title}
+      onChangeField={onChangeField}
+      onChangeBlock={onChangeBlock}
+      formData={data}
+      block={block}
+      blocksConfig={blocksConfig}
+      navRoot={navRoot}
+      contentType={contentType}
+    />
+  );
 };
 
 export default FacebookBlockData;

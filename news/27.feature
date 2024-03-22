@@ -1,0 +1,1 @@
+Add Flickr block [@danalvrz]

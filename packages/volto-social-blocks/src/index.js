@@ -12,6 +12,10 @@ import twitterSVG from './icons/twitter.svg';
 import TweetBlockView from './components/Blocks/Tweet/View';
 import TweetBlockEdit from './components/Blocks/Tweet/Edit';
 
+import flickrSVG from './icons/flickr.svg';
+import FlickrBlockView from './components/Blocks/Flickr/View';
+import FlickrBlockEdit from './components/Blocks/Flickr/Edit';
+
 import spotifySVG from './icons/spotify.svg';
 import SpotifyBlockView from './components/Blocks/Spotify/View';
 import SpotifyBlockEdit from './components/Blocks/Spotify/Edit';
@@ -56,6 +60,17 @@ const blocks = {
     defaultLanguage: 'en',
     defaultTheme: 'light',
   },
+  flickrBlock: {
+    id: 'flickrBlock',
+    title: 'Flickr',
+    icon: flickrSVG,
+    group: 'social',
+    view: FlickrBlockView,
+    edit: FlickrBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  },
   spotifyBlock: {
     id: 'spotifyBlock',
     title: 'Spotify',
@@ -85,7 +100,10 @@ const applyConfig = (config) => {
     ...config.blocks.blocksConfig,
     ...blocks,
   };
-  config.blocks.groupBlocksOrder = [...config.blocks.groupBlocksOrder, { id: 'social', title: 'Social' }];
+  config.blocks.groupBlocksOrder = [
+    ...config.blocks.groupBlocksOrder,
+    { id: 'social', title: 'Social' },
+  ];
 
   // Add Blocks to gridBlock and accordionBlock
   // It's important to maintain the chain, and do not introduce pass by reference in
@@ -93,10 +111,19 @@ const applyConfig = (config) => {
   ['__grid', 'gridBlock', 'accordion'].forEach((blockId) => {
     const block = config.blocks.blocksConfig[blockId];
     if (block !== undefined) {
-      const localBlocks = ['facebookBlock', 'instagramBlock', 'tweetBlock', 'spotifyBlock', 'soundcloudBlock'];
+      const localBlocks = [
+        'facebookBlock',
+        'flickr',
+        'instagramBlock',
+        'tweetBlock',
+        'spotifyBlock',
+        'soundcloudBlock',
+      ];
       block.allowedBlocks = [...block.allowedBlocks, ...localBlocks];
       localBlocks.forEach((blockId) => {
-        block.blocksConfig[blockId] = cloneDeep(config.blocks.blocksConfig[blockId]);
+        block.blocksConfig[blockId] = cloneDeep(
+          config.blocks.blocksConfig[blockId],
+        );
       });
     }
   });

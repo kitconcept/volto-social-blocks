@@ -2,14 +2,16 @@
   clear: both;
 
   &.left {
-    .rsme-embed {
+    .rsme-embed,
+    .flickr-embed-frame {
       margin: 0 1rem 1rem 0 !important;
       float: left;
     }
   }
 
   &.right {
-    .rsme-embed {
+    .rsme-embed,
+    .flickr-embed-frame {
       margin: 0 1rem 0 1rem !important;
       float: right;
     }
@@ -19,5 +21,9 @@
   &.full {
     display: flex;
     justify-content: center;
+  }
+
+  .flickr-content {
+    margin: 0;
   }
 }

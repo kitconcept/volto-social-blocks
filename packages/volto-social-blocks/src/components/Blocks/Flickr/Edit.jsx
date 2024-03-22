@@ -1,71 +1,70 @@
 import React, { useEffect, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { extractTweetId } from '../../../helpers';
+import iconSVG from '../../../icons/flickr.svg';
+import { isValidFlickrId } from '../../../helpers';
+import EditForm from '../../EditForm/EditForm';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { SidebarPortal } from '@plone/volto/components';
-import EditForm from '../../EditForm/EditForm';
-import iconSVG from '../../../icons/twitter.svg';
-import TweetBlockData from './Data';
-import TweetBlockView from './View';
+
+import FlickrBlockData from './Data';
+import FlickrBlockView from './View';
 
 const messages = defineMessages({
   editFormHeader: {
-    id: 'Embed a Tweet',
-    defaultMessage: 'Embed a Tweet',
+    id: 'Embed a Flickr Gallery',
+    defaultMessage: 'Embed a Flickr Gallery',
   },
   editFormPlaceholder: {
-    id: 'Provide a url to the Tweet or the Tweet ID',
-    defaultMessage: 'Provide a url to the Tweet or the Tweet ID',
+    id: 'Provide the embed code of the Flickr Gallery',
+    defaultMessage: 'Provide the embed code of the Flickr Gallery',
   },
   errorMessage: {
-    id: 'Please provide a valid Tweet ID or Twitter URL',
-    defaultMessage: 'Please provide a valid Tweet ID or Twitter URL',
+    id: 'Please provide a valid Flickr Gallery embed code',
+    defaultMessage: 'Please provide a valid Flickr Gallery embed code',
   },
 });
 
-const TweetBlockEdit = (props) => {
+const FlickrBlockEdit = (props) => {
   const { data, onChangeBlock, block, selected } = props;
-  const [tweetId, setTweetId] = useState(data.tweetId);
+  const [flickrId, setFlickrId] = useState(data.flickrId);
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
 
   useEffect(() => {
-    if (data.tweetId !== tweetId) {
-      const newValue = extractTweetId(data.tweetId);
-      setTweetId(newValue);
+    if (data.flickrId !== flickrId && isValidFlickrId(data.flickrId)) {
+      setFlickrId(data.facebookId);
     }
-  }, [data, tweetId]);
+  }, [data, flickrId]);
 
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       e.stopPropagation();
-      updateTweetId(e.target.value);
+      updateFlickrId(e.target.value);
     }
   };
 
   const onChange = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    updateTweetId(e.target.value);
+    updateFlickrId(e.target.value);
   };
 
-  const updateTweetId = (value) => {
-    const newValue = extractTweetId(value);
-    if (newValue) {
+  const updateFlickrId = (value) => {
+    if (isValidFlickrId(value)) {
       setHasError(false);
-      setTweetId(newValue);
-      onChangeBlock(block, { ...data, tweetId: newValue });
+      setFlickrId(value);
+      onChangeBlock(block, { ...data, flickrId: value });
     } else {
       setHasError(true);
     }
   };
 
-  return tweetId ? (
+  return flickrId ? (
     <>
-      <TweetBlockView {...props} isEditMode />
+      <FlickrBlockView {...props} isEditMode />
       <SidebarPortal selected={selected}>
-        <TweetBlockData
+        <FlickrBlockData
           data={data}
           block={block}
           onChangeBlock={onChangeBlock}
@@ -80,10 +79,10 @@ const TweetBlockEdit = (props) => {
       formIcon={iconSVG}
       onKeyDown={onKeyDown}
       onChange={onChange}
-      value={tweetId}
+      value={flickrId}
       invalidValue={hasError}
     />
   );
 };
 
-export default withBlockExtensions(TweetBlockEdit);
+export default withBlockExtensions(FlickrBlockEdit);

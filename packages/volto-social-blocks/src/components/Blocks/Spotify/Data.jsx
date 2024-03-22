@@ -5,7 +5,8 @@ import { spotifySchema } from './schema';
 import { useIntl } from 'react-intl';
 
 const SpotifyBlockData = (props) => {
-  const { data, block, onChangeBlock } = props;
+  const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
+    props;
   const intl = useIntl();
   const schema = spotifySchema({ ...props, intl });
   Object.keys(schema.properties).forEach((key) => {
@@ -27,7 +28,19 @@ const SpotifyBlockData = (props) => {
     });
   };
 
-  return <BlockDataForm schema={schema} title={schema.title} onChangeField={onChangeField} onChangeBlock={onChangeBlock} formData={data} block={block} />;
+  return (
+    <BlockDataForm
+      schema={schema}
+      title={schema.title}
+      onChangeField={onChangeField}
+      onChangeBlock={onChangeBlock}
+      formData={data}
+      block={block}
+      blocksConfig={blocksConfig}
+      navRoot={navRoot}
+      contentType={contentType}
+    />
+  );
 };
 
 export default SpotifyBlockData;

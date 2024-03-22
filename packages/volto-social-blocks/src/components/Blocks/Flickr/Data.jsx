@@ -1,14 +1,14 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components';
-import { isValidInstagramId } from '../../../helpers';
-import { instagramSchema } from './schema';
+import { isValidFlickrId } from '../../../helpers';
+import { flickrSchema } from './schema';
 import { useIntl } from 'react-intl';
 
-const InstagramBlockData = (props) => {
+const FlickrBlockData = (props) => {
   const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
     props;
   const intl = useIntl();
-  const schema = instagramSchema({ ...props, intl });
+  const schema = flickrSchema({ ...props, intl });
   Object.keys(schema.properties).forEach((key) => {
     const field = schema.properties[key];
     const defaultValue = field.default;
@@ -17,8 +17,8 @@ const InstagramBlockData = (props) => {
     }
   });
   const onChangeField = (id, value) => {
-    if (id === 'instagramId' && value !== '') {
-      if (!isValidInstagramId(value)) {
+    if (id === 'flickrId' && value !== '') {
+      if (!isValidFlickrId(value)) {
         return;
       }
     }
@@ -43,4 +43,4 @@ const InstagramBlockData = (props) => {
   );
 };
 
-export default InstagramBlockData;
+export default FlickrBlockData;

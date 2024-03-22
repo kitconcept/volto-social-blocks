@@ -30,10 +30,11 @@ help:		## Show this help
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
 
 # Dev Helpers
+
 .PHONY: install
-install: ## Installs the dev environment using mrs-developer
-	@echo "$(GREEN)==> Installs the dev environment $(RESET)"
-	pnpm exec missdev --no-config --fetch-https
+install: ## Install task, checks if missdev (mrs-developer) is present and runs it
+	pnpm dlx mrs-developer missdev --no-config --fetch-https
+	pnpm i
 
 .PHONY: i18n
 i18n: ## Sync i18n

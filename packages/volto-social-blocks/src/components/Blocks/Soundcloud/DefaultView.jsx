@@ -14,8 +14,20 @@ const SoundcloudView = (props) => {
   const height = size ? SIZES[size] : SIZES['l'];
   const linkText = 'Listen to content on Soundcloud';
   return href ? (
-    <SocialContentWrapper align={align} tool="soundcloud" url={href} linkText={linkText} className={className}>
-      <iframe height={height} frameBorder={'0'} src={`https://w.soundcloud.com/player/?url=${href}`} title={'Soundcloud Player'} loading={'lazy'} />
+    <SocialContentWrapper
+      align={align}
+      tool="soundcloud"
+      url={href}
+      linkText={linkText}
+      className={className}
+    >
+      <iframe
+        height={height}
+        frameBorder={'0'}
+        src={`https://w.soundcloud.com/player/?url=${href}`}
+        title={'Soundcloud Player'}
+        loading={'lazy'}
+      />
     </SocialContentWrapper>
   ) : null;
 };
