@@ -1,0 +1,143 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: de\n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. Default: "Advanced"
+#: components/Blocks/Tweet/schema
+msgid "Advanced"
+msgstr "Weitere Einstellungen"
+
+#. Default: "Alignment"
+#: components/Blocks/Facebook/schema
+#: components/Blocks/Instagram/schema
+#: components/Blocks/Tweet/schema
+msgid "Alignment"
+msgstr "Ausrichtung"
+
+#. Default: "Captioned"
+#: components/Blocks/Instagram/schema
+msgid "Captioned"
+msgstr "Beschriftet"
+
+#. Default: "Dark"
+#: components/Blocks/Tweet/schema
+msgid "Dark"
+msgstr "Dunkel"
+
+#. Default: "Do not track"
+#: components/Blocks/Tweet/schema
+msgid "Do not track"
+msgstr "Nicht verfolgen"
+
+#. Default: "Embed a Facebook Post"
+#: components/Blocks/Facebook/Edit
+msgid "Embed a Facebook Post"
+msgstr "Facebook-Beitrag einbetten"
+
+#. Default: "Embed a Instagram Post"
+#: components/Blocks/Instagram/Edit
+msgid "Embed a Instagram Post"
+msgstr "Instagram-Beitrag einbetten"
+
+#. Default: "Embed a Tweet"
+#: components/Blocks/Tweet/Edit
+msgid "Embed a Tweet"
+msgstr "Tweet einbetten"
+
+#. Default: "Facebook"
+#: components/Blocks/Facebook/schema
+msgid "Facebook"
+msgstr ""
+
+#. Default: "Facebook url"
+#: components/Blocks/Facebook/schema
+msgid "Facebook url"
+msgstr ""
+
+#. Default: "Instagram"
+#: components/Blocks/Instagram/schema
+msgid "Instagram"
+msgstr ""
+
+#. Default: "Instagram url"
+#: components/Blocks/Instagram/schema
+msgid "Instagram url"
+msgstr ""
+
+#. Default: "Language"
+#: components/Blocks/Tweet/schema
+msgid "Language"
+msgstr "Sprache"
+
+#. Default: "Light"
+#: components/Blocks/Tweet/schema
+msgid "Light"
+msgstr "Hell"
+
+#. Default: "Please provide a valid Facebook Post url"
+#: components/Blocks/Facebook/Edit
+msgid "Please provide a valid Facebook Post url"
+msgstr "Bitte geben Sie eine gültige Facebook-Post-URL an"
+
+#. Default: "Please provide a valid Instagram Post url"
+#: components/Blocks/Instagram/Edit
+msgid "Please provide a valid Instagram Post url"
+msgstr "Bitte geben Sie eine gültige Instagram-Post-URL an"
+
+#. Default: "Please provide a valid Tweet ID or Twitter URL"
+#: components/Blocks/Tweet/Edit
+msgid "Please provide a valid Tweet ID or Twitter URL"
+msgstr "Bitte geben Sie eine gültige Tweet-ID oder Twitter-URL an"
+
+#. Default: "Provide a url to the Facebook Post"
+#: components/Blocks/Facebook/Edit
+msgid "Provide a url to the Facebook Post"
+msgstr "Geben Sie eine URL zum Facebook-Post an"
+
+#. Default: "Provide a url to the Instagram Post"
+#: components/Blocks/Instagram/Edit
+msgid "Provide a url to the Instagram Post"
+msgstr "Geben Sie eine URL zum Instagram-Post an"
+
+#. Default: "Provide a url to the Tweet or the Tweet ID"
+#: components/Blocks/Tweet/Edit
+msgid "Provide a url to the Tweet or the Tweet ID"
+msgstr "Geben Sie eine URL zum Tweet oder die Tweet-ID an"
+
+#. Default: "Size"
+#: components/Blocks/Facebook/schema
+#: components/Blocks/Instagram/schema
+#: components/Blocks/Tweet/schema
+msgid "Size"
+msgstr "Größe"
+
+#. Default: "Style"
+#: components/Blocks/Facebook/schema
+#: components/Blocks/Instagram/schema
+#: components/Blocks/Tweet/schema
+msgid "Style"
+msgstr "Stil"
+
+#. Default: "Theme"
+#: components/Blocks/Tweet/schema
+msgid "Theme"
+msgstr "Thema"
+
+#. Default: "Tweet"
+#: components/Blocks/Tweet/schema
+msgid "Tweet"
+msgstr ""
+
+#. Default: "Tweet URL"
+#: components/Blocks/Tweet/schema
+msgid "Tweet URL"
+msgstr ""

@@ -1,4 +1,4 @@
-name: Unit Tests
+name: i18n
 on:
   push:
     paths:
@@ -47,5 +47,5 @@ jobs:
           make install
           pnpm i
 
-      - name: Unit tests
-        run: make test-ci
+      - name: test i18n command
+        run: make i18n
