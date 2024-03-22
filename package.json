@@ -29,10 +29,10 @@
     "prettier:fix": "prettier --write 'packages/**/src/**/*.{js,jsx,ts,tsx}' ",
     "stylelint": "stylelint 'packages/**/src/**/*.{css,scss,less}' --allow-empty-input",
     "stylelint:fix": "stylelint 'packages/**/src/**/*.{css,scss,less}' --fix",
-    "dry-release": "release-it --dry-run",
-    "release": "pnpm --filter @kitconcept/volto-button-block release-it",
-    "release-major-alpha": "pnpm --filter @kitconcept/volto-button-block release-it major --preRelease=alpha",
-    "release-alpha": "pnpm --filter @kitconcept/volto-button-block release-it --preRelease=alpha"
+    "dry-release": "pnpm --filter @kitconcept/volto-social-blocks dry-release",
+    "release": "pnpm --filter @kitconcept/volto-social-blocks release",
+    "release-major-alpha": "pnpm --filter @kitconcept/volto-social-blocks release-major-alpha",
+    "release-alpha": "pnpm --filter @kitconcept/volto-social-blocks release-alpha"
   },
   "dependencies": {
     "@plone/volto": "workspace:*",
