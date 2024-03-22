@@ -1,3 +1,5 @@
+import { cloneDeep } from 'lodash';
+
 import facebookSVG from './icons/facebook.svg';
 import FacebookBlockView from './components/Blocks/Facebook/View';
 import FacebookBlockEdit from './components/Blocks/Facebook/Edit';
@@ -9,6 +11,10 @@ import InstagramBlockEdit from './components/Blocks/Instagram/Edit';
 import twitterSVG from './icons/twitter.svg';
 import TweetBlockView from './components/Blocks/Tweet/View';
 import TweetBlockEdit from './components/Blocks/Tweet/Edit';
+
+import spotifySVG from './icons/spotify.svg';
+import SpotifyBlockView from './components/Blocks/Spotify/View';
+import SpotifyBlockEdit from './components/Blocks/Spotify/Edit';
 
 const blocks = {
   facebookBlock: {
@@ -46,6 +52,17 @@ const blocks = {
     defaultLanguage: 'en',
     defaultTheme: 'light',
   },
+  spotifyBlock: {
+    id: 'spotifyBlock',
+    title: 'Spotify',
+    icon: spotifySVG,
+    group: 'social',
+    view: SpotifyBlockView,
+    edit: SpotifyBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  },
 };
 
 const applyConfig = (config) => {
@@ -54,11 +71,20 @@ const applyConfig = (config) => {
     ...blocks,
   };
   config.blocks.groupBlocksOrder = [...config.blocks.groupBlocksOrder, { id: 'social', title: 'Social' }];
-  // Check for @kitconcept/volto-blocks-grid
-  const gridBlock = config.blocks.blocksConfig.__grid;
-  if (gridBlock !== undefined) {
-    config.blocks.blocksConfig.__grid.gridAllowedBlocks = [...gridBlock.gridAllowedBlocks, 'facebookBlock', 'instagramBlock', 'tweetBlock'];
-  }
+
+  // Add Blocks to gridBlock and accordionBlock
+  // It's important to maintain the chain, and do not introduce pass by reference in
+  // the internal `blocksConfig` object, so we clone the object to avoid this.
+  ['__grid', 'gridBlock', 'accordion'].forEach((blockId) => {
+    const block = config.blocks.blocksConfig[blockId];
+    if (block !== undefined) {
+      const localBlocks = ['facebookBlock', 'instagramBlock', 'tweetBlock', 'spotifyBlock'];
+      block.allowedBlocks = [...block.allowedBlocks, ...localBlocks];
+      localBlocks.forEach((blockId) => {
+        block.blocksConfig[blockId] = cloneDeep(config.blocks.blocksConfig[blockId]);
+      });
+    }
+  });
   return config;
 };
 
