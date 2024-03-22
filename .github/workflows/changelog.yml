@@ -60,7 +60,7 @@ jobs:
           # Source: https://github.com/actions/checkout/#fetch-all-branches.
           git fetch --no-tags origin ${BASE_BRANCH}
           cd packages/${ADDON_NAME}
-          towncrier check --compare-with ${BASE_BRANCH}
+          towncrier check --compare-with origin/${BASE_BRANCH}
         env:
           BASE_BRANCH: ${{ github.base_ref }}
         if: github.event_name == 'pull_request'
