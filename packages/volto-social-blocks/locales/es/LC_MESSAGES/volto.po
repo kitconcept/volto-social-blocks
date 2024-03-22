@@ -1,0 +1,202 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-09 11:45-0400\n"
+"PO-Revision-Date: 2023-05-10 11:34-0400\n"
+"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
+"Language: es\n"
+"Language-Team: ES <LL@li.org>\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Preferred-Encodings: utf-8\n"
+"MIME-Version: 1.0\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
+"Domain: volto\n"
+"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#. Default: "Advanced"
+#: components/Blocks/Tweet/schema
+msgid "Advanced"
+msgstr "Avanzado"
+
+#. Default: "Alignment"
+#: components/Blocks/Facebook/schema
+#: components/Blocks/Instagram/schema
+#: components/Blocks/Soundcloud/schema
+#: components/Blocks/Spotify/schema
+#: components/Blocks/Tweet/schema
+msgid "Alignment"
+msgstr "Alineación"
+
+#. Default: "Captioned"
+#: components/Blocks/Instagram/schema
+msgid "Captioned"
+msgstr "Subtitulado"
+
+#. Default: "Dark"
+#: components/Blocks/Tweet/schema
+msgid "Dark"
+msgstr "Oscuro"
+
+#. Default: "Do not track"
+#: components/Blocks/Tweet/schema
+msgid "Do not track"
+msgstr "No rastrear"
+
+#. Default: "Embed a Facebook Post"
+#: components/Blocks/Facebook/Edit
+msgid "Embed a Facebook Post"
+msgstr "Insertar una publicación de Facebook"
+
+#. Default: "Embed a Instagram Post"
+#: components/Blocks/Instagram/Edit
+msgid "Embed a Instagram Post"
+msgstr "Insertar una publicación de Instagram"
+
+#. Default: "Embed a Soundcloud Content"
+#: components/Blocks/Soundcloud/Edit
+msgid "Embed a Soundcloud Content"
+msgstr ""
+
+#. Default: "Embed a Spotify Content"
+#: components/Blocks/Spotify/Edit
+msgid "Embed a Spotify Content"
+msgstr ""
+
+#. Default: "Embed a Tweet"
+#: components/Blocks/Tweet/Edit
+msgid "Embed a Tweet"
+msgstr "Insertar un Tweet"
+
+#. Default: "Facebook"
+#: components/Blocks/Facebook/schema
+msgid "Facebook"
+msgstr "Facebook"
+
+#. Default: "Facebook url"
+#: components/Blocks/Facebook/schema
+msgid "Facebook url"
+msgstr "URL de Facebook"
+
+#. Default: "Instagram"
+#: components/Blocks/Instagram/schema
+msgid "Instagram"
+msgstr "Instagram"
+
+#. Default: "Instagram url"
+#: components/Blocks/Instagram/schema
+msgid "Instagram url"
+msgstr "URL de Instagram"
+
+#. Default: "Language"
+#: components/Blocks/Tweet/schema
+msgid "Language"
+msgstr "Idioma"
+
+#. Default: "Light"
+#: components/Blocks/Tweet/schema
+msgid "Light"
+msgstr "Claro"
+
+#. Default: "Please provide a valid Soundcloud Content url"
+#: components/Blocks/Soundcloud/Edit
+#: components/Blocks/Spotify/Edit
+msgid "Please provide a valid Content Post url"
+msgstr ""
+
+#. Default: "Please provide a valid Facebook Post url"
+#: components/Blocks/Facebook/Edit
+msgid "Please provide a valid Facebook Post url"
+msgstr "Proporcione una URL de publicación de Facebook válida"
+
+#. Default: "Please provide a valid Instagram Post url"
+#: components/Blocks/Instagram/Edit
+msgid "Please provide a valid Instagram Post url"
+msgstr "Proporcione una URL de publicación de Instagram válida"
+
+#. Default: "Please provide a valid Tweet ID or Twitter URL"
+#: components/Blocks/Tweet/Edit
+msgid "Please provide a valid Tweet ID or Twitter URL"
+msgstr "Proporcione una ID de Tweet válida o una URL de Twitter"
+
+#. Default: "Provide a url to the Facebook Post"
+#: components/Blocks/Facebook/Edit
+msgid "Provide a url to the Facebook Post"
+msgstr "Proporcione una URL a la publicación de Facebook"
+
+#. Default: "Provide a url to the Instagram Post"
+#: components/Blocks/Instagram/Edit
+msgid "Provide a url to the Instagram Post"
+msgstr "Proporcione una URL a la publicación de Instagram"
+
+#. Default: "Provide a url to the Spotify Content"
+#: components/Blocks/Spotify/Edit
+msgid "Provide a url to the Spotify Content"
+msgstr ""
+
+#. Default: "Provide a url to the Tweet or the Tweet ID"
+#: components/Blocks/Tweet/Edit
+msgid "Provide a url to the Tweet or the Tweet ID"
+msgstr "Proporcione una URL para el Tweet o la ID del Tweet"
+
+#. Default: "Provide the embed code of the Soundcloud Content"
+#: components/Blocks/Soundcloud/Edit
+msgid "Provide the embed code of the Soundcloud Content"
+msgstr ""
+
+#. Default: "Size"
+#: components/Blocks/Facebook/schema
+#: components/Blocks/Instagram/schema
+#: components/Blocks/Soundcloud/schema
+#: components/Blocks/Spotify/schema
+#: components/Blocks/Tweet/schema
+msgid "Size"
+msgstr "Tamaño"
+
+#. Default: "Soundcloud"
+#: components/Blocks/Soundcloud/schema
+msgid "Soundcloud"
+msgstr ""
+
+#. Default: "Soundcloud url"
+#: components/Blocks/Soundcloud/schema
+msgid "Soundcloud url"
+msgstr ""
+
+#. Default: "Spotify"
+#: components/Blocks/Spotify/schema
+msgid "Spotify"
+msgstr ""
+
+#. Default: "Spotify url"
+#: components/Blocks/Spotify/schema
+msgid "Spotify url"
+msgstr ""
+
+#. Default: "Style"
+#: components/Blocks/Facebook/schema
+#: components/Blocks/Instagram/schema
+#: components/Blocks/Soundcloud/schema
+#: components/Blocks/Spotify/schema
+#: components/Blocks/Tweet/schema
+msgid "Style"
+msgstr "Estilo"
+
+#. Default: "Theme"
+#: components/Blocks/Tweet/schema
+msgid "Theme"
+msgstr "Tema"
+
+#. Default: "Tweet"
+#: components/Blocks/Tweet/schema
+msgid "Tweet"
+msgstr "Tweet"
+
+#. Default: "Tweet URL"
+#: components/Blocks/Tweet/schema
+msgid "Tweet URL"
+msgstr "URL del Tweet"
