@@ -24,6 +24,8 @@ msgstr "Avançado"
 #. Default: "Alignment"
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Soundcloud/schema
+#: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
 msgid "Alignment"
 msgstr "Alinhamento"
@@ -52,6 +54,16 @@ msgstr "Incluir uma postagem do Facebook"
 #: components/Blocks/Instagram/Edit
 msgid "Embed a Instagram Post"
 msgstr "Incluir uma postagem do Instagram"
+
+#. Default: "Embed a Soundcloud Content"
+#: components/Blocks/Soundcloud/Edit
+msgid "Embed a Soundcloud Content"
+msgstr ""
+
+#. Default: "Embed a Spotify Content"
+#: components/Blocks/Spotify/Edit
+msgid "Embed a Spotify Content"
+msgstr ""
 
 #. Default: "Embed a Tweet"
 #: components/Blocks/Tweet/Edit
@@ -88,6 +100,12 @@ msgstr "Idioma"
 msgid "Light"
 msgstr "Claro"
 
+#. Default: "Please provide a valid Soundcloud Content url"
+#: components/Blocks/Soundcloud/Edit
+#: components/Blocks/Spotify/Edit
+msgid "Please provide a valid Content Post url"
+msgstr ""
+
 #. Default: "Please provide a valid Facebook Post url"
 #: components/Blocks/Facebook/Edit
 msgid "Please provide a valid Facebook Post url"
@@ -113,21 +131,55 @@ msgstr "Informe a url da postagem no Facebook"
 msgid "Provide a url to the Instagram Post"
 msgstr "Informe a url da postagem no Instagram"
 
+#. Default: "Provide a url to the Spotify Content"
+#: components/Blocks/Spotify/Edit
+msgid "Provide a url to the Spotify Content"
+msgstr "Informe a url para o conteúdo do Spotify"
+
 #. Default: "Provide a url to the Tweet or the Tweet ID"
 #: components/Blocks/Tweet/Edit
 msgid "Provide a url to the Tweet or the Tweet ID"
 msgstr "Informe a url do Tweet ou o Tweet ID"
 
+#. Default: "Provide the embed code of the Soundcloud Content"
+#: components/Blocks/Soundcloud/Edit
+msgid "Provide the embed code of the Soundcloud Content"
+msgstr "Informe o código de embed para o conteúdo do Soundcloud"
+
 #. Default: "Size"
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Soundcloud/schema
+#: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
 msgid "Size"
 msgstr "Tamanho"
 
+#. Default: "Soundcloud"
+#: components/Blocks/Soundcloud/schema
+msgid "Soundcloud"
+msgstr "Soundcloud"
+
+#. Default: "Soundcloud url"
+#: components/Blocks/Soundcloud/schema
+msgid "Soundcloud url"
+msgstr "Soundcloud url"
+
+#. Default: "Spotify"
+#: components/Blocks/Spotify/schema
+msgid "Spotify"
+msgstr "Spotify"
+
+#. Default: "Spotify url"
+#: components/Blocks/Spotify/schema
+msgid "Spotify url"
+msgstr "URL Spotify"
+
 #. Default: "Style"
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Soundcloud/schema
+#: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
 msgid "Style"
 msgstr "Estilo"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-03-21T14:24:21.911Z\n"
+"POT-Creation-Date: 2024-03-22T12:43:34.158Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -21,6 +21,8 @@ msgstr ""
 #. Default: "Alignment"
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Soundcloud/schema
+#: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
 msgid "Alignment"
 msgstr ""
@@ -48,6 +50,16 @@ msgstr ""
 #. Default: "Embed a Instagram Post"
 #: components/Blocks/Instagram/Edit
 msgid "Embed a Instagram Post"
+msgstr ""
+
+#. Default: "Embed a Soundcloud Content"
+#: components/Blocks/Soundcloud/Edit
+msgid "Embed a Soundcloud Content"
+msgstr ""
+
+#. Default: "Embed a Spotify Content"
+#: components/Blocks/Spotify/Edit
+msgid "Embed a Spotify Content"
 msgstr ""
 
 #. Default: "Embed a Tweet"
@@ -85,6 +97,12 @@ msgstr ""
 msgid "Light"
 msgstr ""
 
+#. Default: "Please provide a valid Soundcloud Content url"
+#: components/Blocks/Soundcloud/Edit
+#: components/Blocks/Spotify/Edit
+msgid "Please provide a valid Content Post url"
+msgstr ""
+
 #. Default: "Please provide a valid Facebook Post url"
 #: components/Blocks/Facebook/Edit
 msgid "Please provide a valid Facebook Post url"
@@ -110,21 +128,55 @@ msgstr ""
 msgid "Provide a url to the Instagram Post"
 msgstr ""
 
+#. Default: "Provide a url to the Spotify Content"
+#: components/Blocks/Spotify/Edit
+msgid "Provide a url to the Spotify Content"
+msgstr ""
+
 #. Default: "Provide a url to the Tweet or the Tweet ID"
 #: components/Blocks/Tweet/Edit
 msgid "Provide a url to the Tweet or the Tweet ID"
 msgstr ""
 
+#. Default: "Provide the embed code of the Soundcloud Content"
+#: components/Blocks/Soundcloud/Edit
+msgid "Provide the embed code of the Soundcloud Content"
+msgstr ""
+
 #. Default: "Size"
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Soundcloud/schema
+#: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
 msgid "Size"
+msgstr ""
+
+#. Default: "Soundcloud"
+#: components/Blocks/Soundcloud/schema
+msgid "Soundcloud"
+msgstr ""
+
+#. Default: "Soundcloud url"
+#: components/Blocks/Soundcloud/schema
+msgid "Soundcloud url"
+msgstr ""
+
+#. Default: "Spotify"
+#: components/Blocks/Spotify/schema
+msgid "Spotify"
+msgstr ""
+
+#. Default: "Spotify url"
+#: components/Blocks/Spotify/schema
+msgid "Spotify url"
 msgstr ""
 
 #. Default: "Style"
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Soundcloud/schema
+#: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
 msgid "Style"
 msgstr ""
