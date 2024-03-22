@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.7 (2024-03-22)
+
+### Bugfix
+
+- Fix registering of social blocks into volto-accordion [@ericof] [#30](https://github.com/kitconcept/volto-export/pull/30)
+
 ## 1.0.0-alpha.6 (2024-03-22)
 
 ### Feature
