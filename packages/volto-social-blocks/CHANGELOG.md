@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.6 (2024-03-22)
+
+### Feature
+
+- Add Spotify block [@ericof] [#20](https://github.com/kitconcept/volto-export/pull/20)
+- Add Soundcloud block [@ericof] [#24](https://github.com/kitconcept/volto-export/pull/24)
+- Add Flickr block [@danalvrz] [#27](https://github.com/kitconcept/volto-export/pull/27)
+
+### Internal
+
+- Use non-Docker approach for package development [@ericof] [#22](https://github.com/kitconcept/volto-export/pull/22)
+- Fix release scripts [@ericof] [#28](https://github.com/kitconcept/volto-export/pull/28)
+
 ## [1.0.0-alpha.5](https://github.com/kitconcept/volto-social-blocks/compare/1.0.0-alpha.4...1.0.0-alpha.5) (2023-08-28)
 
 ## [1.0.0-alpha.4](https://github.com/kitconcept/volto-social-blocks/compare/1.0.0-alpha.3...1.0.0-alpha.4) (2023-06-06)
