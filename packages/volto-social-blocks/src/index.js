@@ -110,7 +110,7 @@ const applyConfig = (config) => {
   // the internal `blocksConfig` object, so we clone the object to avoid this.
   ['__grid', 'gridBlock', 'accordion'].forEach((blockId) => {
     const block = config.blocks.blocksConfig[blockId];
-    if (block !== undefined) {
+    if (block !== undefined && blocks.allowedBlocks !== undefined) {
       const localBlocks = [
         'facebookBlock',
         'flickr',
