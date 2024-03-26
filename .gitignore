@@ -1,6 +1,5 @@
 .*project
 .settings/
-.storybook
 .vscode
 *~
 acceptance/cypress/videos/
