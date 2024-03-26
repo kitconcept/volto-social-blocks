@@ -33,8 +33,8 @@
     "release": "pnpm --filter @kitconcept/volto-social-blocks release",
     "release-major-alpha": "pnpm --filter @kitconcept/volto-social-blocks release-major-alpha",
     "release-alpha": "pnpm --filter @kitconcept/volto-social-blocks release-alpha",
-    "storybook": "VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto storybook dev -p 6006 -c $(pwd)/.storybook",
-    "build-storybook": "VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto build-storybook -c $(pwd)/.storybook"
+    "storybook": "pnpm build:deps && VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto storybook dev -p 6006 -c $(pwd)/.storybook",
+    "build-storybook": "pnpm build:deps && VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto build-storybook -c $(pwd)/.storybook"
   },
   "dependencies": {
     "@plone/volto": "workspace:*",
