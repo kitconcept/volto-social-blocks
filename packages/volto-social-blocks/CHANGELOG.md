@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.8 (2024-03-26)
+
+### Documentation
+
+- Implement Storybook stories for all blocks [@sneridagh] [#33](https://github.com/kitconcept/volto-export/pull/33)
+
 ## 1.0.0-alpha.7 (2024-03-22)
 
 ### Bugfix
