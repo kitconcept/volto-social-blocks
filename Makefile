@@ -65,6 +65,18 @@ start-backend-docker:		## Starts a Docker-based backend for developing
 	@echo "$(GREEN)==> Start Docker-based Plone Backend$(RESET)"
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
+## Storybook
+.PHONY: storybook-start
+storybook-start:		## Storybook: Start server on port 6006
+	@echo "$(GREEN)==> Start Storybook$(RESET)"
+	pnpm run storybook
+
+.PHONY: storybook-build
+storybook-build:		## Storybook: Build
+	@echo "$(GREEN)==> Build Storybook$(RESET)"
+	mkdir -p $(CURRENT_DIR)/.storybook-build
+	pnpm run build-storybook -o $(CURRENT_DIR)/.storybook-build
+
 ## Acceptance
 .PHONY: start-test-acceptance-frontend-dev
 start-test-acceptance-frontend-dev: ## Start acceptance frontend in dev mode

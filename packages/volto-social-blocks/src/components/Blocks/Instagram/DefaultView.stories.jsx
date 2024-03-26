@@ -1,12 +1,11 @@
 import React from 'react';
-import TweetView from './DefaultView';
-import { langCodes } from './languages';
+import InstagramView from './DefaultView';
 import Wrapper from '@plone/volto/storybook';
 
 const withWrapper = (Story, { args }) => {
   return (
     <Wrapper anonymous>
-      <div style={{ width: '400px' }}>
+      <div style={{ width: '1000px' }}>
         <Story {...args} />
       </div>
     </Wrapper>
@@ -14,13 +13,17 @@ const withWrapper = (Story, { args }) => {
 };
 
 export default {
-  title: 'Public/Blocks/TweetBlock',
-  component: TweetView,
+  title: 'Public/Blocks/InstagramBlock',
+  component: InstagramView,
   decorators: [withWrapper],
   argTypes: {
-    tweetId: {
-      name: 'Tweet ID',
+    instagramId: {
+      name: 'Instagram ID',
       control: 'text',
+    },
+    captioned: {
+      name: 'Captioned',
+      control: 'boolean',
     },
     align: {
       name: 'Alignment',
@@ -32,39 +35,23 @@ export default {
       control: 'select',
       options: ['s', 'm', 'l'],
     },
-    theme: {
-      name: 'Theme',
-      control: 'select',
-      options: ['dark', 'light'],
-    },
-    lang: {
-      name: 'Language',
-      control: 'select',
-      options: langCodes,
-    },
-    dnt: {
-      name: 'Do not track',
-      control: 'boolean',
-    },
   },
   args: {
-    tweetId: '1542568225527005184',
+    instagramId: 'https://www.instagram.com/p/CjTBnwju6XY/',
+    captioned: true,
     align: 'center',
     size: 'l',
-    theme: 'dark',
-    lang: 'en',
-    dnt: true,
   },
 };
 
-export const LightTheme = {
+export const Caption = {
   args: {
-    theme: 'light',
+    captioned: true,
   },
 };
-export const DarkTheme = {
+export const WithoutCaption = {
   args: {
-    theme: 'dark',
+    captioned: false,
   },
 };
 export const Small = {
@@ -97,24 +84,6 @@ export const AlignCenter = {
 export const AlignRight = {
   args: {
     align: 'right',
-    size: 'l',
-  },
-};
-export const LanguageEN = {
-  args: {
-    lang: 'en',
-    size: 'l',
-  },
-};
-export const LanguageDE = {
-  args: {
-    lang: 'de',
-    size: 'l',
-  },
-};
-export const LanguagePT = {
-  args: {
-    lang: 'pt',
     size: 'l',
   },
 };

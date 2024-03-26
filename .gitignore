@@ -1,10 +1,10 @@
 .*project
 .settings/
-.storybook
 .vscode
 *~
 acceptance/cypress/videos/
 acceptance/node_modules
+.storybook-build
 build
 core
 node_modules
