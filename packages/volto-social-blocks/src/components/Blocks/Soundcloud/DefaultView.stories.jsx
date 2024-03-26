@@ -1,12 +1,11 @@
 import React from 'react';
-import TweetView from './DefaultView';
-import { langCodes } from './languages';
+import SoundcloudView from './DefaultView';
 import Wrapper from '@plone/volto/storybook';
 
 const withWrapper = (Story, { args }) => {
   return (
     <Wrapper anonymous>
-      <div style={{ width: '400px' }}>
+      <div style={{ width: '1000px' }}>
         <Story {...args} />
       </div>
     </Wrapper>
@@ -14,12 +13,12 @@ const withWrapper = (Story, { args }) => {
 };
 
 export default {
-  title: 'Public/Blocks/TweetBlock',
-  component: TweetView,
+  title: 'Public/Blocks/SoundcloudBlock',
+  component: SoundcloudView,
   decorators: [withWrapper],
   argTypes: {
-    tweetId: {
-      name: 'Tweet ID',
+    soundcloudId: {
+      name: 'Soundcloud ID',
       control: 'text',
     },
     align: {
@@ -32,41 +31,15 @@ export default {
       control: 'select',
       options: ['s', 'm', 'l'],
     },
-    theme: {
-      name: 'Theme',
-      control: 'select',
-      options: ['dark', 'light'],
-    },
-    lang: {
-      name: 'Language',
-      control: 'select',
-      options: langCodes,
-    },
-    dnt: {
-      name: 'Do not track',
-      control: 'boolean',
-    },
   },
   args: {
-    tweetId: '1542568225527005184',
+    soundcloudId:
+      'https://api.soundcloud.com/tracks/472694601&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
     align: 'center',
     size: 'l',
-    theme: 'dark',
-    lang: 'en',
-    dnt: true,
   },
 };
 
-export const LightTheme = {
-  args: {
-    theme: 'light',
-  },
-};
-export const DarkTheme = {
-  args: {
-    theme: 'dark',
-  },
-};
 export const Small = {
   args: {
     size: 's',
@@ -97,24 +70,6 @@ export const AlignCenter = {
 export const AlignRight = {
   args: {
     align: 'right',
-    size: 'l',
-  },
-};
-export const LanguageEN = {
-  args: {
-    lang: 'en',
-    size: 'l',
-  },
-};
-export const LanguageDE = {
-  args: {
-    lang: 'de',
-    size: 'l',
-  },
-};
-export const LanguagePT = {
-  args: {
-    lang: 'pt',
     size: 'l',
   },
 };

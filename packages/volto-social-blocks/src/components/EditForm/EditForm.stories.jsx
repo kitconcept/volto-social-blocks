@@ -1,52 +1,70 @@
-import { injectIntl } from 'react-intl';
 import React from 'react';
 import EditForm from './EditForm';
 import Wrapper from '@plone/volto/storybook';
+import iconSVG from '../../icons/twitter.svg';
 import './EditForm.css';
 
-const StoryComponent = injectIntl(({ children, ...args }) => {
+const withWrapper = (Story, { args }) => {
   return (
-    <Wrapper>
-      <div style={{ maxWidth: '1000px', margin: 'auto' }}>
-        <EditForm {...args} />
+    <Wrapper anonymous>
+      <div style={{ width: '1000px' }}>
+        <Story {...args} />
       </div>
     </Wrapper>
   );
-});
-
-export const Form = StoryComponent.bind({});
-Form.args = {
-  value: '',
-};
-
-export const FormWithValue = StoryComponent.bind({});
-FormWithValue.args = {
-  value: '1542568225527005184',
-};
-
-export const FormWithErrors = StoryComponent.bind({});
-FormWithErrors.args = {
-  value: 'foo',
-  invalidValue: true,
 };
 
 export default {
-  title: 'Public/Blocks/TweetBlock/Edit',
+  title: 'Public/Components/EditForm',
   component: EditForm,
+  decorators: [withWrapper],
   argTypes: {
+    formHeader: {
+      name: 'Form Header',
+      control: 'text',
+    },
+    formPlaceholder: {
+      name: 'Form Header',
+      control: 'text',
+    },
+    errorMessage: {
+      name: 'Error message',
+      control: 'text',
+    },
     value: {
       name: 'Tweet ID',
-      defaultValue: '',
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
     invalidValue: {
       name: 'Invalid Value',
-      defaultValue: false,
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
+  },
+  args: {
+    formHeader: 'Embed a Tweet',
+    formPlaceholder: 'Provide a url to the Tweet or the Tweet ID',
+    errorMessage: 'Please provide a valid Tweet ID or Twitter URL',
+    formIcon: iconSVG,
+    value: '',
+    invalidValue: false,
+  },
+};
+
+export const Form = {
+  args: {
+    value: '',
+  },
+};
+
+export const FormWithValue = {
+  args: {
+    value: '1542568225527005184',
+  },
+};
+
+export const FormWithErrors = {
+  args: {
+    value: 'foo',
+    invalidValue: true,
   },
 };
