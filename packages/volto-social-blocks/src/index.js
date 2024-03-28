@@ -106,7 +106,7 @@ const applyConfig = (config) => {
   ];
 
   // Array of local blocks ids
-  const localBlocks = blocks.map((item) => item.id);
+  const localBlocks = Object.keys(blocks);
 
   // Add Blocks to gridBlock and accordionBlock
   // It's important to maintain the chain, and do not introduce pass by reference in
