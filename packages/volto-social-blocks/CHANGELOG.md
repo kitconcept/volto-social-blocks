@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.9 (2024-03-28)
+
+### Bugfix
+
+- Fix registration of flickrBlock on the blocksConfig for gridBlock and accordionBlock [@ericof] [#34](https://github.com/kitconcept/volto-export/pull/34)
+
 ## 1.0.0-alpha.8 (2024-03-26)
 
 ### Documentation
