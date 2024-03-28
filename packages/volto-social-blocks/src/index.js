@@ -105,20 +105,19 @@ const applyConfig = (config) => {
     { id: 'social', title: 'Social' },
   ];
 
+  // Array of local blocks ids
+  const localBlocks = blocks.map((item) => item.id);
+
   // Add Blocks to gridBlock and accordionBlock
   // It's important to maintain the chain, and do not introduce pass by reference in
   // the internal `blocksConfig` object, so we clone the object to avoid this.
   ['__grid', 'gridBlock', 'accordion'].forEach((blockId) => {
     const block = config.blocks.blocksConfig[blockId];
-    if (block !== undefined && blocks.allowedBlocks !== undefined) {
-      const localBlocks = [
-        'facebookBlock',
-        'flickr',
-        'instagramBlock',
-        'tweetBlock',
-        'spotifyBlock',
-        'soundcloudBlock',
-      ];
+    if (
+      block !== undefined &&
+      block.allowedBlocks !== undefined &&
+      block.blocksConfig !== undefined
+    ) {
       block.allowedBlocks = [...block.allowedBlocks, ...localBlocks];
       localBlocks.forEach((blockId) => {
         block.blocksConfig[blockId] = cloneDeep(
