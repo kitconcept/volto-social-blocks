@@ -1,7 +1,7 @@
 {
   "name": "@kitconcept/volto-social-blocks",
   "version": "1.0.0-alpha.10",
-  "description": "Volto add-on providing blocks for Twitter, Instagram, Facebook.",
+  "description": "Add-on providing blocks to embed social media posts into your site.",
   "main": "src/index.ts",
   "license": "MIT",
   "keywords": [
