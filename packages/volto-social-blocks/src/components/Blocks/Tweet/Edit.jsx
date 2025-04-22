@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { extractTweetId } from '../../../helpers';
-import { withBlockExtensions } from '@plone/volto/helpers';
-import { SidebarPortal } from '@plone/volto/components';
+import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/Sidebar';
 import EditForm from '../../EditForm/EditForm';
 import iconSVG from '../../../icons/twitter.svg';
 import TweetBlockData from './Data';

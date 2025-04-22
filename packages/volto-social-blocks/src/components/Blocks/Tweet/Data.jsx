@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlockDataForm } from '@plone/volto/components';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { tweetSchema } from './schema';
 import { extractTweetId } from '../../../helpers';
 import { useIntl } from 'react-intl';
