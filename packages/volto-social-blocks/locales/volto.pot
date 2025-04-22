@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-03-22T12:43:34.158Z\n"
+"POT-Creation-Date: 2025-04-22T15:06:30.389Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -20,6 +20,7 @@ msgstr ""
 
 #. Default: "Alignment"
 #: components/Blocks/Facebook/schema
+#: components/Blocks/Flickr/schema
 #: components/Blocks/Instagram/schema
 #: components/Blocks/Soundcloud/schema
 #: components/Blocks/Spotify/schema
@@ -45,6 +46,11 @@ msgstr ""
 #. Default: "Embed a Facebook Post"
 #: components/Blocks/Facebook/Edit
 msgid "Embed a Facebook Post"
+msgstr ""
+
+#. Default: "Embed a Flickr Gallery"
+#: components/Blocks/Flickr/Edit
+msgid "Embed a Flickr Gallery"
 msgstr ""
 
 #. Default: "Embed a Instagram Post"
@@ -75,6 +81,16 @@ msgstr ""
 #. Default: "Facebook url"
 #: components/Blocks/Facebook/schema
 msgid "Facebook url"
+msgstr ""
+
+#. Default: "Flickr"
+#: components/Blocks/Flickr/schema
+msgid "Flickr"
+msgstr ""
+
+#. Default: "Flickr url"
+#: components/Blocks/Flickr/schema
+msgid "Flickr url"
 msgstr ""
 
 #. Default: "Instagram"
@@ -108,6 +124,11 @@ msgstr ""
 msgid "Please provide a valid Facebook Post url"
 msgstr ""
 
+#. Default: "Please provide a valid Flickr Gallery embed code"
+#: components/Blocks/Flickr/Edit
+msgid "Please provide a valid Flickr Gallery embed code"
+msgstr ""
+
 #. Default: "Please provide a valid Instagram Post url"
 #: components/Blocks/Instagram/Edit
 msgid "Please provide a valid Instagram Post url"
@@ -136,6 +157,11 @@ msgstr ""
 #. Default: "Provide a url to the Tweet or the Tweet ID"
 #: components/Blocks/Tweet/Edit
 msgid "Provide a url to the Tweet or the Tweet ID"
+msgstr ""
+
+#. Default: "Provide the embed code of the Flickr Gallery"
+#: components/Blocks/Flickr/Edit
+msgid "Provide the embed code of the Flickr Gallery"
 msgstr ""
 
 #. Default: "Provide the embed code of the Soundcloud Content"
@@ -174,6 +200,7 @@ msgstr ""
 
 #. Default: "Style"
 #: components/Blocks/Facebook/schema
+#: components/Blocks/Flickr/schema
 #: components/Blocks/Instagram/schema
 #: components/Blocks/Soundcloud/schema
 #: components/Blocks/Spotify/schema
