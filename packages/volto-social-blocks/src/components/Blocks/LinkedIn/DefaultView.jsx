@@ -5,7 +5,7 @@ import { LinkedInEmbed } from 'react-social-media-embed';
 const SIZES = {
   s: 350,
   m: 450,
-  l: 500,
+  l: 800,
 };
 
 const LinkedInView = (props) => {
@@ -18,7 +18,7 @@ const LinkedInView = (props) => {
       tool="linkedin"
       url={postURL}
       linkText={linkText}
-      className={className}
+      className={`${className} size-${width}`}
     >
       <LinkedInEmbed url={postURL} width={width} linkText={linkText} />
     </SocialContentWrapper>

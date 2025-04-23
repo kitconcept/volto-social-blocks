@@ -18,7 +18,7 @@ const LinkedInBlockEdit = (props) => {
 
   const updatePostURL = (value) => {
     const url = extractLinkedInPostURL(value);
-    if (url && url != postURL) {
+    if (url && url !== postURL) {
       setHasError(false);
       setPostURL(url);
       onChangeBlock(block, { ...data, postURL: url });

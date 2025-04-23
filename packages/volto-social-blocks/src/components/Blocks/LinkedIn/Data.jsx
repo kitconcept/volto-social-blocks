@@ -1,5 +1,7 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import messages from '@kitconcept/volto-social-blocks/messages';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { linkedinSchema } from './schema';
 import linkedinSVG from '@kitconcept/volto-social-blocks/icons/linkedin.svg';
 import { useIntl } from 'react-intl';
@@ -15,7 +17,7 @@ const LinkedInBlockData = (props) => {
     <BlockDataForm
       schema={schema}
       icon={<Icon size="24px" name={linkedinSVG} />}
-      title={intl.formatMessage(messages.FollowUsBlock)}
+      title={intl.formatMessage(messages.linkedinBlock)}
       onChangeField={(id, value) => {
         onChangeBlock(block, {
           ...data,
