@@ -1,17 +1,14 @@
 name: Acceptance tests
-on:
-  push:
-    paths:
-      - "*.js"
-      - "*.json"
-      - "*.yaml"
-      - "cypress/**"
-      - "packages/**"
 
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
 
 env:
   CYPRESS_RETRIES: 2
-
 
 jobs:
 
@@ -20,41 +17,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js 20.x
-        uses: actions/setup-node@v4
+      - name: Setup Frontend
+        uses: ./.github/actions/setup_frontend
         with:
-          node-version: 20.x
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-          # We don't want to install until later,
-          # when the cache and Cypress are in place
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: ${{ inputs.node-version }}
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-20.x-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - name: Install dependencies
-        run: make install
+          key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Install Cypress if not in cache
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
@@ -65,8 +38,8 @@ jobs:
         name: Start Servers
         with:
           run: |
-            make start-test-acceptance-server-ci &
-            make start-test-acceptance-frontend &
+            make ci-acceptance-backend-start &
+            make acceptance-frontend-prod-start &
           # your step-level and job-level environment variables are available to your commands as-is
           # npm install will count towards the wait-for timeout
           # whenever possible, move unrelated scripts to a different step
@@ -90,7 +63,7 @@ jobs:
 
           log-output-if: failure
 
-      - run: make test-acceptance-headless
+      - run: make ci-acceptance-test
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v4

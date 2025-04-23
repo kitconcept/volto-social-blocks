@@ -3,8 +3,8 @@ import { defineMessages, useIntl } from 'react-intl';
 import iconSVG from '../../../icons/flickr.svg';
 import { isValidFlickrId } from '../../../helpers';
 import EditForm from '../../EditForm/EditForm';
-import { withBlockExtensions } from '@plone/volto/helpers';
-import { SidebarPortal } from '@plone/volto/components';
+import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/Sidebar';
 
 import FlickrBlockData from './Data';
 import FlickrBlockView from './View';

@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  node-version: 20.x
+  NODE_VERSION: 22
   ADDON_NAME: volto-social-blocks
 
 jobs:
@@ -21,18 +21,13 @@ jobs:
       - name: Install pipx
         run: pip install towncrier
 
-      - name: Use Node.js 20.x
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: ${{ env.NODE_VERSION }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-          # We don't want to install until later,
-          # when the cache and Cypress are in place
-          run_install: false
+      - name: Enable corepack
+        run: npm i -g corepack@latest && corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -49,9 +44,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pnpm i
           make install
-          pnpm i
 
       - name: Check for presence of a Change Log fragment (only pull requests)
         run: |

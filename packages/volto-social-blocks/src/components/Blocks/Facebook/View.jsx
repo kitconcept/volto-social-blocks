@@ -1,5 +1,5 @@
 import React from 'react';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import FacebookView from './DefaultView';
 
 const FacebookBlockView = (props) => {

@@ -1,8 +1,8 @@
 {
   "name": "@kitconcept/volto-social-blocks",
   "version": "1.0.0-alpha.10",
-  "description": "Volto add-on providing blocks for Twitter, Instagram, Facebook.",
-  "main": "src/index.js",
+  "description": "Add-on providing blocks to embed social media posts into your site.",
+  "main": "src/index.ts",
   "license": "MIT",
   "keywords": [
     "volto-addon",
@@ -30,8 +30,8 @@
     "release-alpha": "release-it --preRelease=alpha"
   },
   "dependencies": {
-    "@plone/components": "1.7.0",
-    "react-social-media-embed": "^2.4.1"
+    "@plone/components": "workspace:*",
+    "react-social-media-embed": "^2.5.18"
   },
   "peerDependencies": {
     "classnames": "2.2.6",
@@ -40,7 +40,13 @@
     "react-intl": "3.8.0"
   },
   "devDependencies": {
-    "@plone/scripts": "^3.6.1",
-    "release-it": "^17.1.1"
+    "@plone/scripts": "^3.6.2",
+    "@plone/types": "workspace:*",
+    "@types/jest": "^29.5.8",
+    "@types/lodash": "^4.14.201",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "react-intl": "3.12.1",
+    "release-it": "^17.7.0"
   }
 }

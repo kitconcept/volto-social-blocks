@@ -61,7 +61,10 @@ const defaultRazzleOptions = {
 };
 
 module.exports = {
-  stories: ['../packages/**/*.mdx', '../packages/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    '../packages/**/*.mdx',
+    '../packages/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -104,9 +107,9 @@ module.exports = {
       [],
       defaultRazzleOptions,
     );
-    const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
+    const { AddonRegistry } = require('@plone/registry/addon-registry');
 
-    const registry = new AddonConfigurationRegistry(projectRootPath);
+    const { registry } = AddonRegistry.init(projectRootPath);
 
     config = lessPlugin({ registry }).modifyWebpackConfig({
       env: { target: 'web', dev: 'dev' },
@@ -147,7 +150,7 @@ module.exports = {
       },
     };
 
-    // Addons have to be loaded with babel
+    // Add-ons have to be loaded with babel
     const addonPaths = registry
       .getAddons()
       .map((addon) => fs.realpathSync(addon.modulePath));
@@ -161,11 +164,11 @@ module.exports = {
       // If input is in an addon, DON'T exclude it
       !addonPaths.some((p) => input.includes(p));
 
-      resultConfig.module.rules[13].include = [
-        /preview\.jsx/,
-        ...resultConfig.module.rules[13].include,
-        ...addonPaths,
-      ]
+    resultConfig.module.rules[13].include = [
+      /preview\.jsx/,
+      ...resultConfig.module.rules[13].include,
+      ...addonPaths,
+    ];
 
     const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
