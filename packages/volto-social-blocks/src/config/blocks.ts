@@ -3,6 +3,12 @@ import type { BlocksConfig, BlockConfigBase } from '@plone/types';
 
 import cloneDeep from 'lodash/cloneDeep';
 
+// LinkedIn
+import linkedinSVG from '../icons/linkedin.svg';
+import { linkedinSchema } from '../components/Blocks/LinkedIn/schema';
+import LinkedInBlockView from '../components/Blocks/LinkedIn/View';
+import LinkedInBlockEdit from '../components/Blocks/LinkedIn/Edit';
+
 // Facebook
 import facebookSVG from '../icons/facebook.svg';
 import { facebookSchema } from '../components/Blocks/Facebook/schema';
@@ -43,6 +49,7 @@ declare module '@plone/types' {
   export interface BlocksConfigData {
     facebookBlock: BlockConfigBase;
     flickrBlock: BlockConfigBase;
+    linkedinBlock: BlockConfigBase;
     instagramBlock: BlockConfigBase;
     soundcloudBlock: BlockConfigBase;
     spotifyBlock: BlockConfigBase;
@@ -73,6 +80,7 @@ function addBlocksToOtherBlocks(config: ConfigType) {
     'facebookBlock',
     'flickrBlock',
     'instagramBlock',
+    'linkedinBlock',
     'soundcloudBlock',
     'spotifyBlock',
     'tweetBlock',
@@ -136,6 +144,19 @@ export default function install(config: ConfigType) {
     blockSchema: instagramSchema,
     view: InstagramBlockView,
     edit: InstagramBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  };
+  config.blocks.blocksConfig.linkedinBlock = {
+    id: 'linkedinBlock',
+    title: 'LinkedIn',
+    icon: linkedinSVG,
+    group: 'social',
+    category: 'embed',
+    blockSchema: linkedinSchema,
+    view: LinkedInBlockView,
+    edit: LinkedInBlockEdit,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
