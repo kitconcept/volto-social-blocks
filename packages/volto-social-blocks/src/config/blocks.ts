@@ -1,5 +1,4 @@
-import type { ConfigType as BaseConfigType } from '@plone/registry';
-import type { BlocksConfig, BlockConfigBase } from '@plone/types';
+import type { ConfigType } from '@plone/registry';
 
 import cloneDeep from 'lodash/cloneDeep';
 
@@ -55,14 +54,10 @@ declare module '@plone/types' {
     spotifyBlock: BlockConfigBase;
     tweetBlock: BlockConfigBase;
   }
-}
-
-export interface CustomBlocksConfig
-  extends Omit<BlocksConfig, 'groupBlocksOrder'> {
-  groupBlocksOrder: { id: string; title: string }[];
-}
-export interface ConfigType extends Omit<BaseConfigType, 'blocks'> {
-  blocks: CustomBlocksConfig;
+  export interface BlockConfigBase {
+    defaultLanguage?: string;
+    defaultTheme?: string;
+  }
 }
 
 function installGroupBlocksOrder(config: ConfigType) {
