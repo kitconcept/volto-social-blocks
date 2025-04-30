@@ -5,7 +5,7 @@ import messages from '@kitconcept/volto-social-blocks/messages';
 import { extractLinkedInPostURL } from '@kitconcept/volto-social-blocks/helpers';
 import EditForm from '@kitconcept/volto-social-blocks/components/EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
-import SidebarPortal from '@plone/volto/components/manage/Sidebar/Sidebar';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 
 import LinkedInBlockData from './Data';
 import LinkedInBlockView from './View';
