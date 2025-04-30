@@ -4,7 +4,7 @@ import iconSVG from '../../../icons/instagram.svg';
 import { isValidInstagramId } from '../../../helpers';
 import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
-import SidebarPortal from '@plone/volto/components/manage/Sidebar/Sidebar';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 
 import InstagramBlockData from './Data';
 import InstagramBlockView from './View';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
-import { TwitterEmbed } from 'react-social-media-embed';
+import { XEmbed } from 'react-social-media-embed';
 
 const SIZES = {
   s: 300,
@@ -29,7 +29,7 @@ const TweetView = (props) => {
       linkText={linkText}
       className={className}
     >
-      <TwitterEmbed
+      <XEmbed
         url={url}
         width={width}
         linkText={linkText}
