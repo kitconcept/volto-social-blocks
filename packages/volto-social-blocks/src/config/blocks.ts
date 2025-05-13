@@ -1,7 +1,12 @@
-import type { ConfigType as BaseConfigType } from '@plone/registry';
-import type { BlocksConfig, BlockConfigBase } from '@plone/types';
+import type { ConfigType } from '@plone/registry';
 
 import cloneDeep from 'lodash/cloneDeep';
+
+// LinkedIn
+import linkedinSVG from '../icons/linkedin.svg';
+import { linkedinSchema } from '../components/Blocks/LinkedIn/schema';
+import LinkedInBlockView from '../components/Blocks/LinkedIn/View';
+import LinkedInBlockEdit from '../components/Blocks/LinkedIn/Edit';
 
 // Facebook
 import facebookSVG from '../icons/facebook.svg';
@@ -43,19 +48,16 @@ declare module '@plone/types' {
   export interface BlocksConfigData {
     facebookBlock: BlockConfigBase;
     flickrBlock: BlockConfigBase;
+    linkedinBlock: BlockConfigBase;
     instagramBlock: BlockConfigBase;
     soundcloudBlock: BlockConfigBase;
     spotifyBlock: BlockConfigBase;
     tweetBlock: BlockConfigBase;
   }
-}
-
-export interface CustomBlocksConfig
-  extends Omit<BlocksConfig, 'groupBlocksOrder'> {
-  groupBlocksOrder: { id: string; title: string }[];
-}
-export interface ConfigType extends Omit<BaseConfigType, 'blocks'> {
-  blocks: CustomBlocksConfig;
+  export interface BlockConfigBase {
+    defaultLanguage?: string;
+    defaultTheme?: string;
+  }
 }
 
 function installGroupBlocksOrder(config: ConfigType) {
@@ -73,6 +75,7 @@ function addBlocksToOtherBlocks(config: ConfigType) {
     'facebookBlock',
     'flickrBlock',
     'instagramBlock',
+    'linkedinBlock',
     'soundcloudBlock',
     'spotifyBlock',
     'tweetBlock',
@@ -136,6 +139,19 @@ export default function install(config: ConfigType) {
     blockSchema: instagramSchema,
     view: InstagramBlockView,
     edit: InstagramBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  };
+  config.blocks.blocksConfig.linkedinBlock = {
+    id: 'linkedinBlock',
+    title: 'LinkedIn',
+    icon: linkedinSVG,
+    group: 'social',
+    category: 'embed',
+    blockSchema: linkedinSchema,
+    view: LinkedInBlockView,
+    edit: LinkedInBlockEdit,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,

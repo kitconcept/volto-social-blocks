@@ -4,7 +4,7 @@ import iconSVG from '../../../icons/soundcloud.svg';
 import { isValidSoundcloudId, extractSoundCloudId } from '../../../helpers';
 import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
-import SidebarPortal from '@plone/volto/components/manage/Sidebar/Sidebar';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 
 import SoundcloudBlockData from './Data';
 import SoundcloudBlockView from './View';
