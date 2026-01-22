@@ -1,15 +1,14 @@
 import React from 'react';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SpotifyView from './DefaultView';
+import type { SpotifyBlockFormData } from './Data';
+import type { BlockViewPropsWithData } from '../../../types/blocks';
 
-type Props = {
-  data: Record<string, unknown>;
-  className?: string;
-};
+type Props = BlockViewPropsWithData<SpotifyBlockFormData>;
 
 const SpotifyBlockView = (props: Props) => {
   const { data, className } = props;
-  return <SpotifyView {...(data as any)} className={className} />;
+  return <SpotifyView {...data} className={className} />;
 };
 
-export default withBlockExtensions(SpotifyBlockView as any);
+export default withBlockExtensions(SpotifyBlockView);

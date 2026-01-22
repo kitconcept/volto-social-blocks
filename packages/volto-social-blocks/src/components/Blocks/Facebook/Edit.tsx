@@ -5,9 +5,13 @@ import { isValidFacebookId } from '../../../helpers';
 import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import type { BlockEditPropsWithData } from '../../../types/blocks';
 
 import FacebookBlockData from './Data';
 import FacebookBlockView from './View';
+import type { FacebookBlockFormData as FacebookBlockDataType } from './Data';
+
+const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
 const messages = defineMessages({
   editFormHeader: {
@@ -24,15 +28,19 @@ const messages = defineMessages({
   },
 });
 
-type Props = {
-  data: any;
-  onChangeBlock: (block: string, data: any) => void;
-  block: string;
-  selected?: boolean;
-};
+type Props = BlockEditPropsWithData<FacebookBlockDataType>;
 
 const FacebookBlockEdit = (props: Props) => {
-  const { data, onChangeBlock, block, selected } = props;
+  const {
+    data,
+    onChangeBlock,
+    block,
+    selected,
+    className,
+    blocksConfig,
+    navRoot,
+    contentType,
+  } = props;
   const [facebookId, setFacebookId] = useState<string | undefined>(
     data.facebookId,
   );
@@ -63,7 +71,7 @@ const FacebookBlockEdit = (props: Props) => {
     }
   };
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.stopPropagation();
     updateFacebookId(e.target.value);
@@ -71,14 +79,17 @@ const FacebookBlockEdit = (props: Props) => {
 
   return facebookId ? (
     <>
-      <FacebookBlockView {...(props as any)} isEditMode />
-      <SidebarPortal selected={selected}>
+      <FacebookBlockView data={data} className={className} />
+      <SidebarPortalAny selected={selected}>
         <FacebookBlockData
           data={data}
           block={block}
           onChangeBlock={onChangeBlock}
+          blocksConfig={blocksConfig}
+          navRoot={navRoot}
+          contentType={contentType}
         />
-      </SidebarPortal>
+      </SidebarPortalAny>
     </>
   ) : (
     <EditForm
@@ -94,4 +105,4 @@ const FacebookBlockEdit = (props: Props) => {
   );
 };
 
-export default withBlockExtensions(FacebookBlockEdit as any);
+export default withBlockExtensions(FacebookBlockEdit);

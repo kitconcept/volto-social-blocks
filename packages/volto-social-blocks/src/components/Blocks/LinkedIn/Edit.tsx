@@ -6,19 +6,27 @@ import { extractLinkedInPostURL } from '@kitconcept/volto-social-blocks/helpers'
 import EditForm from '@kitconcept/volto-social-blocks/components/EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import type { BlockEditPropsWithData } from '../../../types/blocks';
 
 import LinkedInBlockData from './Data';
 import LinkedInBlockView from './View';
+import type { LinkedInBlockFormData as LinkedInBlockDataType } from './Data';
 
-type Props = {
-  data: any;
-  onChangeBlock: (block: string, data: any) => void;
-  block: string;
-  selected?: boolean;
-};
+const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
+
+type Props = BlockEditPropsWithData<LinkedInBlockDataType>;
 
 const LinkedInBlockEdit = (props: Props) => {
-  const { data, onChangeBlock, block, selected } = props;
+  const {
+    data,
+    onChangeBlock,
+    block,
+    selected,
+    className,
+    blocksConfig,
+    navRoot,
+    contentType,
+  } = props;
   const [postURL, setPostURL] = useState<string | undefined>(data.postURL);
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
@@ -41,7 +49,7 @@ const LinkedInBlockEdit = (props: Props) => {
     }
   };
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.stopPropagation();
     updatePostURL(e.target.value);
@@ -50,7 +58,7 @@ const LinkedInBlockEdit = (props: Props) => {
   return (
     <>
       {postURL ? (
-        <LinkedInBlockView {...(props as any)} isEditMode />
+        <LinkedInBlockView data={data} className={className} />
       ) : (
         <EditForm
           formHeader={intl.formatMessage(messages.linkedInFormHeader)}
@@ -63,15 +71,18 @@ const LinkedInBlockEdit = (props: Props) => {
           invalidValue={hasError}
         />
       )}
-      <SidebarPortal selected={selected}>
+      <SidebarPortalAny selected={selected}>
         <LinkedInBlockData
           data={data}
           block={block}
           onChangeBlock={onChangeBlock}
+          blocksConfig={blocksConfig}
+          navRoot={navRoot}
+          contentType={contentType}
         />
-      </SidebarPortal>
+      </SidebarPortalAny>
     </>
   );
 };
 
-export default withBlockExtensions(LinkedInBlockEdit as any);
+export default withBlockExtensions(LinkedInBlockEdit);

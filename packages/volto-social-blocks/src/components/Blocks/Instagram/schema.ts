@@ -1,4 +1,6 @@
 import { defineMessages } from 'react-intl';
+import type { JSONSchema } from '@plone/types';
+import type { BlockSchemaProps } from '@plone/types';
 
 const messages = defineMessages({
   instagramBlock: {
@@ -27,9 +29,10 @@ const messages = defineMessages({
   },
 });
 
-export const instagramSchema = (props: any) => {
+export const instagramSchema = (props: BlockSchemaProps): JSONSchema => {
+  const { intl } = props;
   return {
-    title: props.intl.formatMessage(messages.instagramBlock),
+    title: intl.formatMessage(messages.instagramBlock),
     fieldsets: [
       {
         id: 'default',
@@ -38,26 +41,26 @@ export const instagramSchema = (props: any) => {
       },
       {
         id: 'style',
-        title: props.intl.formatMessage(messages.styleFieldset),
+        title: intl.formatMessage(messages.styleFieldset),
         fields: ['align', 'size', 'captioned'],
       },
     ],
 
     properties: {
       instagramId: {
-        title: props.intl.formatMessage(messages.instagramId),
+        title: intl.formatMessage(messages.instagramId),
       },
       align: {
-        title: props.intl.formatMessage(messages.align),
+        title: intl.formatMessage(messages.align),
         widget: 'align',
         actions: ['left', 'right', 'center'],
       },
       size: {
-        title: props.intl.formatMessage(messages.size),
+        title: intl.formatMessage(messages.size),
         widget: 'image_size',
       },
       captioned: {
-        title: props.intl.formatMessage(messages.captioned),
+        title: intl.formatMessage(messages.captioned),
         type: 'boolean',
         default: true,
       },

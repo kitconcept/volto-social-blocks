@@ -5,9 +5,13 @@ import { isValidInstagramId } from '../../../helpers';
 import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import type { BlockEditPropsWithData } from '../../../types/blocks';
 
 import InstagramBlockData from './Data';
 import InstagramBlockView from './View';
+import type { InstagramBlockFormData as InstagramBlockDataType } from './Data';
+
+const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
 const messages = defineMessages({
   editFormHeader: {
@@ -24,15 +28,19 @@ const messages = defineMessages({
   },
 });
 
-type Props = {
-  data: any;
-  onChangeBlock: (block: string, data: any) => void;
-  block: string;
-  selected?: boolean;
-};
+type Props = BlockEditPropsWithData<InstagramBlockDataType>;
 
 const InstagramBlockEdit = (props: Props) => {
-  const { data, onChangeBlock, block, selected } = props;
+  const {
+    data,
+    onChangeBlock,
+    block,
+    selected,
+    className,
+    blocksConfig,
+    navRoot,
+    contentType,
+  } = props;
   const [instagramId, setInstagramId] = useState<string | undefined>(
     data.instagramId,
   );
@@ -66,7 +74,7 @@ const InstagramBlockEdit = (props: Props) => {
     }
   };
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.stopPropagation();
     updateInstagramId(e.target.value);
@@ -74,14 +82,17 @@ const InstagramBlockEdit = (props: Props) => {
 
   return instagramId ? (
     <>
-      <InstagramBlockView {...(props as any)} isEditMode />
-      <SidebarPortal selected={selected}>
+      <InstagramBlockView data={data} className={className} />
+      <SidebarPortalAny selected={selected}>
         <InstagramBlockData
           data={data}
           block={block}
           onChangeBlock={onChangeBlock}
+          blocksConfig={blocksConfig}
+          navRoot={navRoot}
+          contentType={contentType}
         />
-      </SidebarPortal>
+      </SidebarPortalAny>
     </>
   ) : (
     <EditForm
@@ -97,4 +108,4 @@ const InstagramBlockEdit = (props: Props) => {
   );
 };
 
-export default withBlockExtensions(InstagramBlockEdit as any);
+export default withBlockExtensions(InstagramBlockEdit);

@@ -1,33 +1,34 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { isValidSoundcloudId } from '../../../helpers';
+import { applySchemaDefaults, isValidSoundcloudId } from '../../../helpers';
 import { soundcloudSchema } from './schema';
 import { useIntl } from 'react-intl';
+import type { SoundcloudViewProps } from './DefaultView';
+import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
+import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
-type Props = any;
+export type SoundcloudBlockFormData = BlocksFormData &
+  Pick<SoundcloudViewProps, 'soundcloudId' | 'align' | 'size'>;
 
-const SoundcloudBlockData = (props: Props) => {
+type SoundcloudBlockDataProps =
+  BlockDataFormWrapperProps<SoundcloudBlockFormData>;
+
+const SoundcloudBlockData = (props: SoundcloudBlockDataProps) => {
   const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
     props;
   const intl = useIntl();
-  const schema = soundcloudSchema({ ...props, intl });
+  const schema = soundcloudSchema({ intl } satisfies BlockSchemaProps);
 
-  Object.keys(schema.properties).forEach((key) => {
-    const field = schema.properties[key];
-    const defaultValue = field.default;
-    if (defaultValue !== undefined && data[key] === undefined) {
-      data[key] = defaultValue;
-    }
-  });
+  const formData = applySchemaDefaults(schema, data);
 
-  const onChangeField = (id: string, value: any) => {
-    if (id === 'soundcloudId' && value !== '') {
+  const onChangeField = (id: string, value: unknown) => {
+    if (id === 'soundcloudId' && typeof value === 'string' && value !== '') {
       if (!isValidSoundcloudId(value)) {
         return;
       }
     }
     onChangeBlock(block, {
-      ...data,
+      ...formData,
       [id]: value,
     });
   };
@@ -38,7 +39,7 @@ const SoundcloudBlockData = (props: Props) => {
       title={schema.title}
       onChangeField={onChangeField}
       onChangeBlock={onChangeBlock}
-      formData={data}
+      formData={formData}
       block={block}
       blocksConfig={blocksConfig}
       navRoot={navRoot}

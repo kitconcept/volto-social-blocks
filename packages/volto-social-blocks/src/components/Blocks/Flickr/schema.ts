@@ -1,4 +1,6 @@
 import { defineMessages } from 'react-intl';
+import type { JSONSchema } from '@plone/types';
+import type { BlockSchemaProps } from '@plone/types';
 
 const messages = defineMessages({
   flickrBlock: {
@@ -19,9 +21,10 @@ const messages = defineMessages({
   },
 });
 
-export const flickrSchema = (props: any) => {
+export const flickrSchema = (props: BlockSchemaProps): JSONSchema => {
+  const { intl } = props;
   return {
-    title: props.intl.formatMessage(messages.flickrBlock),
+    title: intl.formatMessage(messages.flickrBlock),
     fieldsets: [
       {
         id: 'default',
@@ -30,17 +33,17 @@ export const flickrSchema = (props: any) => {
       },
       {
         id: 'style',
-        title: props.intl.formatMessage(messages.styleFieldset),
+        title: intl.formatMessage(messages.styleFieldset),
         fields: ['align'],
       },
     ],
 
     properties: {
       flickrId: {
-        title: props.intl.formatMessage(messages.flickrId),
+        title: intl.formatMessage(messages.flickrId),
       },
       align: {
-        title: props.intl.formatMessage(messages.align),
+        title: intl.formatMessage(messages.align),
         widget: 'align',
         actions: ['left', 'right', 'center'],
       },

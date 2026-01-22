@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Input, Header, Message } from 'semantic-ui-react';
+import type { InputOnChangeData } from 'semantic-ui-react';
 import './EditForm.css';
 
 export type EditFormProps = {
@@ -10,7 +11,10 @@ export type EditFormProps = {
   formIcon?: string;
   formIconColor?: string;
   value?: string;
-  onChange?: (e: React.SyntheticEvent, data?: unknown) => void;
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData,
+  ) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   invalidValue?: boolean;
 };

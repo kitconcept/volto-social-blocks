@@ -5,9 +5,13 @@ import { isValidSpotifyId } from '../../../helpers';
 import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import type { BlockEditPropsWithData } from '../../../types/blocks';
 
 import SpotifyBlockData from './Data';
 import SpotifyBlockView from './View';
+import type { SpotifyBlockFormData as SpotifyBlockDataType } from './Data';
+
+const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
 const messages = defineMessages({
   editFormHeader: {
@@ -24,15 +28,19 @@ const messages = defineMessages({
   },
 });
 
-type Props = {
-  data: any;
-  onChangeBlock: (block: string, data: any) => void;
-  block: string;
-  selected?: boolean;
-};
+type Props = BlockEditPropsWithData<SpotifyBlockDataType>;
 
 const SpotifyBlockEdit = (props: Props) => {
-  const { data, onChangeBlock, block, selected } = props;
+  const {
+    data,
+    onChangeBlock,
+    block,
+    selected,
+    className,
+    blocksConfig,
+    navRoot,
+    contentType,
+  } = props;
   const [spotifyId, setSpotifyId] = useState<string | undefined>(
     data.spotifyId,
   );
@@ -63,7 +71,7 @@ const SpotifyBlockEdit = (props: Props) => {
     }
   };
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.stopPropagation();
     updateSpotifyId(e.target.value);
@@ -71,14 +79,17 @@ const SpotifyBlockEdit = (props: Props) => {
 
   return spotifyId ? (
     <>
-      <SpotifyBlockView {...(props as any)} isEditMode />
-      <SidebarPortal selected={selected}>
+      <SpotifyBlockView data={data} className={className} />
+      <SidebarPortalAny selected={selected}>
         <SpotifyBlockData
           data={data}
           block={block}
           onChangeBlock={onChangeBlock}
+          blocksConfig={blocksConfig}
+          navRoot={navRoot}
+          contentType={contentType}
         />
-      </SidebarPortal>
+      </SidebarPortalAny>
     </>
   ) : (
     <EditForm
@@ -94,4 +105,4 @@ const SpotifyBlockEdit = (props: Props) => {
   );
 };
 
-export default withBlockExtensions(SpotifyBlockEdit as any);
+export default withBlockExtensions(SpotifyBlockEdit);

@@ -2,26 +2,27 @@ import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { linkedinSchema } from './schema';
 import { useIntl } from 'react-intl';
+import { applySchemaDefaults } from '../../../helpers';
+import type { LinkedInViewProps } from './DefaultView';
+import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
+import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
-type Props = any;
+export type LinkedInBlockFormData = BlocksFormData &
+  Pick<LinkedInViewProps, 'postURL' | 'align' | 'size'>;
 
-const LinkedInBlockData = (props: Props) => {
+type LinkedInBlockDataProps = BlockDataFormWrapperProps<LinkedInBlockFormData>;
+
+const LinkedInBlockData = (props: LinkedInBlockDataProps) => {
   const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
     props;
   const intl = useIntl();
-  const schema = linkedinSchema({ ...props, intl });
+  const schema = linkedinSchema({ intl } satisfies BlockSchemaProps);
 
-  Object.keys(schema.properties).forEach((key) => {
-    const field = schema.properties[key];
-    const defaultValue = field.default;
-    if (defaultValue !== undefined && data[key] === undefined) {
-      data[key] = defaultValue;
-    }
-  });
+  const formData = applySchemaDefaults(schema, data);
 
-  const onChangeField = (id: string, value: any) => {
+  const onChangeField = (id: string, value: unknown) => {
     onChangeBlock(block, {
-      ...data,
+      ...formData,
       [id]: value,
     });
   };
@@ -32,7 +33,7 @@ const LinkedInBlockData = (props: Props) => {
       title={schema.title}
       onChangeField={onChangeField}
       onChangeBlock={onChangeBlock}
-      formData={data}
+      formData={formData}
       block={block}
       blocksConfig={blocksConfig}
       navRoot={navRoot}

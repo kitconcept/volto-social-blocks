@@ -1,15 +1,14 @@
 import React from 'react';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import InstagramView from './DefaultView';
+import type { InstagramBlockFormData } from './Data';
+import type { BlockViewPropsWithData } from '../../../types/blocks';
 
-type Props = {
-  data: Record<string, unknown>;
-  className?: string;
-};
+type Props = BlockViewPropsWithData<InstagramBlockFormData>;
 
 const InstagramBlockView = (props: Props) => {
   const { data, className } = props;
-  return <InstagramView {...(data as any)} className={className} />;
+  return <InstagramView {...data} className={className} />;
 };
 
-export default withBlockExtensions(InstagramBlockView as any);
+export default withBlockExtensions(InstagramBlockView);

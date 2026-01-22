@@ -8,6 +8,10 @@ import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal'
 
 import FlickrBlockData from './Data';
 import FlickrBlockView from './View';
+import type { FlickrBlockFormData as FlickrBlockDataType } from './Data';
+import type { BlockEditPropsWithData } from '../../../types/blocks';
+
+const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
 const messages = defineMessages({
   editFormHeader: {
@@ -24,15 +28,19 @@ const messages = defineMessages({
   },
 });
 
-type Props = {
-  data: any;
-  onChangeBlock: (block: string, data: any) => void;
-  block: string;
-  selected?: boolean;
-};
+type Props = BlockEditPropsWithData<FlickrBlockDataType>;
 
 const FlickrBlockEdit = (props: Props) => {
-  const { data, onChangeBlock, block, selected } = props;
+  const {
+    data,
+    onChangeBlock,
+    block,
+    selected,
+    className,
+    blocksConfig,
+    navRoot,
+    contentType,
+  } = props;
   const [flickrId, setFlickrId] = useState<string | undefined>(data.flickrId);
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
@@ -61,7 +69,7 @@ const FlickrBlockEdit = (props: Props) => {
     }
   };
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.stopPropagation();
     updateFlickrId(e.target.value);
@@ -69,14 +77,17 @@ const FlickrBlockEdit = (props: Props) => {
 
   return flickrId ? (
     <>
-      <FlickrBlockView {...(props as any)} isEditMode />
-      <SidebarPortal selected={selected}>
+      <FlickrBlockView data={data} className={className} />
+      <SidebarPortalAny selected={selected}>
         <FlickrBlockData
           data={data}
           block={block}
           onChangeBlock={onChangeBlock}
+          blocksConfig={blocksConfig}
+          navRoot={navRoot}
+          contentType={contentType}
         />
-      </SidebarPortal>
+      </SidebarPortalAny>
     </>
   ) : (
     <EditForm
@@ -92,4 +103,4 @@ const FlickrBlockEdit = (props: Props) => {
   );
 };
 
-export default withBlockExtensions(FlickrBlockEdit as any);
+export default withBlockExtensions(FlickrBlockEdit);

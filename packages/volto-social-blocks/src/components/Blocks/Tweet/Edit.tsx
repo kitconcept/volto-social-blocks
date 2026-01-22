@@ -7,6 +7,10 @@ import EditForm from '../../EditForm/EditForm';
 import iconSVG from '../../../icons/twitter.svg';
 import TweetBlockData from './Data';
 import TweetBlockView from './View';
+import type { TweetBlockFormData as TweetBlockDataType } from './Data';
+import type { BlockEditPropsWithData } from '../../../types/blocks';
+
+const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
 const messages = defineMessages({
   editFormHeader: {
@@ -23,15 +27,19 @@ const messages = defineMessages({
   },
 });
 
-type Props = {
-  data: any;
-  onChangeBlock: (block: string, data: any) => void;
-  block: string;
-  selected?: boolean;
-};
+type Props = BlockEditPropsWithData<TweetBlockDataType>;
 
 const TweetBlockEdit = (props: Props) => {
-  const { data, onChangeBlock, block, selected } = props;
+  const {
+    data,
+    onChangeBlock,
+    block,
+    selected,
+    className,
+    blocksConfig,
+    navRoot,
+    contentType,
+  } = props;
   const [tweetId, setTweetId] = useState<string | undefined>(data.tweetId);
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
@@ -62,7 +70,7 @@ const TweetBlockEdit = (props: Props) => {
     }
   };
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.stopPropagation();
     updateTweetId(e.target.value);
@@ -70,14 +78,17 @@ const TweetBlockEdit = (props: Props) => {
 
   return tweetId ? (
     <>
-      <TweetBlockView {...(props as any)} isEditMode />
-      <SidebarPortal selected={selected}>
+      <TweetBlockView data={data} className={className} />
+      <SidebarPortalAny selected={selected}>
         <TweetBlockData
           data={data}
           block={block}
           onChangeBlock={onChangeBlock}
+          blocksConfig={blocksConfig}
+          navRoot={navRoot}
+          contentType={contentType}
         />
-      </SidebarPortal>
+      </SidebarPortalAny>
     </>
   ) : (
     <EditForm
@@ -93,4 +104,4 @@ const TweetBlockEdit = (props: Props) => {
   );
 };
 
-export default withBlockExtensions(TweetBlockEdit as any);
+export default withBlockExtensions(TweetBlockEdit);

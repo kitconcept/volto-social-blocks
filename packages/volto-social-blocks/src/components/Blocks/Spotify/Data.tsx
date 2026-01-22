@@ -1,33 +1,33 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { isValidSpotifyId } from '../../../helpers';
+import { applySchemaDefaults, isValidSpotifyId } from '../../../helpers';
 import { spotifySchema } from './schema';
 import { useIntl } from 'react-intl';
+import type { SpotifyViewProps } from './DefaultView';
+import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
+import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
-type Props = any;
+export type SpotifyBlockFormData = BlocksFormData &
+  Pick<SpotifyViewProps, 'spotifyId' | 'align' | 'size'>;
 
-const SpotifyBlockData = (props: Props) => {
+type SpotifyBlockDataProps = BlockDataFormWrapperProps<SpotifyBlockFormData>;
+
+const SpotifyBlockData = (props: SpotifyBlockDataProps) => {
   const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
     props;
   const intl = useIntl();
-  const schema = spotifySchema({ ...props, intl });
+  const schema = spotifySchema({ intl } satisfies BlockSchemaProps);
 
-  Object.keys(schema.properties).forEach((key) => {
-    const field = schema.properties[key];
-    const defaultValue = field.default;
-    if (defaultValue !== undefined && data[key] === undefined) {
-      data[key] = defaultValue;
-    }
-  });
+  const formData = applySchemaDefaults(schema, data);
 
-  const onChangeField = (id: string, value: any) => {
-    if (id === 'spotifyId' && value !== '') {
+  const onChangeField = (id: string, value: unknown) => {
+    if (id === 'spotifyId' && typeof value === 'string' && value !== '') {
       if (!isValidSpotifyId(value)) {
         return;
       }
     }
     onChangeBlock(block, {
-      ...data,
+      ...formData,
       [id]: value,
     });
   };
@@ -38,7 +38,7 @@ const SpotifyBlockData = (props: Props) => {
       title={schema.title}
       onChangeField={onChangeField}
       onChangeBlock={onChangeBlock}
-      formData={data}
+      formData={formData}
       block={block}
       blocksConfig={blocksConfig}
       navRoot={navRoot}

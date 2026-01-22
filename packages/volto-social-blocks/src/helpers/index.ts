@@ -17,3 +17,5 @@ export {
   extractSoundCloudId,
   isValidSoundcloudId,
 } from './Soundcloud/Soundcloud';
+
+export { applySchemaDefaults } from './schemaDefaults';

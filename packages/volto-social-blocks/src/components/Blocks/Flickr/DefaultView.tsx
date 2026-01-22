@@ -27,14 +27,15 @@ const FlickrView = ({
     const head = document.querySelector('head');
     if (!head) return;
 
-    const script = document.createElement('script');
-    script.setAttribute('src', scriptSrc);
-    head.appendChild(script);
+    const SCRIPT_ID = 'volto-social-blocks-flickr-embed';
+    if (document.getElementById(SCRIPT_ID)) return;
 
-    return () => {
-      head.removeChild(script);
-    };
-  }, [scriptSrc]);
+    const script = document.createElement('script');
+    script.id = SCRIPT_ID;
+    script.src = scriptSrc;
+    script.async = true;
+    head.appendChild(script);
+  }, []);
 
   return flickrId ? (
     <SocialContentWrapper

@@ -1,4 +1,6 @@
 import { defineMessages } from 'react-intl';
+import type { JSONSchema } from '@plone/types';
+import type { BlockSchemaProps } from '@plone/types';
 
 const messages = defineMessages({
   facebookBlock: {
@@ -23,9 +25,10 @@ const messages = defineMessages({
   },
 });
 
-export const facebookSchema = (props: any) => {
+export const facebookSchema = (props: BlockSchemaProps): JSONSchema => {
+  const { intl } = props;
   return {
-    title: props.intl.formatMessage(messages.facebookBlock),
+    title: intl.formatMessage(messages.facebookBlock),
     fieldsets: [
       {
         id: 'default',
@@ -34,22 +37,22 @@ export const facebookSchema = (props: any) => {
       },
       {
         id: 'style',
-        title: props.intl.formatMessage(messages.styleFieldset),
+        title: intl.formatMessage(messages.styleFieldset),
         fields: ['align', 'size'],
       },
     ],
 
     properties: {
       facebookId: {
-        title: props.intl.formatMessage(messages.facebookId),
+        title: intl.formatMessage(messages.facebookId),
       },
       align: {
-        title: props.intl.formatMessage(messages.align),
+        title: intl.formatMessage(messages.align),
         widget: 'align',
         actions: ['left', 'right', 'center'],
       },
       size: {
-        title: props.intl.formatMessage(messages.size),
+        title: intl.formatMessage(messages.size),
         widget: 'image_size',
       },
     },

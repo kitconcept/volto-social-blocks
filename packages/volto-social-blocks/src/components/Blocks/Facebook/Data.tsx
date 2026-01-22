@@ -1,33 +1,33 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { isValidFacebookId } from '../../../helpers';
+import { applySchemaDefaults, isValidFacebookId } from '../../../helpers';
 import { facebookSchema } from './schema';
 import { useIntl } from 'react-intl';
+import type { FacebookViewProps } from './DefaultView';
+import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
+import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
-type Props = any;
+export type FacebookBlockFormData = BlocksFormData &
+  Pick<FacebookViewProps, 'facebookId' | 'align' | 'size'>;
 
-const FacebookBlockData = (props: Props) => {
+type FacebookBlockDataProps = BlockDataFormWrapperProps<FacebookBlockFormData>;
+
+const FacebookBlockData = (props: FacebookBlockDataProps) => {
   const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
     props;
   const intl = useIntl();
-  const schema = facebookSchema({ ...props, intl });
+  const schema = facebookSchema({ intl } satisfies BlockSchemaProps);
 
-  Object.keys(schema.properties).forEach((key) => {
-    const field = schema.properties[key];
-    const defaultValue = field.default;
-    if (defaultValue !== undefined && data[key] === undefined) {
-      data[key] = defaultValue;
-    }
-  });
+  const formData = applySchemaDefaults(schema, data);
 
-  const onChangeField = (id: string, value: any) => {
-    if (id === 'facebookId' && value !== '') {
+  const onChangeField = (id: string, value: unknown) => {
+    if (id === 'facebookId' && typeof value === 'string' && value !== '') {
       if (!isValidFacebookId(value)) {
         return;
       }
     }
     onChangeBlock(block, {
-      ...data,
+      ...formData,
       [id]: value,
     });
   };
@@ -38,7 +38,7 @@ const FacebookBlockData = (props: Props) => {
       title={schema.title}
       onChangeField={onChangeField}
       onChangeBlock={onChangeBlock}
-      formData={data}
+      formData={formData}
       block={block}
       blocksConfig={blocksConfig}
       navRoot={navRoot}

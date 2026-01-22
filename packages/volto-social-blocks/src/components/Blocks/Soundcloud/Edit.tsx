@@ -5,9 +5,13 @@ import { extractSoundCloudId, isValidSoundcloudId } from '../../../helpers';
 import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import type { BlockEditPropsWithData } from '../../../types/blocks';
 
 import SoundcloudBlockData from './Data';
 import SoundcloudBlockView from './View';
+import type { SoundcloudBlockFormData as SoundcloudBlockDataType } from './Data';
+
+const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
 const messages = defineMessages({
   editFormHeader: {
@@ -24,15 +28,19 @@ const messages = defineMessages({
   },
 });
 
-type Props = {
-  data: any;
-  onChangeBlock: (block: string, data: any) => void;
-  block: string;
-  selected?: boolean;
-};
+type Props = BlockEditPropsWithData<SoundcloudBlockDataType>;
 
 const SoundcloudBlockEdit = (props: Props) => {
-  const { data, onChangeBlock, block, selected } = props;
+  const {
+    data,
+    onChangeBlock,
+    block,
+    selected,
+    className,
+    blocksConfig,
+    navRoot,
+    contentType,
+  } = props;
   const [soundcloudId, setSoundcloudId] = useState<string | undefined>(
     data.soundcloudId,
   );
@@ -65,7 +73,7 @@ const SoundcloudBlockEdit = (props: Props) => {
     }
   };
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.stopPropagation();
     updateSoundcloudId(e.target.value);
@@ -73,14 +81,17 @@ const SoundcloudBlockEdit = (props: Props) => {
 
   return soundcloudId ? (
     <>
-      <SoundcloudBlockView {...(props as any)} isEditMode />
-      <SidebarPortal selected={selected}>
+      <SoundcloudBlockView data={data} className={className} />
+      <SidebarPortalAny selected={selected}>
         <SoundcloudBlockData
           data={data}
           block={block}
           onChangeBlock={onChangeBlock}
+          blocksConfig={blocksConfig}
+          navRoot={navRoot}
+          contentType={contentType}
         />
-      </SidebarPortal>
+      </SidebarPortalAny>
     </>
   ) : (
     <EditForm
@@ -96,4 +107,4 @@ const SoundcloudBlockEdit = (props: Props) => {
   );
 };
 
-export default withBlockExtensions(SoundcloudBlockEdit as any);
+export default withBlockExtensions(SoundcloudBlockEdit);

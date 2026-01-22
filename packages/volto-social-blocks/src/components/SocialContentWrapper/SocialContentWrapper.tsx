@@ -1,7 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
 import './Style.less';
-import config from '@plone/volto/registry';
+import { getRegistryComponent } from '../../helpers/registry';
+
+export type PrivacyConsentComponentProps = {
+  module: string;
+  data: Record<string, unknown>;
+  children: React.ReactNode;
+};
 
 export type SocialContentWrapperProps = {
   align?: string;
@@ -13,19 +19,24 @@ export type SocialContentWrapperProps = {
   className?: string;
 };
 
-const SocialContentWrapper = ({
+function SocialContentWrapper({
   align = 'center',
   tool,
+  url,
+  linkText,
   children,
   data,
   className,
-}: SocialContentWrapperProps) => {
-  const CheckPrivacyConsent = config.getComponent('CheckPrivacyConsent')
-    ?.component as React.ComponentType<{
-    module: string;
-    data: Record<string, unknown>;
-    children: React.ReactNode;
-  }>;
+}: SocialContentWrapperProps) {
+  const CheckPrivacyConsent:
+    | React.ComponentType<PrivacyConsentComponentProps>
+    | undefined = getRegistryComponent('CheckPrivacyConsent');
+
+  const privacyConsentData: Record<string, unknown> = {
+    ...(data ?? {}),
+    ...(url ? { url } : {}),
+    ...(linkText ? { linkText } : {}),
+  };
 
   return (
     <div
@@ -39,7 +50,7 @@ const SocialContentWrapper = ({
       )}
     >
       {CheckPrivacyConsent ? (
-        <CheckPrivacyConsent module={tool} data={data ?? {}}>
+        <CheckPrivacyConsent module={tool} data={privacyConsentData}>
           {children}
         </CheckPrivacyConsent>
       ) : (
@@ -47,6 +58,6 @@ const SocialContentWrapper = ({
       )}
     </div>
   );
-};
+}
 
 export default SocialContentWrapper;

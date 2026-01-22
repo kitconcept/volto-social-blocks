@@ -1,33 +1,34 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { isValidInstagramId } from '../../../helpers';
+import { applySchemaDefaults, isValidInstagramId } from '../../../helpers';
 import { instagramSchema } from './schema';
 import { useIntl } from 'react-intl';
+import type { InstagramViewProps } from './DefaultView';
+import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
+import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
-type Props = any;
+export type InstagramBlockFormData = BlocksFormData &
+  Pick<InstagramViewProps, 'instagramId' | 'align' | 'size' | 'captioned'>;
 
-const InstagramBlockData = (props: Props) => {
+type InstagramBlockDataProps =
+  BlockDataFormWrapperProps<InstagramBlockFormData>;
+
+const InstagramBlockData = (props: InstagramBlockDataProps) => {
   const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
     props;
   const intl = useIntl();
-  const schema = instagramSchema({ ...props, intl });
+  const schema = instagramSchema({ intl } satisfies BlockSchemaProps);
 
-  Object.keys(schema.properties).forEach((key) => {
-    const field = schema.properties[key];
-    const defaultValue = field.default;
-    if (defaultValue !== undefined && data[key] === undefined) {
-      data[key] = defaultValue;
-    }
-  });
+  const formData = applySchemaDefaults(schema, data);
 
-  const onChangeField = (id: string, value: any) => {
-    if (id === 'instagramId' && value !== '') {
+  const onChangeField = (id: string, value: unknown) => {
+    if (id === 'instagramId' && typeof value === 'string' && value !== '') {
       if (!isValidInstagramId(value)) {
         return;
       }
     }
     onChangeBlock(block, {
-      ...data,
+      ...formData,
       [id]: value,
     });
   };
@@ -38,7 +39,7 @@ const InstagramBlockData = (props: Props) => {
       title={schema.title}
       onChangeField={onChangeField}
       onChangeBlock={onChangeBlock}
-      formData={data}
+      formData={formData}
       block={block}
       blocksConfig={blocksConfig}
       navRoot={navRoot}

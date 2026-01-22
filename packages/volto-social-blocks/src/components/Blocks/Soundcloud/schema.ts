@@ -1,4 +1,6 @@
 import { defineMessages } from 'react-intl';
+import type { JSONSchema } from '@plone/types';
+import type { BlockSchemaProps } from '@plone/types';
 
 const messages = defineMessages({
   soundcloudBlock: {
@@ -23,9 +25,10 @@ const messages = defineMessages({
   },
 });
 
-export const soundcloudSchema = (props: any) => {
+export const soundcloudSchema = (props: BlockSchemaProps): JSONSchema => {
+  const { intl } = props;
   return {
-    title: props.intl.formatMessage(messages.soundcloudBlock),
+    title: intl.formatMessage(messages.soundcloudBlock),
     fieldsets: [
       {
         id: 'default',
@@ -34,22 +37,22 @@ export const soundcloudSchema = (props: any) => {
       },
       {
         id: 'style',
-        title: props.intl.formatMessage(messages.styleFieldset),
+        title: intl.formatMessage(messages.styleFieldset),
         fields: ['align', 'size'],
       },
     ],
 
     properties: {
       soundcloudId: {
-        title: props.intl.formatMessage(messages.soundcloudId),
+        title: intl.formatMessage(messages.soundcloudId),
       },
       align: {
-        title: props.intl.formatMessage(messages.align),
+        title: intl.formatMessage(messages.align),
         widget: 'align',
         actions: ['left', 'right', 'center'],
       },
       size: {
-        title: props.intl.formatMessage(messages.size),
+        title: intl.formatMessage(messages.size),
         widget: 'image_size',
       },
     },

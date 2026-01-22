@@ -1,6 +1,8 @@
-import { defineMessages } from 'react-intl';
+import { defineMessages, type MessageDescriptor } from 'react-intl';
 import { languages } from './languages';
 import config from '@plone/volto/registry';
+import type { BlockSchemaProps } from '@plone/types';
+import type { JSONSchema } from '@plone/types';
 
 const messages = defineMessages({
   tweetBlock: {
@@ -49,12 +51,12 @@ const messages = defineMessages({
   },
 });
 
-const THEMES: Array<[string, any]> = [
+const THEMES: Array<[string, MessageDescriptor]> = [
   ['dark', messages.themeDark],
   ['light', messages.themeLight],
 ];
 
-export const tweetSchema = (props: any) => {
+export const tweetSchema = (props: BlockSchemaProps): JSONSchema => {
   const defaultTheme = config.blocks?.blocksConfig?.tweetBlock?.defaultTheme;
   const defaultLanguage =
     config.blocks?.blocksConfig?.tweetBlock?.defaultLanguage;

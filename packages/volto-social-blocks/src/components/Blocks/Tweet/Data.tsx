@@ -2,26 +2,27 @@ import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { tweetSchema } from './schema';
 import { useIntl } from 'react-intl';
+import { applySchemaDefaults } from '../../../helpers';
+import type { TweetViewProps } from './DefaultView';
+import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
+import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
-type Props = any;
+export type TweetBlockFormData = BlocksFormData &
+  Pick<TweetViewProps, 'tweetId' | 'align' | 'size' | 'theme' | 'lang' | 'dnt'>;
 
-const TweetBlockData = (props: Props) => {
+type TweetBlockDataProps = BlockDataFormWrapperProps<TweetBlockFormData>;
+
+const TweetBlockData = (props: TweetBlockDataProps) => {
   const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
     props;
   const intl = useIntl();
-  const schema = tweetSchema({ ...props, intl });
+  const schema = tweetSchema({ intl } satisfies BlockSchemaProps);
 
-  Object.keys(schema.properties).forEach((key) => {
-    const field = schema.properties[key];
-    const defaultValue = field.default;
-    if (defaultValue !== undefined && data[key] === undefined) {
-      data[key] = defaultValue;
-    }
-  });
+  const formData = applySchemaDefaults(schema, data);
 
-  const onChangeField = (id: string, value: any) => {
+  const onChangeField = (id: string, value: unknown) => {
     onChangeBlock(block, {
-      ...data,
+      ...formData,
       [id]: value,
     });
   };
@@ -32,7 +33,7 @@ const TweetBlockData = (props: Props) => {
       title={schema.title}
       onChangeField={onChangeField}
       onChangeBlock={onChangeBlock}
-      formData={data}
+      formData={formData}
       block={block}
       blocksConfig={blocksConfig}
       navRoot={navRoot}

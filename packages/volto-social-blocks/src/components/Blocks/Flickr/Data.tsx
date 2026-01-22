@@ -1,33 +1,33 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { isValidFlickrId } from '../../../helpers';
+import { applySchemaDefaults, isValidFlickrId } from '../../../helpers';
 import { flickrSchema } from './schema';
 import { useIntl } from 'react-intl';
+import type { FlickrViewProps } from './DefaultView';
+import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
+import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
-type Props = any;
+export type FlickrBlockFormData = BlocksFormData &
+  Pick<FlickrViewProps, 'flickrId' | 'align'>;
 
-const FlickrBlockData = (props: Props) => {
+type FlickrBlockDataProps = BlockDataFormWrapperProps<FlickrBlockFormData>;
+
+const FlickrBlockData = (props: FlickrBlockDataProps) => {
   const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
     props;
   const intl = useIntl();
-  const schema = flickrSchema({ ...props, intl });
+  const schema = flickrSchema({ intl } satisfies BlockSchemaProps);
 
-  Object.keys(schema.properties).forEach((key) => {
-    const field = schema.properties[key];
-    const defaultValue = field.default;
-    if (defaultValue !== undefined && data[key] === undefined) {
-      data[key] = defaultValue;
-    }
-  });
+  const formData = applySchemaDefaults(schema, data);
 
-  const onChangeField = (id: string, value: any) => {
-    if (id === 'flickrId' && value !== '') {
+  const onChangeField = (id: string, value: unknown) => {
+    if (id === 'flickrId' && typeof value === 'string' && value !== '') {
       if (!isValidFlickrId(value)) {
         return;
       }
     }
     onChangeBlock(block, {
-      ...data,
+      ...formData,
       [id]: value,
     });
   };
@@ -38,7 +38,7 @@ const FlickrBlockData = (props: Props) => {
       title={schema.title}
       onChangeField={onChangeField}
       onChangeBlock={onChangeBlock}
-      formData={data}
+      formData={formData}
       block={block}
       blocksConfig={blocksConfig}
       navRoot={navRoot}
