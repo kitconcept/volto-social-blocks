@@ -1,0 +1,106 @@
+import React, { useEffect, useState } from 'react';
+import { defineMessages, useIntl } from 'react-intl';
+import iconSVG from '../../../icons/flickr.svg';
+import { isValidFlickrId } from '../../../helpers';
+import EditForm from '../../EditForm/EditForm';
+import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+
+import FlickrBlockData from './Data';
+import FlickrBlockView from './View';
+import type { FlickrBlockFormData as FlickrBlockDataType } from './Data';
+import type { BlockEditPropsWithData } from '../../../types/blocks';
+
+const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
+
+const messages = defineMessages({
+  editFormHeader: {
+    id: 'Embed a Flickr Gallery',
+    defaultMessage: 'Embed a Flickr Gallery',
+  },
+  editFormPlaceholder: {
+    id: 'Provide the embed code of the Flickr Gallery',
+    defaultMessage: 'Provide the embed code of the Flickr Gallery',
+  },
+  errorMessage: {
+    id: 'Please provide a valid Flickr Gallery embed code',
+    defaultMessage: 'Please provide a valid Flickr Gallery embed code',
+  },
+});
+
+type Props = BlockEditPropsWithData<FlickrBlockDataType>;
+
+const FlickrBlockEdit = (props: Props) => {
+  const {
+    data,
+    onChangeBlock,
+    block,
+    selected,
+    className,
+    blocksConfig,
+    navRoot,
+    contentType,
+  } = props;
+  const [flickrId, setFlickrId] = useState<string | undefined>(data.flickrId);
+  const [hasError, setHasError] = useState(false);
+  const intl = useIntl();
+
+  useEffect(() => {
+    if (data.flickrId !== flickrId && isValidFlickrId(data.flickrId)) {
+      setFlickrId(data.flickrId);
+    }
+  }, [data, flickrId]);
+
+  const updateFlickrId = (value: string) => {
+    if (isValidFlickrId(value)) {
+      setHasError(false);
+      setFlickrId(value);
+      onChangeBlock(block, { ...data, flickrId: value });
+    } else {
+      setHasError(true);
+    }
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      updateFlickrId((e.target as HTMLInputElement).value);
+    }
+  };
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    updateFlickrId(e.target.value);
+  };
+
+  return flickrId ? (
+    <>
+      <FlickrBlockView data={data} className={className} />
+      <SidebarPortalAny selected={selected}>
+        <FlickrBlockData
+          data={data}
+          block={block}
+          onChangeBlock={onChangeBlock}
+          blocksConfig={blocksConfig}
+          navRoot={navRoot}
+          contentType={contentType}
+        />
+      </SidebarPortalAny>
+    </>
+  ) : (
+    <EditForm
+      formHeader={intl.formatMessage(messages.editFormHeader)}
+      formPlaceholder={intl.formatMessage(messages.editFormPlaceholder)}
+      formErrorMessage={intl.formatMessage(messages.errorMessage)}
+      formIcon={iconSVG}
+      onKeyDown={onKeyDown}
+      onChange={onChange}
+      value={flickrId}
+      invalidValue={hasError}
+    />
+  );
+};
+
+export default withBlockExtensions(FlickrBlockEdit);
