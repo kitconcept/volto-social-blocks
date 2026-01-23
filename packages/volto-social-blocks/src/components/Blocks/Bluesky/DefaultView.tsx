@@ -53,8 +53,7 @@ async function resolveAtUriFromUrl(
         : undefined;
       if (aturi) return aturi;
     }
-  } catch (e) {
-  }
+  } catch (e) {}
 
   const parsed = parseProfilePostUrl(blueskyUrl);
   if (!parsed) return undefined;
