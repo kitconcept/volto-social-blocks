@@ -17,5 +17,7 @@ export {
   extractSoundCloudId,
   isValidSoundcloudId,
 } from './Soundcloud/Soundcloud';
+export { isValidTikTokUrl } from './TikTok/TikTok';
+export { isValidPinterestUrl } from './Pinterest/Pinterest';
 
 export { applySchemaDefaults } from './schemaDefaults';

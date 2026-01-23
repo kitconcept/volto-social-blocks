@@ -44,14 +44,28 @@ import { soundcloudSchema } from '../components/Blocks/Soundcloud/schema';
 import SoundcloudBlockView from '../components/Blocks/Soundcloud/View';
 import SoundcloudBlockEdit from '../components/Blocks/Soundcloud/Edit';
 
+// TikTok
+import tiktokSVG from '../icons/tiktok.svg';
+import { tiktokSchema } from '../components/Blocks/TikTok/schema';
+import TikTokBlockView from '../components/Blocks/TikTok/View';
+import TikTokBlockEdit from '../components/Blocks/TikTok/Edit';
+
+// Pinterest
+import pinterestSVG from '../icons/pinterest.svg';
+import { pinterestSchema } from '../components/Blocks/Pinterest/schema';
+import PinterestBlockView from '../components/Blocks/Pinterest/View';
+import PinterestBlockEdit from '../components/Blocks/Pinterest/Edit';
+
 declare module '@plone/types' {
   export interface BlocksConfigData {
     facebookBlock: BlockConfigBase;
     flickrBlock: BlockConfigBase;
     linkedinBlock: BlockConfigBase;
     instagramBlock: BlockConfigBase;
+    pinterestBlock: BlockConfigBase;
     soundcloudBlock: BlockConfigBase;
     spotifyBlock: BlockConfigBase;
+    tiktokBlock: BlockConfigBase;
     tweetBlock: BlockConfigBase;
   }
   export interface BlockConfigBase {
@@ -76,8 +90,10 @@ function addBlocksToOtherBlocks(config: ConfigType) {
     'flickrBlock',
     'instagramBlock',
     'linkedinBlock',
+    'pinterestBlock',
     'soundcloudBlock',
     'spotifyBlock',
+    'tiktokBlock',
     'tweetBlock',
   ];
 
@@ -182,6 +198,32 @@ export default function install(config: ConfigType) {
     mostUsed: false,
     sidebarTab: 1,
   };
+  config.blocks.blocksConfig.tiktokBlock = {
+    id: 'tiktokBlock',
+    title: 'TikTok',
+    icon: tiktokSVG,
+    group: 'social',
+    category: 'embed',
+    blockSchema: tiktokSchema,
+    view: TikTokBlockView,
+    edit: TikTokBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  };
+  config.blocks.blocksConfig.pinterestBlock = {
+    id: 'pinterestBlock',
+    title: 'Pinterest',
+    icon: pinterestSVG,
+    group: 'social',
+    category: 'embed',
+    blockSchema: pinterestSchema,
+    view: PinterestBlockView,
+    edit: PinterestBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  };
   config.blocks.blocksConfig.tweetBlock = {
     id: 'tweetBlock',
     title: 'Tweet',
@@ -192,7 +234,7 @@ export default function install(config: ConfigType) {
     view: TweetBlockView,
     edit: TweetBlockEdit,
     restricted: false,
-    mostUsed: true,
+    mostUsed: false,
     sidebarTab: 1,
     defaultLanguage: 'en',
     defaultTheme: 'light',
