@@ -19,5 +19,6 @@ export {
 } from './Soundcloud/Soundcloud';
 export { isValidTikTokUrl } from './TikTok/TikTok';
 export { isValidPinterestUrl } from './Pinterest/Pinterest';
+export { isValidBlueskyUrl } from './Bluesky/Bluesky';
 
 export { applySchemaDefaults } from './schemaDefaults';

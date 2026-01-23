@@ -4,10 +4,14 @@ describe('TikTok', () => {
   describe('isValidTikTokUrl', () => {
     it('validates user video urls', () => {
       expect(
-        isValidTikTokUrl('https://www.tiktok.com/@scout2015/video/6718335390845095173'),
+        isValidTikTokUrl(
+          'https://www.tiktok.com/@scout2015/video/6718335390845095173',
+        ),
       ).toBe(true);
       expect(
-        isValidTikTokUrl('https://m.tiktok.com/@scout2015/video/6718335390845095173'),
+        isValidTikTokUrl(
+          'https://m.tiktok.com/@scout2015/video/6718335390845095173',
+        ),
       ).toBe(true);
     });
 
@@ -17,11 +21,17 @@ describe('TikTok', () => {
     });
 
     it('validates tiktok /t/ urls', () => {
-      expect(isValidTikTokUrl('https://www.tiktok.com/t/ZM1234567/')).toBe(true);
+      expect(isValidTikTokUrl('https://www.tiktok.com/t/ZM1234567/')).toBe(
+        true,
+      );
     });
 
     it('rejects non-tiktok urls', () => {
-      expect(isValidTikTokUrl('https://example.com/@scout2015/video/6718335390845095173')).toBe(false);
+      expect(
+        isValidTikTokUrl(
+          'https://example.com/@scout2015/video/6718335390845095173',
+        ),
+      ).toBe(false);
       expect(isValidTikTokUrl('not a url')).toBe(false);
     });
 
@@ -32,7 +42,9 @@ describe('TikTok', () => {
 
     it('trims whitespace', () => {
       expect(
-        isValidTikTokUrl('  https://www.tiktok.com/@scout2015/video/6718335390845095173  '),
+        isValidTikTokUrl(
+          '  https://www.tiktok.com/@scout2015/video/6718335390845095173  ',
+        ),
       ).toBe(true);
     });
   });

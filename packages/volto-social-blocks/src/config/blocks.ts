@@ -56,8 +56,15 @@ import { pinterestSchema } from '../components/Blocks/Pinterest/schema';
 import PinterestBlockView from '../components/Blocks/Pinterest/View';
 import PinterestBlockEdit from '../components/Blocks/Pinterest/Edit';
 
+// Bluesky
+import blueskySVG from '../icons/bluesky.svg';
+import { blueskySchema } from '../components/Blocks/Bluesky/schema';
+import BlueskyBlockView from '../components/Blocks/Bluesky/View';
+import BlueskyBlockEdit from '../components/Blocks/Bluesky/Edit';
+
 declare module '@plone/types' {
   export interface BlocksConfigData {
+    blueskyBlock: BlockConfigBase;
     facebookBlock: BlockConfigBase;
     flickrBlock: BlockConfigBase;
     linkedinBlock: BlockConfigBase;
@@ -86,6 +93,7 @@ function installGroupBlocksOrder(config: ConfigType) {
 function addBlocksToOtherBlocks(config: ConfigType) {
   // Array of local blocks ids
   const localBlocks = [
+    'blueskyBlock',
     'facebookBlock',
     'flickrBlock',
     'instagramBlock',
@@ -220,6 +228,19 @@ export default function install(config: ConfigType) {
     blockSchema: pinterestSchema,
     view: PinterestBlockView,
     edit: PinterestBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  };
+  config.blocks.blocksConfig.blueskyBlock = {
+    id: 'blueskyBlock',
+    title: 'Bluesky',
+    icon: blueskySVG,
+    group: 'social',
+    category: 'embed',
+    blockSchema: blueskySchema,
+    view: BlueskyBlockView,
+    edit: BlueskyBlockEdit,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
