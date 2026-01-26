@@ -21,7 +21,7 @@ context('Spotify Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.spotifyBlock .input-wrapper .ui.input input').invoke('val', 'https://open.spotify.com/track/1Oq3hZjG2WWIR2MEqASnNd?si=058451374c214af9').type('{enter}');
+      cy.get('.block.inner.spotifyBlock .input-wrapper input.social-blocks-input').invoke('val', 'https://open.spotify.com/track/1Oq3hZjG2WWIR2MEqASnNd?si=058451374c214af9').type('{enter}');
 
       cy.get('#toolbar-save').click();
     });

@@ -20,7 +20,7 @@ context('Instagram Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.instagramBlock .input-wrapper .ui.input input').invoke('val', 'https://www.instagr.am/p/CjTBnwju6XY/').type('{enter}');
+      cy.get('.block.inner.instagramBlock .input-wrapper input.social-blocks-input').invoke('val', 'https://www.instagr.am/p/CjTBnwju6XY/').type('{enter}');
 
       cy.get('#toolbar-save').click();
     });

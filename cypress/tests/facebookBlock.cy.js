@@ -20,7 +20,7 @@ context('Facebook Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.facebookBlock .input-wrapper .ui.input input').invoke('val', 'https://www.facebook.com/photo/?fbid=529862562613664&set=a.428837142716207').type('{enter}');
+      cy.get('.block.inner.facebookBlock .input-wrapper input.social-blocks-input').invoke('val', 'https://www.facebook.com/photo/?fbid=529862562613664&set=a.428837142716207').type('{enter}');
 
       cy.get('#toolbar-save').click();
     });

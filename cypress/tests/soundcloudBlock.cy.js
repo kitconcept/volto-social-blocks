@@ -23,7 +23,7 @@ context('Soundcloud Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.soundcloudBlock .input-wrapper .ui.input input').invoke('val', validIframe).type('{enter}');
+      cy.get('.block.inner.soundcloudBlock .input-wrapper input.social-blocks-input').invoke('val', validIframe).type('{enter}');
 
       cy.get('#toolbar-save').click();
     });

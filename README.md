@@ -150,6 +150,9 @@ acceptance-backend-start         Start backend acceptance server
 ci-acceptance-backend-start      Start backend acceptance server in headless mode for CI
 acceptance-test                  Start Cypress in interactive mode
 ci-acceptance-test               Run cypress tests in headless mode for CI
+ci-acceptance-test-run-all       With a single command, run backend, frontend, and Cypress tests in headless mode for CI
+ci-acceptance                    Alias for ci-acceptance-test-run-all
+ci-acceptence                    Backward-compatible alias (common typo)
 ```
 
 ### Development environment set up
