@@ -1,7 +1,5 @@
 import React from 'react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { Input, Header, Message } from 'semantic-ui-react';
-import type { InputOnChangeData } from 'semantic-ui-react';
 import './EditForm.css';
 
 export type EditFormProps = {
@@ -11,10 +9,7 @@ export type EditFormProps = {
   formIcon?: string;
   formIconColor?: string;
   value?: string;
-  onChange?: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    data: InputOnChangeData,
-  ) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   invalidValue?: boolean;
 };
@@ -30,28 +25,35 @@ const EditForm = ({
   onKeyDown,
   invalidValue = false,
 }: EditFormProps) => {
-  const error = invalidValue ? formErrorMessage : null;
   return (
-    <Message className="social-blocks-message">
-      <center>
+    <div className="social-blocks-message" role="group" aria-label={formHeader}>
+      <div className="social-blocks-message__header">
         <Icon
           name={formIcon}
           className="blockIcon"
           size={'50px'}
           color={formIconColor}
         />
-        <Header>{formHeader}</Header>
-      </center>
+        {formHeader ? (
+          <h3 className="social-blocks-message__title">{formHeader}</h3>
+        ) : null}
+      </div>
       <div className="input-wrapper">
-        <Input
-          error={error}
+        <input
+          className="social-blocks-input"
           onKeyDown={onKeyDown}
           onChange={onChange}
           placeholder={formPlaceholder}
           value={value}
+          aria-invalid={invalidValue || undefined}
         />
       </div>
-    </Message>
+      {invalidValue && formErrorMessage ? (
+        <div className="social-blocks-error" role="alert">
+          {formErrorMessage}
+        </div>
+      ) : null}
+    </div>
   );
 };
 

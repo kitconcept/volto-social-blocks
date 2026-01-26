@@ -31,7 +31,12 @@ const FacebookView = ({
       linkText={linkText}
       className={className}
     >
-      <FacebookEmbed url={facebookId} width={width} linkText={linkText} />
+      <FacebookEmbed
+        key={`${facebookId}-${width}`}
+        url={facebookId}
+        width={width}
+        linkText={linkText}
+      />
     </SocialContentWrapper>
   ) : null;
 };
