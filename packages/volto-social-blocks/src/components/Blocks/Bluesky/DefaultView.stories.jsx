@@ -1,8 +1,18 @@
 import React from 'react';
 import BlueskyDefaultView from './DefaultView';
 
+const withWrapper = (Story, { args }) => {
+  return (
+    <Wrapper anonymous>
+      <div style={{ width: '1000px' }}>
+        <Story {...args} />
+      </div>
+    </Wrapper>
+  );
+};
+
 export default {
-  title: 'Blocks/Bluesky',
+  title: 'Public/Blocks/Bluesky',
   component: BlueskyDefaultView,
   argTypes: {
     align: {
@@ -18,15 +28,44 @@ export default {
       options: ['system', 'light', 'dark'],
     },
   },
+  args: {
+    blueskyUrl: 'https://bsky.app/profile/plone.org/post/3mddkocpicz2t',
+    align: 'center',
+    size: 'l',
+    colorMode: 'system',
+  },
 };
 
-const Template = (args) => <BlueskyDefaultView {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  blueskyUrl:
-    'https://bsky.app/profile/lindalebrun.bsky.social/post/3mcsfdj5i6224',
-  align: 'center',
-  size: 'l',
-  colorMode: 'system',
+export const Small = {
+  args: {
+    size: 's',
+  },
+};
+export const Medium = {
+  args: {
+    size: 'm',
+  },
+};
+export const Large = {
+  args: {
+    size: 'l',
+  },
+};
+export const AlignLeft = {
+  args: {
+    align: 'left',
+    size: 'l',
+  },
+};
+export const AlignCenter = {
+  args: {
+    align: 'left',
+    size: 'l',
+  },
+};
+export const AlignRight = {
+  args: {
+    align: 'right',
+    size: 'l',
+  },
 };
