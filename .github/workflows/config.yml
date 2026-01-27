@@ -1,4 +1,4 @@
-name: "VLT: Compute Config variables"
+name: "Compute Config variables"
 
 on:
   workflow_call:
@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Compute several vars needed for the CI
         id: vars

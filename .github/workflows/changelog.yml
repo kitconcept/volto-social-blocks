@@ -7,13 +7,13 @@ on:
 
 env:
   NODE_VERSION: 22
-  ADDON_NAME: volto-social-blocks
+  ADDON_NAME: volto-speakerdeck
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           # Fetch all history
           fetch-depth: '0'

@@ -1,1 +1,0 @@
-packages/volto-social-blocks/CHANGELOG.md

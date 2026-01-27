@@ -8,11 +8,14 @@ Addon implementing social network blocks for [Plone](https://plone.org) projects
 
 ## Features
 
+- Bluesky block
 - Facebook block
 - Flickr block
 - Instagram block
+- Pinterest block
 - Soundcloud block
 - Spotify block
+- TikTok block
 - Tweet block
 
 ## Installation
@@ -34,12 +37,6 @@ Add `@kitconcept/volto-social-blocks` to your `volto.config.js`:
 
 ```javascript
 const addons = ['@kitconcept/volto-social-blocks'];
-```
-
-If this package provides a Volto theme, and you want to activate it, then add the following to your `volto.config.js`:
-
-```javascript
-const theme = '@kitconcept/volto-social-blocks';
 ```
 
 ### Volto 17 and earlier
