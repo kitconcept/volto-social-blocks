@@ -17,13 +17,26 @@ msgid "Advanced"
 msgstr ""
 
 #. Default: "Alignment"
+#: components/Blocks/Bluesky/schema
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Flickr/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Pinterest/schema
 #: components/Blocks/Soundcloud/schema
 #: components/Blocks/Spotify/schema
+#: components/Blocks/TikTok/schema
 #: components/Blocks/Tweet/schema
 msgid "Alignment"
+msgstr ""
+
+#. Default: "Bluesky"
+#: components/Blocks/Bluesky/schema
+msgid "Bluesky"
+msgstr ""
+
+#. Default: "Bluesky url"
+#: components/Blocks/Bluesky/schema
+msgid "Bluesky url"
 msgstr ""
 
 #. Default: "Captioned"
@@ -31,7 +44,13 @@ msgstr ""
 msgid "Captioned"
 msgstr ""
 
+#. Default: "Color mode"
+#: components/Blocks/Bluesky/schema
+msgid "Color mode"
+msgstr ""
+
 #. Default: "Dark"
+#: components/Blocks/Bluesky/schema
 #: components/Blocks/Tweet/schema
 msgid "Dark"
 msgstr ""
@@ -39,6 +58,16 @@ msgstr ""
 #. Default: "Do not track"
 #: components/Blocks/Tweet/schema
 msgid "Do not track"
+msgstr ""
+
+#. Default: "Embed Bluesky content"
+#: components/Blocks/Bluesky/Edit
+msgid "Embed Bluesky content"
+msgstr ""
+
+#. Default: "Embed Spotify content"
+#: components/Blocks/Spotify/Edit
+msgid "Embed Spotify content"
 msgstr ""
 
 #. Default: "Embed a Facebook Post"
@@ -51,24 +80,34 @@ msgstr ""
 msgid "Embed a Flickr Gallery"
 msgstr ""
 
-#. Default: "Embed a Instagram Post"
-#: components/Blocks/Instagram/Edit
-msgid "Embed a Instagram Post"
+#. Default: "Embed a LinkedIn Post"
+#: messages
+msgid "Embed a LinkedIn Post"
 msgstr ""
 
-#. Default: "Embed a Soundcloud Content"
+#. Default: "Embed a Pinterest Pin"
+#: components/Blocks/Pinterest/Edit
+msgid "Embed a Pinterest Pin"
+msgstr ""
+
+#. Default: "Embed a SoundCloud Track"
 #: components/Blocks/Soundcloud/Edit
-msgid "Embed a Soundcloud Content"
+msgid "Embed a SoundCloud Track"
 msgstr ""
 
-#. Default: "Embed a Spotify Content"
-#: components/Blocks/Spotify/Edit
-msgid "Embed a Spotify Content"
+#. Default: "Embed a TikTok"
+#: components/Blocks/TikTok/Edit
+msgid "Embed a TikTok"
 msgstr ""
 
 #. Default: "Embed a Tweet"
 #: components/Blocks/Tweet/Edit
 msgid "Embed a Tweet"
+msgstr ""
+
+#. Default: "Embed an Instagram Post"
+#: components/Blocks/Instagram/Edit
+msgid "Embed an Instagram Post"
 msgstr ""
 
 #. Default: "Facebook"
@@ -86,9 +125,9 @@ msgstr ""
 msgid "Flickr"
 msgstr ""
 
-#. Default: "Flickr url"
+#. Default: "Flickr embed code"
 #: components/Blocks/Flickr/schema
-msgid "Flickr url"
+msgid "Flickr embed code"
 msgstr ""
 
 #. Default: "Instagram"
@@ -107,14 +146,29 @@ msgid "Language"
 msgstr ""
 
 #. Default: "Light"
+#: components/Blocks/Bluesky/schema
 #: components/Blocks/Tweet/schema
 msgid "Light"
 msgstr ""
 
-#. Default: "Please provide a valid Soundcloud Content url"
-#: components/Blocks/Soundcloud/Edit
-#: components/Blocks/Spotify/Edit
-msgid "Please provide a valid Content Post url"
+#. Default: "LinkedIn"
+#: messages
+msgid "LinkedIn"
+msgstr ""
+
+#. Default: "Pinterest"
+#: components/Blocks/Pinterest/schema
+msgid "Pinterest"
+msgstr ""
+
+#. Default: "Pinterest url"
+#: components/Blocks/Pinterest/schema
+msgid "Pinterest url"
+msgstr ""
+
+#. Default: "Please provide a valid Bluesky url"
+#: components/Blocks/Bluesky/Edit
+msgid "Please provide a valid Bluesky url"
 msgstr ""
 
 #. Default: "Please provide a valid Facebook Post url"
@@ -132,9 +186,59 @@ msgstr ""
 msgid "Please provide a valid Instagram Post url"
 msgstr ""
 
+#. Default: "Please provide a valid Pinterest url"
+#: components/Blocks/Pinterest/Edit
+msgid "Please provide a valid Pinterest url"
+msgstr ""
+
+#. Default: "Please provide a valid SoundCloud embed code"
+#: components/Blocks/Soundcloud/Edit
+msgid "Please provide a valid SoundCloud embed code"
+msgstr ""
+
+#. Default: "Please provide a valid Spotify url"
+#: components/Blocks/Spotify/Edit
+msgid "Please provide a valid Spotify url"
+msgstr ""
+
+#. Default: "Please provide a valid TikTok url"
+#: components/Blocks/TikTok/Edit
+msgid "Please provide a valid TikTok url"
+msgstr ""
+
 #. Default: "Please provide a valid Tweet ID or Twitter URL"
 #: components/Blocks/Tweet/Edit
 msgid "Please provide a valid Tweet ID or Twitter URL"
+msgstr ""
+
+#. Default: "Please provide a valid embed code"
+#: messages
+msgid "Please provide a valid embed code"
+msgstr ""
+
+#. Default: "Post url"
+#: messages
+msgid "Post url"
+msgstr ""
+
+#. Default: "Provide a Bluesky url"
+#: components/Blocks/Bluesky/Edit
+msgid "Provide a Bluesky url"
+msgstr ""
+
+#. Default: "Provide a Pinterest pin url"
+#: components/Blocks/Pinterest/Edit
+msgid "Provide a Pinterest pin url"
+msgstr ""
+
+#. Default: "Provide a Spotify url"
+#: components/Blocks/Spotify/Edit
+msgid "Provide a Spotify url"
+msgstr ""
+
+#. Default: "Provide a TikTok url"
+#: components/Blocks/TikTok/Edit
+msgid "Provide a TikTok url"
 msgstr ""
 
 #. Default: "Provide a url to the Facebook Post"
@@ -147,14 +251,14 @@ msgstr ""
 msgid "Provide a url to the Instagram Post"
 msgstr ""
 
-#. Default: "Provide a url to the Spotify Content"
-#: components/Blocks/Spotify/Edit
-msgid "Provide a url to the Spotify Content"
-msgstr ""
-
 #. Default: "Provide a url to the Tweet or the Tweet ID"
 #: components/Blocks/Tweet/Edit
 msgid "Provide a url to the Tweet or the Tweet ID"
+msgstr ""
+
+#. Default: "Provide the SoundCloud embed code"
+#: components/Blocks/Soundcloud/Edit
+msgid "Provide the SoundCloud embed code"
 msgstr ""
 
 #. Default: "Provide the embed code of the Flickr Gallery"
@@ -162,14 +266,16 @@ msgstr ""
 msgid "Provide the embed code of the Flickr Gallery"
 msgstr ""
 
-#. Default: "Provide the embed code of the Soundcloud Content"
-#: components/Blocks/Soundcloud/Edit
-msgid "Provide the embed code of the Soundcloud Content"
+#. Default: "Provide the embed code of the post"
+#: messages
+msgid "Provide the embed code of the post"
 msgstr ""
 
 #. Default: "Size"
+#: components/Blocks/Bluesky/schema
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Pinterest/schema
 #: components/Blocks/Soundcloud/schema
 #: components/Blocks/Spotify/schema
 #: components/Blocks/Tweet/schema
@@ -181,9 +287,9 @@ msgstr ""
 msgid "Soundcloud"
 msgstr ""
 
-#. Default: "Soundcloud url"
+#. Default: "Soundcloud id"
 #: components/Blocks/Soundcloud/schema
-msgid "Soundcloud url"
+msgid "Soundcloud id"
 msgstr ""
 
 #. Default: "Spotify"
@@ -197,18 +303,36 @@ msgid "Spotify url"
 msgstr ""
 
 #. Default: "Style"
+#: components/Blocks/Bluesky/schema
 #: components/Blocks/Facebook/schema
 #: components/Blocks/Flickr/schema
 #: components/Blocks/Instagram/schema
+#: components/Blocks/Pinterest/schema
 #: components/Blocks/Soundcloud/schema
 #: components/Blocks/Spotify/schema
+#: components/Blocks/TikTok/schema
 #: components/Blocks/Tweet/schema
 msgid "Style"
+msgstr ""
+
+#. Default: "System"
+#: components/Blocks/Bluesky/schema
+msgid "System"
 msgstr ""
 
 #. Default: "Theme"
 #: components/Blocks/Tweet/schema
 msgid "Theme"
+msgstr ""
+
+#. Default: "TikTok"
+#: components/Blocks/TikTok/schema
+msgid "TikTok"
+msgstr ""
+
+#. Default: "TikTok url"
+#: components/Blocks/TikTok/schema
+msgid "TikTok url"
 msgstr ""
 
 #. Default: "Tweet"
