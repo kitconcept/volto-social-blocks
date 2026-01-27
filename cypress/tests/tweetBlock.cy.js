@@ -20,7 +20,7 @@ context('Twitter Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.tweetBlock .input-wrapper .ui.input input').invoke('val', 'https://twitter.com/ploneconf/status/1542568225527005184').type('{enter}');
+      cy.get('.block.inner.tweetBlock .input-wrapper input.social-blocks-input').invoke('val', 'https://twitter.com/ploneconf/status/1542568225527005184').type('{enter}');
 
       cy.get('#toolbar-save').click();
     });

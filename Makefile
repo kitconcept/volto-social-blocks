@@ -121,11 +121,19 @@ storybook-build: ## Build Storybook
 ## Acceptance
 .PHONY: acceptance-frontend-dev-start
 acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone \
+	RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone \
+	RAZZLE_PUBLIC_URL=http://127.0.0.1:3000 \
+	PORT=3000 \
+	pnpm start
 
 .PHONY: acceptance-frontend-prod-start
 acceptance-frontend-prod-start: ## Start acceptance frontend in production mode
-	RAZZLE_API_PATH=$(API_PATH) pnpm build && pnpm start:prod
+	RAZZLE_API_PATH=$(API_PATH) \
+	RAZZLE_INTERNAL_API_PATH=$(API_PATH) \
+	RAZZLE_PUBLIC_URL=http://127.0.0.1:3000 \
+	PORT=3000 \
+	pnpm build && pnpm start:prod
 
 .PHONY: acceptance-backend-start
 acceptance-backend-start: ## Start backend acceptance server
@@ -142,3 +150,16 @@ acceptance-test: ## Start Cypress in interactive mode
 .PHONY: ci-acceptance-test
 ci-acceptance-test: ## Run cypress tests in headless mode for CI
 	pnpm --filter @plone/volto exec cypress run --config-file $(CURRENT_DIR)/cypress.config.js --config specPattern=$(CURRENT_DIR)'/cypress/tests/**/*.{js,jsx,ts,tsx}' --env API_PATH="$(API_PATH)"
+
+.PHONY: ci-acceptance-test-run-all
+ci-acceptance-test-run-all: ## With a single command, run backend, frontend, and Cypress tests in headless mode for CI
+	./core/packages/volto/node_modules/.bin/start-test \
+		"make ci-acceptance-backend-start" http-get://127.0.0.1:55001/plone \
+		"make acceptance-frontend-prod-start" http://127.0.0.1:3000 \
+		"make ci-acceptance-test"
+
+.PHONY: ci-acceptance
+ci-acceptance: ci-acceptance-test-run-all ## Alias for ci-acceptance-test-run-all
+
+.PHONY: ci-acceptence
+ci-acceptence: ci-acceptance-test-run-all ## Backward-compatible alias (common typo)

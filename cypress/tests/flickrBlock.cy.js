@@ -20,7 +20,7 @@ context('Flickr Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.flickrBlock .input-wrapper .ui.input input').invoke('val', '<a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/plone-foundation/albums/72177720303069181" title="Plone Conference 2022 Namur"><img src="https://live.staticflickr.com/65535/52443622430_c442b75502.jpg" width="500" height="375" alt="Plone Conference 2022 Namur"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>').type('{enter}');
+      cy.get('.block.inner.flickrBlock .input-wrapper input.social-blocks-input').invoke('val', '<a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/plone-foundation/albums/72177720303069181" title="Plone Conference 2022 Namur"><img src="https://live.staticflickr.com/65535/52443622430_c442b75502.jpg" width="500" height="375" alt="Plone Conference 2022 Namur"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>').type('{enter}');
 
       cy.get('#toolbar-save').click();
     });

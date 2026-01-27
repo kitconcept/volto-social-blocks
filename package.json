@@ -18,7 +18,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "start": "VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto start",
-    "start:prod": "pnpm --filter @plone/volto start:prod",
+    "start:prod": "VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto start:prod",
     "build": "VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto build",
     "build:deps": "pnpm --filter @plone/registry --filter @plone/components build",
     "i18n": "pnpm --filter @kitconcept/volto-social-blocks i18n && VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto i18n",

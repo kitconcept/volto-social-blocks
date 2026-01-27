@@ -19,7 +19,7 @@ context('Bluesky Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.blueskyBlock .input-wrapper .ui.input input')
+      cy.get('.block.inner.blueskyBlock .input-wrapper input.social-blocks-input')
         .invoke(
           'val',
           'https://bsky.app/profile/lindalebrun.bsky.social/post/3mcsfdj5i6224',

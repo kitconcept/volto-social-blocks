@@ -20,7 +20,7 @@ context('Pinterest Block Acceptance Tests', () => {
         force: true,
       });
 
-      cy.get('.block.inner.pinterestBlock .input-wrapper .ui.input input')
+      cy.get('.block.inner.pinterestBlock .input-wrapper input.social-blocks-input')
         .invoke('val', 'https://www.pinterest.com/pin/99360735500167749/')
         .type('{enter}');
 
