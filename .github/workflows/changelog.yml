@@ -7,7 +7,7 @@ on:
 
 env:
   NODE_VERSION: 22
-  ADDON_NAME: volto-speakerdeck
+  ADDON_NAME: volto-social-blocks
 
 jobs:
   build:
