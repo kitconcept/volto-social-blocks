@@ -1,31 +1,32 @@
-# Social Blocks for Volto (@kitconcept/volto-social-blocks)
+# 🎨 Social Blocks for Volto (@kitconcept/volto-social-blocks)
 
-Addon implementing social network blocks for [Plone](https://plone.org) projects with [Volto](https://github.com/plone/volto).
+Addon implementing embeddable social network content blocks for [Plone](https://plone.org) projects with [Volto](https://github.com/plone/volto).
 
 [![npm](https://img.shields.io/npm/v/@kitconcept/volto-social-blocks)](https://www.npmjs.com/package/@kitconcept/volto-social-blocks)
 [![](https://img.shields.io/badge/-Storybook-ff4785?logo=Storybook&logoColor=white&style=flat-square)](https://kitconcept.github.io/volto-social-blocks/)
 [![CI](https://github.com/kitconcept/volto-social-blocks/actions/workflows/main.yml/badge.svg)](https://github.com/kitconcept/volto-social-blocks/actions/workflows/main.yml)
 
-## Features
+## ✨ Features
 
-- Bluesky block
-- Facebook block
-- Flickr block
-- Instagram block
-- Pinterest block
-- Soundcloud block
-- Spotify block
-- TikTok block
-- Tweet block
+- **Bluesky block** – Embed Bluesky posts directly in your pages
+- **Facebook block** – Display Facebook embeds with privacy consent control
+- **Flickr block** – Showcase Flickr photos and galleries
+- **Instagram block** – Embed Instagram posts and feeds
+- **Pinterest block** – Display Pinterest pins and boards
+- **Soundcloud block** – Embed Soundcloud audio with privacy options
+- **Spotify block** – Integrate Spotify tracks and playlists
+- **TikTok block** – Embed TikTok videos with privacy consent
+- **Tweet block** – Display tweets from X (formerly Twitter)
 
-## Installation
+## 📦 Installation
 
-To install your project, you must choose the method appropriate to your version of Volto.
+Installing `@kitconcept/volto-social-blocks` requires Volto 18 or above.
 
+### 🚀 Adding this package as a dependency
 
-### Volto 18 and later
+To add `@kitconcept/volto-social-blocks` to your project, locate your project's policy package (typically found in the `packages` folder) and edit its `package.json` file.
 
-Add `@kitconcept/volto-social-blocks` to your `package.json`:
+Add `@kitconcept/volto-social-blocks` under `dependencies`:
 
 ```json
 "dependencies": {
@@ -33,51 +34,33 @@ Add `@kitconcept/volto-social-blocks` to your `package.json`:
 }
 ```
 
-Add `@kitconcept/volto-social-blocks` to your `volto.config.js`:
+Then add `@kitconcept/volto-social-blocks` to the `addons` array:
 
-```javascript
-const addons = ['@kitconcept/volto-social-blocks'];
-```
-
-### Volto 17 and earlier
-
-Create a new Volto project (you can skip this step if you already have one):
-
-```
-npm install -g yo @plone/generator-volto
-yo @plone/volto my-volto-project --addon @kitconcept/volto-social-blocks
-cd my-volto-project
-```
-
-Add `@kitconcept/volto-social-blocks` to your package.json:
-
-```JSON
+```json
 "addons": [
-    "@kitconcept/volto-social-blocks"
-],
-
-"dependencies": {
-    "@kitconcept/volto-social-blocks": "*"
-}
+  "@kitconcept/volto-social-blocks"
+]
 ```
 
-Download and install the new add-on by running:
+### 🚀 Starting the project
 
-```
-yarn install
-```
+After adding `@kitconcept/volto-social-blocks` to your project, run the installation:
 
-Start volto with:
-
-```
-yarn start
+```bash
+make install
 ```
 
-### Test it
+Then start the development server:
 
-Go to http://localhost:3000/, login, create a new page. The social blocks will show up in the Volto blocks chooser.
+```bash
+make start
+```
 
-### Custom Privacy Consent Notice
+## ✅ Test installation
+
+Visit http://localhost:3000/ in a browser, login, and check the new blocks should be available.
+
+### 🔒 Custom Privacy Consent Notice
 
 You can register a custom React component to check for privacy consent and show the user a prompt to confirm accessing the external services. This is useful to meet European GDPR requirements, for example.
 
@@ -90,13 +73,13 @@ config.registerComponent({
 
 The [@kitconcept/volto-dsgvo-banner](https://github.com/kitconcept/volto-dsgvo-banner) addon provides one possible implementation of the `CheckPrivacyConsent` component.
 
-## Development
+## 👨‍💻 Development
 
-The development of this add-on is done in isolation using a new approach using pnpm workspaces and latest `mrs-developer` and other Volto core improvements.
-For this reason, it only works with pnpm and Volto 18 (currently in alpha).
+The development of this add-on is done in isolation using a new approach with pnpm workspaces and latest `mrs-developer` and other Volto core improvements.
+It requires pnpm and Volto 18 or higher.
 
 
-### Prerequisites ✅
+### ✅ Prerequisites
 
 -   An [operating system](https://6.docs.plone.org/install/create-project-cookieplone.html#prerequisites-for-installation) that runs all the requirements mentioned.
 -   [nvm](https://6.docs.plone.org/install/create-project-cookieplone.html#nvm)
@@ -105,7 +88,7 @@ For this reason, it only works with pnpm and Volto 18 (currently in alpha).
 -   [Git](https://6.docs.plone.org/install/create-project-cookieplone.html#git)
 -   [Docker](https://docs.docker.com/get-started/get-docker/) (optional)
 
-### Installation 🔧
+### 🔧 Installation
 
 1.  Clone this repository, then change your working directory.
 
@@ -121,7 +104,7 @@ For this reason, it only works with pnpm and Volto 18 (currently in alpha).
     ```
 
 
-### Make convenience commands
+### 🎯 Make commands
 
 Run `make help` to list the available commands.
 
@@ -152,88 +135,88 @@ ci-acceptance                    Alias for ci-acceptance-test-run-all
 ci-acceptence                    Backward-compatible alias (common typo)
 ```
 
-### Development environment set up
+### 🔧 Development environment setup
 
-Install package requirements.
+Install all package requirements:
 
 ```shell
 make install
 ```
 
-### Start developing
+### 🚀 Start developing
 
-Start the backend.
+Start the backend in one terminal:
 
 ```shell
 make backend-docker-start
 ```
 
-In a separate terminal session, start the frontend.
+In a separate terminal session, start the frontend:
 
 ```shell
 make start
 ```
 
-### Lint code
+### 🧹 Lint code
 
-Run ESlint, Prettier, and Stylelint in analyze mode.
+Run ESlint, Prettier, and Stylelint in analyze mode:
 
 ```shell
 make lint
 ```
 
-### Format code
+### ✨ Format code
 
-Run ESlint, Prettier, and Stylelint in fix mode.
+Run ESlint, Prettier, and Stylelint in fix mode:
 
 ```shell
 make format
 ```
 
-### i18n
+### 🌍 Internationalization (i18n)
 
-Extract the i18n messages to locales.
+Extract i18n messages to locales:
 
 ```shell
 make i18n
 ```
 
-### Unit tests
+### 🧪 Unit tests
 
-Run unit tests.
+Run unit tests:
 
 ```shell
 make test
 ```
 
-### Run Cypress tests
+### 🎯 Run Cypress acceptance tests
 
-Run each of these steps in separate terminal sessions.
+Run each command in separate terminal sessions:
 
-In the first session, start the frontend in development mode.
+**Terminal 1:** Start the frontend in development mode:
 
 ```shell
 make acceptance-frontend-dev-start
 ```
 
-In the second session, start the backend acceptance server.
+**Terminal 2:** Start the backend acceptance server:
 
 ```shell
 make acceptance-backend-start
 ```
 
-In the third session, start the Cypress interactive test runner.
+**Terminal 3:** Start the Cypress interactive test runner:
 
 ```shell
 make acceptance-test
 ```
 
-## Credits
+## 💡 Credits
 
 The development of this add-on was sponsored by kitconcept GmbH.
 
 ![kitconcept GmbH](https://raw.githubusercontent.com/kitconcept/volto-form-builder/master/kitconcept.png)
 
-## License
+## 📄 License
 
 The project is licensed under the MIT license.
