@@ -1,4 +1,5 @@
 import React from 'react';
+import Wrapper from '@plone/volto/storybook';
 import BlueskyDefaultView from './DefaultView';
 
 const withWrapper = (Story, { args }) => {
@@ -14,6 +15,7 @@ const withWrapper = (Story, { args }) => {
 export default {
   title: 'Public/Blocks/Bluesky',
   component: BlueskyDefaultView,
+  decorators: [withWrapper],
   argTypes: {
     align: {
       control: { type: 'select' },
