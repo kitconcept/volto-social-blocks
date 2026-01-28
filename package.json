@@ -1,6 +1,6 @@
 {
   "name": "@kitconcept/volto-social-blocks-dev",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "description": "Volto add-on providing blocks for Bluesky, X, Instagram, Facebook and other social networks",
   "author": "kitconcept GmbH",
   "homepage": "https://github.com/kitconcept/volto-social-blocks",
