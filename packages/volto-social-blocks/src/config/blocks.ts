@@ -62,6 +62,30 @@ import { blueskySchema } from '../components/Blocks/Bluesky/schema';
 import BlueskyBlockView from '../components/Blocks/Bluesky/View';
 import BlueskyBlockEdit from '../components/Blocks/Bluesky/Edit';
 
+// Threads
+import threadsSVG from '../icons/threads.svg';
+import { threadsSchema } from '../components/Blocks/Threads/schema';
+import ThreadsBlockView from '../components/Blocks/Threads/View';
+import ThreadsBlockEdit from '../components/Blocks/Threads/Edit';
+
+// Mastodon
+import mastodonSVG from '../icons/mastodon.svg';
+import { mastodonSchema } from '../components/Blocks/Mastodon/schema';
+import MastodonBlockView from '../components/Blocks/Mastodon/View';
+import MastodonBlockEdit from '../components/Blocks/Mastodon/Edit';
+
+// Apple Music
+import applemusicSVG from '../icons/applemusic.svg';
+import { appleMusicSchema } from '../components/Blocks/AppleMusic/schema';
+import AppleMusicBlockView from '../components/Blocks/AppleMusic/View';
+import AppleMusicBlockEdit from '../components/Blocks/AppleMusic/Edit';
+
+// Twitch
+import twitchSVG from '../icons/twitch.svg';
+import { twitchSchema } from '../components/Blocks/Twitch/schema';
+import TwitchBlockView from '../components/Blocks/Twitch/View';
+import TwitchBlockEdit from '../components/Blocks/Twitch/Edit';
+
 declare module '@plone/types' {
   export interface BlocksConfigData {
     blueskyBlock: BlockConfigBase;
@@ -74,6 +98,10 @@ declare module '@plone/types' {
     spotifyBlock: BlockConfigBase;
     tiktokBlock: BlockConfigBase;
     tweetBlock: BlockConfigBase;
+    threadsBlock: BlockConfigBase;
+    mastodonBlock: BlockConfigBase;
+    applemusicBlock: BlockConfigBase;
+    twitchBlock: BlockConfigBase;
   }
   export interface BlockConfigBase {
     defaultLanguage?: string;
@@ -99,6 +127,10 @@ function addBlocksToOtherBlocks(config: ConfigType) {
     'instagramBlock',
     'linkedinBlock',
     'pinterestBlock',
+    'threadsBlock',
+    'mastodonBlock',
+    'applemusicBlock',
+    'twitchBlock',
     'soundcloudBlock',
     'spotifyBlock',
     'tiktokBlock',
@@ -259,6 +291,58 @@ export default function install(config: ConfigType) {
     sidebarTab: 1,
     defaultLanguage: 'en',
     defaultTheme: 'light',
+  };
+  config.blocks.blocksConfig.threadsBlock = {
+    id: 'threadsBlock',
+    title: 'Threads',
+    icon: threadsSVG,
+    group: 'social',
+    category: 'embed',
+    blockSchema: threadsSchema,
+    view: ThreadsBlockView,
+    edit: ThreadsBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  };
+  config.blocks.blocksConfig.mastodonBlock = {
+    id: 'mastodonBlock',
+    title: 'Mastodon',
+    icon: mastodonSVG,
+    group: 'social',
+    category: 'embed',
+    blockSchema: mastodonSchema,
+    view: MastodonBlockView,
+    edit: MastodonBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  };
+  config.blocks.blocksConfig.applemusicBlock = {
+    id: 'applemusicBlock',
+    title: 'Apple Music',
+    icon: applemusicSVG,
+    group: 'social',
+    category: 'embed',
+    blockSchema: appleMusicSchema,
+    view: AppleMusicBlockView,
+    edit: AppleMusicBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+  };
+  config.blocks.blocksConfig.twitchBlock = {
+    id: 'twitchBlock',
+    title: 'Twitch',
+    icon: twitchSVG,
+    group: 'social',
+    category: 'embed',
+    blockSchema: twitchSchema,
+    view: TwitchBlockView,
+    edit: TwitchBlockEdit,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
   };
   addBlocksToOtherBlocks(config);
   return config;

@@ -20,5 +20,19 @@ export {
 export { isValidTikTokUrl } from './TikTok/TikTok';
 export { isValidPinterestUrl } from './Pinterest/Pinterest';
 export { isValidBlueskyUrl } from './Bluesky/Bluesky';
+export { isValidThreadsUrl } from './Threads/Threads';
+export {
+  isValidMastodonUrl,
+  extractMastodonEmbedUrl,
+} from './Mastodon/Mastodon';
+export {
+  isValidAppleMusicUrl,
+  extractAppleMusicEmbedUrl,
+} from './AppleMusic/AppleMusic';
+export {
+  isValidTwitchUrl,
+  extractTwitchEmbedInfo,
+  buildTwitchEmbedUrl,
+} from './Twitch/Twitch';
 
 export { applySchemaDefaults } from './schemaDefaults';
