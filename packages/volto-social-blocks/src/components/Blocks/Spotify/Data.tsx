@@ -8,7 +8,7 @@ import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
 import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
 export type SpotifyBlockFormData = BlocksFormData &
-  Pick<SpotifyViewProps, 'spotifyId' | 'align' | 'size'>;
+  Pick<SpotifyViewProps, 'spotifyId' | 'align' | 'size' | 'colorMode'>;
 
 type SpotifyBlockDataProps = BlockDataFormWrapperProps<SpotifyBlockFormData>;
 

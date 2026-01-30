@@ -2,35 +2,52 @@ import React, { useEffect } from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 import { extractMastodonEmbedUrl } from '../../../helpers';
 
-const WIDTHS: Record<string, number> = {
-  s: 300,
-  m: 400,
-  l: 500,
-};
+import { POST_WIDTHS } from '../sharedWidths';
+
+type ColorMode = 'system' | 'light' | 'dark';
 
 export type MastodonViewProps = {
   mastodonUrl?: string;
   align?: string;
-  size?: keyof typeof WIDTHS;
+  size?: keyof typeof POST_WIDTHS;
+  colorMode?: ColorMode;
   className?: string;
 };
+
+function applyMastodonTheme(embedUrl: string, colorMode: ColorMode): string {
+  if (colorMode === 'system') return embedUrl;
+  try {
+    const url = new URL(embedUrl);
+    url.searchParams.set('theme', colorMode);
+    return url.toString();
+  } catch {
+    return embedUrl;
+  }
+}
 
 const MastodonView = ({
   mastodonUrl,
   align = 'center',
   size = 'l',
+  colorMode = 'system',
   className,
 }: MastodonViewProps) => {
   const embedUrl = extractMastodonEmbedUrl(mastodonUrl);
-  const width = WIDTHS[size] ?? WIDTHS.l;
+  const width = POST_WIDTHS[size] ?? POST_WIDTHS.l;
   const linkText = 'View post on Mastodon';
 
+  const themedEmbedUrl = embedUrl
+    ? applyMastodonTheme(embedUrl, colorMode)
+    : undefined;
+
+  const maxHeight = size === 's' ? 520 : size === 'm' ? 680 : 820;
+
   useEffect(() => {
-    if (!embedUrl) return;
+    if (!themedEmbedUrl) return;
     if (typeof document === 'undefined') return;
 
     try {
-      const origin = new URL(embedUrl).origin;
+      const origin = new URL(themedEmbedUrl).origin;
       const scriptSrc = `${origin}/embed.js`;
       const existing = document.querySelector(`script[src="${scriptSrc}"]`);
       if (!existing) {
@@ -40,9 +57,9 @@ const MastodonView = ({
         document.body.appendChild(script);
       }
     } catch {}
-  }, [embedUrl]);
-  
-  return embedUrl ? (
+  }, [themedEmbedUrl]);
+
+  return themedEmbedUrl ? (
     <SocialContentWrapper
       align={align}
       tool="mastodon"
@@ -54,25 +71,33 @@ const MastodonView = ({
         style={{
           width,
           maxWidth: '100%',
-          overflowY: 'auto',
-          overflowX: 'hidden',
+          border: '1px solid rgba(0, 0, 0, 0.12)',
+          borderRadius: '12px',
+          overflow: 'hidden',
         }}
       >
-        <iframe
-          src={embedUrl}
-          width={'100%'}
-          title={'Mastodon Post'}
-          loading={'lazy'}
+        <div
           style={{
-            border: 'none',
-            width: '100%',
-            overflow: 'scroll',
-            display: 'block',
+            maxHeight,
+            overflowY: 'auto',
+            overflowX: 'hidden',
           }}
-          className="mastodon-embed"
-          allowFullScreen
-          sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
-        />
+        >
+          <iframe
+            src={themedEmbedUrl}
+            width={'100%'}
+            title={'Mastodon Post'}
+            loading={'lazy'}
+            style={{
+              border: 'none',
+              width: '100%',
+              display: 'block',
+            }}
+            className="mastodon-embed"
+            allowFullScreen
+            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
+          />
+        </div>
       </div>
     </SocialContentWrapper>
   ) : null;

@@ -6,6 +6,7 @@ import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 import BlueskyBlockData from './Data';
 import BlueskyBlockView from './View';
@@ -79,7 +80,9 @@ const BlueskyBlockEdit = (props: Props) => {
 
   return blueskyUrl ? (
     <>
-      <BlueskyBlockView data={data} className={className} />
+      <NonInteractiveWrapper>
+        <BlueskyBlockView data={data} className={className} />
+      </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
         <BlueskyBlockData
           data={data}

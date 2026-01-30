@@ -10,6 +10,7 @@ import FlickrBlockData from './Data';
 import FlickrBlockView from './View';
 import type { FlickrBlockFormData as FlickrBlockDataType } from './Data';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
@@ -77,7 +78,9 @@ const FlickrBlockEdit = (props: Props) => {
 
   return flickrId ? (
     <>
-      <FlickrBlockView data={data} className={className} />
+      <NonInteractiveWrapper>
+        <FlickrBlockView data={data} className={className} />
+      </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
         <FlickrBlockData
           data={data}

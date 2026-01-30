@@ -6,6 +6,7 @@ import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 import FacebookBlockData from './Data';
 import FacebookBlockView from './View';
@@ -79,7 +80,9 @@ const FacebookBlockEdit = (props: Props) => {
 
   return facebookId ? (
     <>
-      <FacebookBlockView data={data} className={className} />
+      <NonInteractiveWrapper>
+        <FacebookBlockView data={data} className={className} />
+      </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
         <FacebookBlockData
           data={data}

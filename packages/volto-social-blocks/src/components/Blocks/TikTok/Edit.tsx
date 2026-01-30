@@ -9,6 +9,7 @@ import TikTokBlockData from './Data';
 import TikTokBlockView from './View';
 import type { TikTokBlockFormData as TikTokBlockDataType } from './Data';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
@@ -78,7 +79,9 @@ const TikTokBlockEdit = (props: Props) => {
 
   return tiktokUrl ? (
     <>
-      <TikTokBlockView data={data} className={className} />
+      <NonInteractiveWrapper>
+        <TikTokBlockView data={data} className={className} />
+      </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
         <TikTokBlockData
           data={data}

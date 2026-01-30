@@ -2,16 +2,12 @@ import React from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 import { extractAppleMusicEmbedUrl } from '../../../helpers';
 
-const WIDTHS: Record<string, number> = {
-  s: 420,
-  m: 640,
-  l: 960,
-};
+import { AUDIO_WIDTHS } from '../sharedWidths';
 
 export type AppleMusicViewProps = {
   appleMusicUrl?: string;
   align?: string;
-  size?: keyof typeof WIDTHS;
+  size?: keyof typeof AUDIO_WIDTHS;
   className?: string;
 };
 
@@ -22,9 +18,9 @@ const AppleMusicView = ({
   className,
 }: AppleMusicViewProps) => {
   const embedUrl = extractAppleMusicEmbedUrl(appleMusicUrl);
-  const width = WIDTHS[size] ?? WIDTHS.l;
+  const width = AUDIO_WIDTHS[size] ?? AUDIO_WIDTHS.l;
   const linkText = 'Listen on Apple Music/Podcasts';
-  
+
   return embedUrl ? (
     <SocialContentWrapper
       align={align}

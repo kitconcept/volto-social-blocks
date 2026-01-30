@@ -1,16 +1,12 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 
-const SIZES: Record<string, number> = {
-  s: 325,
-  m: 400,
-  l: 500,
-};
+import { POST_WIDTHS } from '../sharedWidths';
 
 export type PinterestViewProps = {
   pinterestUrl?: string;
   align?: string;
-  size?: keyof typeof SIZES;
+  size?: keyof typeof POST_WIDTHS;
   className?: string;
 };
 
@@ -20,7 +16,7 @@ const PinterestView = ({
   size = 'l',
   className,
 }: PinterestViewProps) => {
-  const width = SIZES[size] ?? SIZES.l;
+  const width = POST_WIDTHS[size] ?? POST_WIDTHS.l;
   const linkText = 'View pin on Pinterest';
 
   const embedRef = useRef<HTMLDivElement | null>(null);

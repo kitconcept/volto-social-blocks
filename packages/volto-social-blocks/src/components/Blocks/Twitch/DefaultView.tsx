@@ -2,17 +2,13 @@ import React from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 import { buildTwitchEmbedUrl, extractTwitchEmbedInfo } from '../../../helpers';
 
-const WIDTHS: Record<string, number> = {
-  s: 420,
-  m: 640,
-  l: 960,
-};
+import { MEDIA_WIDTHS } from '../sharedWidths';
 
 export type TwitchViewProps = {
   twitchUrl?: string;
   showChat?: boolean;
   align?: string;
-  size?: keyof typeof WIDTHS;
+  size?: keyof typeof MEDIA_WIDTHS;
   className?: string;
 };
 
@@ -27,12 +23,12 @@ const TwitchView = ({
   const parent =
     typeof window !== 'undefined' ? window.location.hostname : undefined;
   const embedUrl = buildTwitchEmbedUrl(twitchUrl, parent);
-  const width = WIDTHS[size] ?? WIDTHS.l;
+  const width = MEDIA_WIDTHS[size] ?? MEDIA_WIDTHS.l;
   const linkText = 'Watch on Twitch';
 
   // Chat is only available for channels
   const showingChat = showChat && embedInfo.type === 'channel';
-  
+
   return embedUrl ? (
     <SocialContentWrapper
       align={align}
@@ -42,10 +38,17 @@ const TwitchView = ({
       className={className}
     >
       <div style={{ width, maxWidth: '100%' }}>
-        <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
+        <div
+          style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}
+        >
           <iframe
             src={embedUrl}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+            }}
             allowFullScreen
             title={'Twitch Player'}
             loading={'lazy'}

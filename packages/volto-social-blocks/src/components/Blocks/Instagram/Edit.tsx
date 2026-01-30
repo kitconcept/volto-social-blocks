@@ -6,6 +6,7 @@ import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 import InstagramBlockData from './Data';
 import InstagramBlockView from './View';
@@ -82,7 +83,9 @@ const InstagramBlockEdit = (props: Props) => {
 
   return instagramId ? (
     <>
-      <InstagramBlockView data={data} className={className} />
+      <NonInteractiveWrapper>
+        <InstagramBlockView data={data} className={className} />
+      </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
         <InstagramBlockData
           data={data}

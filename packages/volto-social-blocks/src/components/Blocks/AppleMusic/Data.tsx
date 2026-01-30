@@ -10,7 +10,8 @@ import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 export type AppleMusicBlockFormData = BlocksFormData &
   Pick<AppleMusicViewProps, 'appleMusicUrl' | 'align' | 'size'>;
 
-type AppleMusicBlockDataProps = BlockDataFormWrapperProps<AppleMusicBlockFormData>;
+type AppleMusicBlockDataProps =
+  BlockDataFormWrapperProps<AppleMusicBlockFormData>;
 
 const AppleMusicBlockData = (props: AppleMusicBlockDataProps) => {
   const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =

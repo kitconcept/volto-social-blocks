@@ -19,6 +19,22 @@ const messages = defineMessages({
     id: 'Size',
     defaultMessage: 'Size',
   },
+  colorMode: {
+    id: 'Color mode',
+    defaultMessage: 'Color mode',
+  },
+  colorModeSystem: {
+    id: 'System',
+    defaultMessage: 'System',
+  },
+  colorModeLight: {
+    id: 'Light',
+    defaultMessage: 'Light',
+  },
+  colorModeDark: {
+    id: 'Dark',
+    defaultMessage: 'Dark',
+  },
   styleFieldset: {
     id: 'Style',
     defaultMessage: 'Style',
@@ -38,7 +54,7 @@ export const spotifySchema = (props: BlockSchemaProps): JSONSchema => {
       {
         id: 'style',
         title: intl.formatMessage(messages.styleFieldset),
-        fields: ['align', 'size'],
+        fields: ['align', 'size', 'colorMode'],
       },
     ],
 
@@ -54,6 +70,16 @@ export const spotifySchema = (props: BlockSchemaProps): JSONSchema => {
       size: {
         title: intl.formatMessage(messages.size),
         widget: 'image_size',
+      },
+      colorMode: {
+        title: intl.formatMessage(messages.colorMode),
+        choices: [
+          ['system', intl.formatMessage(messages.colorModeSystem)],
+          ['light', intl.formatMessage(messages.colorModeLight)],
+          ['dark', intl.formatMessage(messages.colorModeDark)],
+        ],
+        default: 'system',
+        noValueOption: false,
       },
     },
     required: ['spotifyId'],

@@ -15,6 +15,10 @@ const messages = defineMessages({
     id: 'Alignment',
     defaultMessage: 'Alignment',
   },
+  size: {
+    id: 'Size',
+    defaultMessage: 'Size',
+  },
   styleFieldset: {
     id: 'Style',
     defaultMessage: 'Style',
@@ -34,7 +38,7 @@ export const flickrSchema = (props: BlockSchemaProps): JSONSchema => {
       {
         id: 'style',
         title: intl.formatMessage(messages.styleFieldset),
-        fields: ['align'],
+        fields: ['align', 'size'],
       },
     ],
 
@@ -46,6 +50,10 @@ export const flickrSchema = (props: BlockSchemaProps): JSONSchema => {
         title: intl.formatMessage(messages.align),
         widget: 'align',
         actions: ['left', 'right', 'center'],
+      },
+      size: {
+        title: intl.formatMessage(messages.size),
+        widget: 'image_size',
       },
     },
     required: ['flickrId'],

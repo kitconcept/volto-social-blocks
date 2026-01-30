@@ -1,16 +1,20 @@
 import React from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 
+import { AUDIO_WIDTHS } from '../sharedWidths';
+
 const SIZES: Record<string, number> = {
   s: 152,
   m: 352,
   l: 352,
 };
 
+type SoundcloudSize = keyof typeof SIZES;
+
 export type SoundcloudViewProps = {
   soundcloudId?: string;
   align?: string;
-  size?: keyof typeof SIZES;
+  size?: SoundcloudSize;
   className?: string;
 };
 
@@ -22,6 +26,7 @@ const SoundcloudView = ({
 }: SoundcloudViewProps) => {
   const href = soundcloudId !== undefined ? soundcloudId : '';
   const height = SIZES[size] ?? SIZES.l;
+  const width = AUDIO_WIDTHS[size] ?? AUDIO_WIDTHS.l;
   const linkText = 'Listen to content on Soundcloud';
   return href ? (
     <SocialContentWrapper
@@ -31,13 +36,15 @@ const SoundcloudView = ({
       linkText={linkText}
       className={className}
     >
-      <iframe
-        height={height}
-        frameBorder={'0'}
-        src={`https://w.soundcloud.com/player/?url=${href}`}
-        title={'Soundcloud Player'}
-        loading={'lazy'}
-      />
+      <div style={{ width, maxWidth: '100%' }}>
+        <iframe
+          style={{ width: '100%', border: 'none', display: 'block' }}
+          height={height}
+          src={`https://w.soundcloud.com/player/?url=${href}`}
+          title={'Soundcloud Player'}
+          loading={'lazy'}
+        />
+      </div>
     </SocialContentWrapper>
   ) : null;
 };

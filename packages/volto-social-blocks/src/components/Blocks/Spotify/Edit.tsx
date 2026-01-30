@@ -6,6 +6,7 @@ import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 import SpotifyBlockData from './Data';
 import SpotifyBlockView from './View';
@@ -79,7 +80,9 @@ const SpotifyBlockEdit = (props: Props) => {
 
   return spotifyId ? (
     <>
-      <SpotifyBlockView data={data} className={className} />
+      <NonInteractiveWrapper>
+        <SpotifyBlockView data={data} className={className} />
+      </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
         <SpotifyBlockData
           data={data}

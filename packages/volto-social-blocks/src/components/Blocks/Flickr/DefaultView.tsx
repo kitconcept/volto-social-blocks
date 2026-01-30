@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 
+import { MEDIA_WIDTHS } from '../sharedWidths';
+
 export type FlickrViewProps = {
   flickrId?: string;
   align?: string;
+  size?: keyof typeof MEDIA_WIDTHS;
   className?: string;
 };
 
 const FlickrView = ({
   flickrId,
   align = 'center',
+  size = 'l',
   className,
 }: FlickrViewProps) => {
   const linkText = 'View post on Flickr';
+  const width = MEDIA_WIDTHS[size] ?? MEDIA_WIDTHS.l;
 
   const canParse =
     typeof window !== 'undefined' && typeof DOMParser !== 'undefined';
@@ -45,21 +50,24 @@ const FlickrView = ({
       linkText={linkText}
       className={className}
     >
-      <figure className="flickr-content">
-        <a
-          data-flickr-embed={true}
-          data-footer={galleryData?.links?.[0]?.dataset?.footer}
-          data-header={galleryData?.links?.[0]?.dataset?.header}
-          href={galleryData?.links?.[0]?.href ?? ''}
-          title={galleryData?.links?.[0]?.title ?? ''}
-        >
-          <img
-            src={galleryData?.images?.[0]?.src}
-            width="100%"
-            alt={galleryData?.images?.[0]?.alt ?? ''}
-          />
-        </a>
-      </figure>
+      <div style={{ width, maxWidth: '100%' }}>
+        <figure className="flickr-content">
+          <a
+            data-flickr-embed={true}
+            data-footer={galleryData?.links?.[0]?.dataset?.footer}
+            data-header={galleryData?.links?.[0]?.dataset?.header}
+            href={galleryData?.links?.[0]?.href ?? ''}
+            title={galleryData?.links?.[0]?.title ?? ''}
+          >
+            <img
+              src={galleryData?.images?.[0]?.src}
+              width="100%"
+              alt={galleryData?.images?.[0]?.alt ?? ''}
+              style={{ display: 'block' }}
+            />
+          </a>
+        </figure>
+      </div>
     </SocialContentWrapper>
   ) : null;
 };

@@ -49,7 +49,10 @@ const AppleMusicBlockEdit = (props: Props) => {
   const intl = useIntl();
 
   useEffect(() => {
-    if (data.appleMusicUrl !== appleMusicUrl && isValidAppleMusicUrl(data.appleMusicUrl)) {
+    if (
+      data.appleMusicUrl !== appleMusicUrl &&
+      isValidAppleMusicUrl(data.appleMusicUrl)
+    ) {
       setAppleMusicUrl(data.appleMusicUrl);
     }
   }, [data, appleMusicUrl]);

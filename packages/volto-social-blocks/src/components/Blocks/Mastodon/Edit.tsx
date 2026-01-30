@@ -49,7 +49,10 @@ const MastodonBlockEdit = (props: Props) => {
   const intl = useIntl();
 
   useEffect(() => {
-    if (data.mastodonUrl !== mastodonUrl && isValidMastodonUrl(data.mastodonUrl)) {
+    if (
+      data.mastodonUrl !== mastodonUrl &&
+      isValidMastodonUrl(data.mastodonUrl)
+    ) {
       setMastodonUrl(data.mastodonUrl);
     }
   }, [data, mastodonUrl]);

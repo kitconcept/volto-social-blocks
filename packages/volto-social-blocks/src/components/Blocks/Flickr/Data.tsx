@@ -8,7 +8,7 @@ import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
 import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
 export type FlickrBlockFormData = BlocksFormData &
-  Pick<FlickrViewProps, 'flickrId' | 'align'>;
+  Pick<FlickrViewProps, 'flickrId' | 'align' | 'size'>;
 
 type FlickrBlockDataProps = BlockDataFormWrapperProps<FlickrBlockFormData>;
 

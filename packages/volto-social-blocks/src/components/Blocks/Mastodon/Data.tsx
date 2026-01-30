@@ -8,7 +8,7 @@ import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
 import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
 export type MastodonBlockFormData = BlocksFormData &
-  Pick<MastodonViewProps, 'mastodonUrl' | 'align' | 'size'>;
+  Pick<MastodonViewProps, 'mastodonUrl' | 'align' | 'size' | 'colorMode'>;
 
 type MastodonBlockDataProps = BlockDataFormWrapperProps<MastodonBlockFormData>;
 
