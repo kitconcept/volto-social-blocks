@@ -16,6 +16,15 @@ export default {
   title: 'Public/Blocks/FacebookBlock',
   component: FacebookView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component:
+          'Embeds Facebook content. Use alignment and size to preview layout in different contexts.',
+      },
+    },
+  },
   argTypes: {
     facebookId: {
       name: 'Facebook ID',
@@ -63,7 +72,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };

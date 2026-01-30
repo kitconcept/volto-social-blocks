@@ -16,9 +16,18 @@ export default {
   title: 'Public/Blocks/LinkedInBlock',
   component: LinkedInView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component:
+          'Embeds a LinkedIn post. Provide a valid LinkedIn post URL and use alignment/size to preview the layout.',
+      },
+    },
+  },
   argTypes: {
     postURL: {
-      name: 'Post url',
+      name: 'Post URL',
       control: 'text',
     },
     align: {
@@ -63,7 +72,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };

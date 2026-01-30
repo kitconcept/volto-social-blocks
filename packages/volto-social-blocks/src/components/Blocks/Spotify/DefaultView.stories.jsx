@@ -16,9 +16,18 @@ export default {
   title: 'Public/Blocks/SpotifyBlock',
   component: SpotifyView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component:
+          'Embeds Spotify content (track/album/playlist/episode) using an iframe. Use size to preview different heights.',
+      },
+    },
+  },
   argTypes: {
     spotifyId: {
-      name: 'Spotify ID',
+      name: 'Spotify URL',
       control: 'text',
     },
     align: {
@@ -63,7 +72,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };

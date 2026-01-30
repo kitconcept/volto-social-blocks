@@ -17,6 +17,15 @@ export default {
   title: 'Public/Blocks/TweetBlock',
   component: TweetView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component:
+          'Embeds an X/Twitter post. Use theme, language and alignment to preview the embed configuration.',
+      },
+    },
+  },
   argTypes: {
     tweetId: {
       name: 'Tweet ID',
@@ -90,7 +99,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };

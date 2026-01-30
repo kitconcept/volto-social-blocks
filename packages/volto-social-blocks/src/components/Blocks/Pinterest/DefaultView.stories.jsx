@@ -16,9 +16,18 @@ export default {
   title: 'Public/Blocks/PinterestBlock',
   component: PinterestView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component:
+          'Embeds a Pinterest Pin using the Pinterest embed script. The size control maps to Pinterest small/medium/large presets.',
+      },
+    },
+  },
   argTypes: {
     pinterestUrl: {
-      name: 'Pinterest url',
+      name: 'Pinterest URL',
       control: 'text',
     },
     align: {

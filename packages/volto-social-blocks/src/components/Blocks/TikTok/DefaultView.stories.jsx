@@ -16,9 +16,18 @@ export default {
   title: 'Public/Blocks/TikTokBlock',
   component: TikTokView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component:
+          'Embeds a TikTok post using react-social-media-embed. The component is responsive and constrained to a maximum width.',
+      },
+    },
+  },
   argTypes: {
     tiktokUrl: {
-      name: 'TikTok url',
+      name: 'TikTok URL',
       control: 'text',
     },
     align: {

@@ -4,6 +4,15 @@ import BlueskyDefaultView from './DefaultView';
 export default {
   title: 'Blocks/Bluesky',
   component: BlueskyDefaultView,
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component:
+          'Embeds a Bluesky post using the official embed service (embed.bsky.app). The embed may dynamically adjust its height.',
+      },
+    },
+  },
   argTypes: {
     align: {
       control: { type: 'select' },

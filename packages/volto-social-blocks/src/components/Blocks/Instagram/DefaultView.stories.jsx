@@ -16,6 +16,15 @@ export default {
   title: 'Public/Blocks/InstagramBlock',
   component: InstagramView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component:
+          'Embeds Instagram content. Use alignment and size to preview layout.',
+      },
+    },
+  },
   argTypes: {
     instagramId: {
       name: 'Instagram ID',
@@ -77,7 +86,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };

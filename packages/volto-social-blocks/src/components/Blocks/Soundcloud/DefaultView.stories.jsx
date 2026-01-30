@@ -16,9 +16,18 @@ export default {
   title: 'Public/Blocks/SoundcloudBlock',
   component: SoundcloudView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component:
+          'Embeds SoundCloud content using the official player iframe. Provide a valid SoundCloud track URL.',
+      },
+    },
+  },
   argTypes: {
     soundcloudId: {
-      name: 'Soundcloud ID',
+      name: 'SoundCloud URL',
       control: 'text',
     },
     align: {
@@ -63,7 +72,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };
