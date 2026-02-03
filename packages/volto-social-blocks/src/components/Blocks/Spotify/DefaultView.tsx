@@ -1,6 +1,5 @@
 import React from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
-
 import { AUDIO_WIDTHS } from '../sharedWidths';
 
 type ColorMode = 'system' | 'light' | 'dark';
@@ -66,6 +65,7 @@ const SpotifyView = ({
     >
       <div style={{ width, maxWidth: '100%' }}>
         <iframe
+          key={`${themedHref}-${height}`}
           style={{ ...STYLE, display: 'block', width: '100%' }}
           src={themedHref}
           width={'100%'}

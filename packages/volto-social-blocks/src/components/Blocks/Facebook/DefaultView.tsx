@@ -1,7 +1,6 @@
 import React from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 import { FacebookEmbed } from 'react-social-media-embed';
-
 import { POST_WIDTHS } from '../sharedWidths';
 
 export type FacebookViewProps = {

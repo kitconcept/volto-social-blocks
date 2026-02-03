@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
-
 import { MEDIA_WIDTHS } from '../sharedWidths';
 
 export type FlickrViewProps = {
@@ -19,6 +18,8 @@ const FlickrView = ({
   const linkText = 'View post on Flickr';
   const width = MEDIA_WIDTHS[size] ?? MEDIA_WIDTHS.l;
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
   const canParse =
     typeof window !== 'undefined' && typeof DOMParser !== 'undefined';
   const galleryData = canParse
@@ -26,6 +27,37 @@ const FlickrView = ({
     : undefined;
 
   const scriptSrc = '//embedr.flickr.com/assets/client-code.js';
+
+  const embedAspectRatio = useMemo(() => {
+    const img = galleryData?.images?.[0];
+    if (!img) return 3 / 4;
+
+    const widthAttr = Number(img.getAttribute?.('width') ?? img.width);
+    const heightAttr = Number(img.getAttribute?.('height') ?? img.height);
+
+    if (Number.isFinite(widthAttr) && Number.isFinite(heightAttr)) {
+      if (widthAttr > 0 && heightAttr > 0) return heightAttr / widthAttr;
+    }
+
+    return 3 / 4;
+  }, [galleryData]);
+
+  const syncInjectedIframeSize = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const iframe = container.querySelector<HTMLIFrameElement>('iframe');
+    if (!iframe) return;
+
+    const containerWidth = container.clientWidth;
+    if (!containerWidth) return;
+
+    const newHeight = Math.round(containerWidth * embedAspectRatio);
+    iframe.style.width = '100%';
+    iframe.style.maxWidth = '100%';
+    iframe.style.height = `${newHeight}px`;
+    iframe.setAttribute('height', String(newHeight));
+  }, [embedAspectRatio]);
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
@@ -42,6 +74,25 @@ const FlickrView = ({
     head.appendChild(script);
   }, []);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    syncInjectedIframeSize();
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (typeof ResizeObserver === 'undefined') {
+      const onResize = () => syncInjectedIframeSize();
+      window.addEventListener('resize', onResize);
+      return () => window.removeEventListener('resize', onResize);
+    }
+
+    const observer = new ResizeObserver(() => syncInjectedIframeSize());
+    observer.observe(container);
+
+    return () => observer.disconnect();
+  }, [syncInjectedIframeSize, flickrId, width]);
+
   return flickrId ? (
     <SocialContentWrapper
       align={align}
@@ -50,7 +101,7 @@ const FlickrView = ({
       linkText={linkText}
       className={className}
     >
-      <div style={{ width, maxWidth: '100%' }}>
+      <div ref={containerRef} style={{ width, maxWidth: '100%' }}>
         <figure className="flickr-content">
           <a
             data-flickr-embed={true}
@@ -62,6 +113,7 @@ const FlickrView = ({
             <img
               src={galleryData?.images?.[0]?.src}
               width="100%"
+              height="auto"
               alt={galleryData?.images?.[0]?.alt ?? ''}
               style={{ display: 'block' }}
             />

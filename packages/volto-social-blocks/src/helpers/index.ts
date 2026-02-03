@@ -24,6 +24,7 @@ export { isValidThreadsUrl } from './Threads/Threads';
 export {
   isValidMastodonUrl,
   extractMastodonEmbedUrl,
+  extractMastodonScriptUrl,
 } from './Mastodon/Mastodon';
 export {
   isValidAppleMusicUrl,

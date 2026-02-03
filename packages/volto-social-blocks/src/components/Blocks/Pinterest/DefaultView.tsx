@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
-
 import { POST_WIDTHS } from '../sharedWidths';
 
 export type PinterestViewProps = {
@@ -16,7 +15,6 @@ const PinterestView = ({
   size = 'l',
   className,
 }: PinterestViewProps) => {
-  const width = POST_WIDTHS[size] ?? POST_WIDTHS.l;
   const linkText = 'View pin on Pinterest';
 
   const embedRef = useRef<HTMLDivElement | null>(null);
@@ -84,10 +82,7 @@ const PinterestView = ({
       linkText={linkText}
       className={className}
     >
-      <div
-        className="social-embed-container"
-        style={{ width, maxWidth: '100%' }}
-      >
+      <div className="social-embed-container" style={{ maxWidth: '100%' }}>
         <div ref={embedRef} />
       </div>
     </SocialContentWrapper>

@@ -1,7 +1,6 @@
 import React from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 import { extractAppleMusicEmbedUrl } from '../../../helpers';
-
 import { AUDIO_WIDTHS } from '../sharedWidths';
 
 export type AppleMusicViewProps = {
@@ -31,6 +30,7 @@ const AppleMusicView = ({
     >
       <div style={{ width, maxWidth: '100%' }}>
         <iframe
+          key={embedUrl}
           src={embedUrl}
           width={'100%'}
           allow={'autoplay *; encrypted-media *; fullscreen *; clipboard-write'}

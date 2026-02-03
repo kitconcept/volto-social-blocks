@@ -11,6 +11,10 @@ const messages = defineMessages({
     id: 'Mastodon url',
     defaultMessage: 'Mastodon url',
   },
+  mastodonUrlDescription: {
+    id: 'Paste the Mastodon post URL or embed code',
+    defaultMessage: 'Paste the Mastodon post URL or embed code',
+  },
   align: {
     id: 'Alignment',
     defaultMessage: 'Alignment',
@@ -54,13 +58,15 @@ export const mastodonSchema = (props: BlockSchemaProps): JSONSchema => {
       {
         id: 'style',
         title: intl.formatMessage(messages.styleFieldset),
-        fields: ['align', 'size', 'colorMode'],
+        fields: ['align', 'size'],
       },
     ],
 
     properties: {
       mastodonUrl: {
         title: intl.formatMessage(messages.mastodonUrl),
+        description: intl.formatMessage(messages.mastodonUrlDescription),
+        widget: 'textarea',
       },
       align: {
         title: intl.formatMessage(messages.align),
@@ -70,16 +76,6 @@ export const mastodonSchema = (props: BlockSchemaProps): JSONSchema => {
       size: {
         title: intl.formatMessage(messages.size),
         widget: 'image_size',
-      },
-      colorMode: {
-        title: intl.formatMessage(messages.colorMode),
-        choices: [
-          ['system', intl.formatMessage(messages.colorModeSystem)],
-          ['light', intl.formatMessage(messages.colorModeLight)],
-          ['dark', intl.formatMessage(messages.colorModeDark)],
-        ],
-        default: 'system',
-        noValueOption: false,
       },
     },
     required: ['mastodonUrl'],

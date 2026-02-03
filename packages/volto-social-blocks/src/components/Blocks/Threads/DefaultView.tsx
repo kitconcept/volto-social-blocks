@@ -52,9 +52,9 @@ const ThreadsView = ({
     if (!permalink) return undefined;
     const postId = extractThreadsPostId(permalink);
     return postId
-      ? `ig-tp-${postId}`
-      : `ig-tp-${Math.random().toString(36).slice(2)}`;
-  }, [permalink]);
+      ? `ig-tp-${postId}-${size}`
+      : `ig-tp-${Math.random().toString(36).slice(2)}-${size}`;
+  }, [permalink, size]);
 
   const hostRef = useRef<HTMLDivElement | null>(null);
 
@@ -110,7 +110,7 @@ const ThreadsView = ({
     return () => {
       host.innerHTML = '';
     };
-  }, [permalink, payloadId, linkText]);
+  }, [permalink, payloadId, linkText, size]);
 
   return permalink ? (
     <SocialContentWrapper

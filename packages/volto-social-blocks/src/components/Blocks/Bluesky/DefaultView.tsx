@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
-
 import { POST_WIDTHS } from '../sharedWidths';
 
 export type BlueskyViewProps = {

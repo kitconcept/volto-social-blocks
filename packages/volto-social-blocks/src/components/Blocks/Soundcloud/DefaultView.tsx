@@ -1,6 +1,5 @@
 import React from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
-
 import { AUDIO_WIDTHS } from '../sharedWidths';
 
 const SIZES: Record<string, number> = {
@@ -38,6 +37,7 @@ const SoundcloudView = ({
     >
       <div style={{ width, maxWidth: '100%' }}>
         <iframe
+          key={`${href}-${height}`}
           style={{ width: '100%', border: 'none', display: 'block' }}
           height={height}
           src={`https://w.soundcloud.com/player/?url=${href}`}

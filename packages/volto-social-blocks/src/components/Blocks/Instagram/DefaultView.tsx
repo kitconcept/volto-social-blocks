@@ -1,7 +1,6 @@
 import React from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 import { InstagramEmbed } from 'react-social-media-embed';
-
 import { POST_WIDTHS } from '../sharedWidths';
 
 export type InstagramViewProps = {
@@ -30,6 +29,7 @@ const InstagramView = ({
       className={className}
     >
       <InstagramEmbed
+        key={`${instagramId}-${width}-${captioned}`}
         url={instagramId}
         width={width}
         captioned={captioned}

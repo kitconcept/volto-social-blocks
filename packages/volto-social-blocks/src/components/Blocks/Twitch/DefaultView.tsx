@@ -1,7 +1,6 @@
 import React from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
 import { buildTwitchEmbedUrl, extractTwitchEmbedInfo } from '../../../helpers';
-
 import { MEDIA_WIDTHS } from '../sharedWidths';
 
 export type TwitchViewProps = {
