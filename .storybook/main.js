@@ -2,62 +2,12 @@ const webpack = require('webpack');
 const fs = require('fs');
 const path = require('path');
 
-const repoRootPath = path.resolve(__dirname, '..');
-const voltoRootPath = fs.existsSync(
-  path.join(repoRootPath, 'core/packages/volto/razzle.config.js'),
-)
-  ? path.join(repoRootPath, 'core/packages/volto')
-  : repoRootPath;
-
-const tryRequire = (candidates) => {
-  for (const candidate of candidates) {
-    try {
-      // eslint-disable-next-line global-require, import/no-dynamic-require
-      return require(candidate);
-    } catch (e) {
-    }
-  }
-  return null;
-};
-
-const lessPlugin =
-  tryRequire([
-    '@plone/volto/webpack-plugins/webpack-less-plugin',
-    path.join(repoRootPath, 'core/packages/volto/webpack-plugins/webpack-less-plugin'),
-  ]) || (() => ({ modifyWebpackConfig: ({ webpackConfig }) => webpackConfig }));
-
-const RelativeResolverPlugin =
-  tryRequire([
-    '@plone/volto/webpack-plugins/webpack-relative-resolver',
-    path.join(
-      repoRootPath,
-      'core/packages/volto/webpack-plugins/webpack-relative-resolver',
-    ),
-  ]) ||
-  class {
-    // eslint-disable-next-line no-useless-constructor
-    constructor() {}
-    apply() {}
-  };
-
-const scssPlugin =
-  tryRequire([
-    '@plone/volto/webpack-plugins/webpack-scss-plugin',
-    path.join(repoRootPath, 'core/packages/volto/webpack-plugins/webpack-scss-plugin'),
-  ]) || { modifyWebpackConfig: ({ webpackConfig }) => webpackConfig };
-
-const createConfig =
-  tryRequire([
-    '@plone/razzle/config/createConfigAsync.js',
-    path.join(repoRootPath, 'core/packages/volto-razzle/config/createConfigAsync.js'),
-  ]) ||
-  (async () => ({
-    module: { rules: [] },
-    plugins: [],
-    resolve: { alias: {} },
-  }));
-
-const razzleConfig = require(path.join(voltoRootPath, 'razzle.config.js'));
+const projectRootPath = path.resolve('.');
+const lessPlugin = require('@plone/volto/webpack-plugins/webpack-less-plugin');
+const RelativeResolverPlugin = require('@plone/volto/webpack-plugins/webpack-relative-resolver');
+const scssPlugin = require('@plone/volto/webpack-plugins/webpack-scss-plugin');
+const createConfig = require('@plone/razzle/config/createConfigAsync.js');
+const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
 
 const SVGLOADER = {
   test: /icons\/.*\.svg$/,
@@ -160,7 +110,7 @@ module.exports = {
     );
     const { AddonRegistry } = require('@plone/registry/addon-registry');
 
-    const { registry } = AddonRegistry.init(repoRootPath);
+    const { registry } = AddonRegistry.init(projectRootPath);
 
     config = lessPlugin({ registry }).modifyWebpackConfig({
       env: { target: 'web', dev: 'dev' },
@@ -200,47 +150,12 @@ module.exports = {
         fallback: { ...config.resolve.fallback, zlib: false },
         plugins: [
           ...(config.resolve.plugins || []),
-          ...(RelativeResolverPlugin
-            ? [new RelativeResolverPlugin(registry)].filter(
-                (p) => p && typeof p.apply === 'function',
-              )
-            : []),
+          new RelativeResolverPlugin(registry),
         ],
       },
     };
 
-    const ensureVoltoConfigAlias = (webpackConfig) => {
-      try {
-        require.resolve('@plone/volto/config', {
-          paths: [repoRootPath, voltoRootPath],
-        });
-        return webpackConfig;
-      } catch (e) {
-        const configFallbackCandidates = [
-          path.join(voltoRootPath, 'src/config/index.js'),
-          path.join(voltoRootPath, 'src/config/index.jsx'),
-          path.join(voltoRootPath, 'src/config/index.ts'),
-          path.join(voltoRootPath, 'src/config/index.tsx'),
-          path.join(voltoRootPath, 'src/config'),
-        ];
-
-        const configFallback = configFallbackCandidates.find((p) => fs.existsSync(p));
-
-        if (!configFallback) return webpackConfig;
-
-        return {
-          ...webpackConfig,
-          resolve: {
-            ...(webpackConfig.resolve || {}),
-            alias: {
-              ...((webpackConfig.resolve && webpackConfig.resolve.alias) || {}),
-              '@plone/volto/config': configFallback,
-            },
-          },
-        };
-      }
-    };
-
+    // Add-ons have to be loaded with babel
     const addonPaths = registry
       .getAddons()
       .map((addon) => fs.realpathSync(addon.modulePath));
@@ -273,6 +188,6 @@ module.exports = {
     // provided in a different manner by Storybook plugins (for example scss
     // loaders).
 
-    return ensureVoltoConfigAlias(extendedConfig);
+    return extendedConfig;
   },
 };
