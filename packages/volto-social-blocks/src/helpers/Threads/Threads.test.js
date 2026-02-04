@@ -9,8 +9,9 @@ describe('Threads', () => {
     });
 
     it('validates Threads urls without www', () => {
-      expect(isValidThreadsUrl('https://threads.com/@zuck/post/C8V8NIxyJy0'))
-        .toBe(true);
+      expect(
+        isValidThreadsUrl('https://threads.com/@zuck/post/C8V8NIxyJy0'),
+      ).toBe(true);
     });
 
     it('validates Threads urls with dots in username', () => {
@@ -29,9 +30,7 @@ describe('Threads', () => {
     });
 
     it('rejects invalid Threads url patterns', () => {
-      expect(isValidThreadsUrl('https://www.threads.com/post/123')).toBe(
-        false,
-      );
+      expect(isValidThreadsUrl('https://www.threads.com/post/123')).toBe(false);
       expect(isValidThreadsUrl('https://www.threads.com/@user')).toBe(false);
     });
 
@@ -42,9 +41,7 @@ describe('Threads', () => {
 
     it('trims whitespace', () => {
       expect(
-        isValidThreadsUrl(
-          '  https://www.threads.com/@zuck/post/C8V8NIxyJy0  ',
-        ),
+        isValidThreadsUrl('  https://www.threads.com/@zuck/post/C8V8NIxyJy0  '),
       ).toBe(true);
     });
   });

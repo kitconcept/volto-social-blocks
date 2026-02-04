@@ -1,7 +1,4 @@
-import {
-  isValidAppleMusicUrl,
-  extractAppleMusicEmbedUrl,
-} from './AppleMusic';
+import { isValidAppleMusicUrl, extractAppleMusicEmbedUrl } from './AppleMusic';
 
 describe('AppleMusic', () => {
   describe('isValidAppleMusicUrl', () => {
@@ -30,9 +27,7 @@ describe('AppleMusic', () => {
     });
 
     it('rejects non-Apple Music urls', () => {
-      expect(isValidAppleMusicUrl('https://spotify.com/track/123')).toBe(
-        false,
-      );
+      expect(isValidAppleMusicUrl('https://spotify.com/track/123')).toBe(false);
       expect(isValidAppleMusicUrl('not a url')).toBe(false);
     });
 

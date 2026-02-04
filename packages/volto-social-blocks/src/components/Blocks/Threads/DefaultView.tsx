@@ -23,7 +23,6 @@ function normalizeThreadsPermalink(input?: string): string | undefined {
     const url = new URL(normalized);
     const pathname = url.pathname.replace(/\/+$/, '');
     if (!/^\/@[\w.]+\/post\/[\w-]+$/i.test(pathname)) return undefined;
-    // Threads official embed script supports both, but standardize for consistency.
     return `https://www.threads.com${pathname}`;
   } catch {
     return undefined;
