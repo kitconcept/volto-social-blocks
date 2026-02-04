@@ -209,26 +209,37 @@ module.exports = {
       },
     };
 
-    try {
-      require.resolve('@plone/volto/config', { paths: [repoRootPath, voltoRootPath] });
-    } catch (e) {
-      const configFallbackCandidates = [
-        path.join(voltoRootPath, 'src/config/index.js'),
-        path.join(voltoRootPath, 'src/config/index.jsx'),
-        path.join(voltoRootPath, 'src/config/index.ts'),
-        path.join(voltoRootPath, 'src/config/index.tsx'),
-        path.join(voltoRootPath, 'src/config'),
-      ];
+    const ensureVoltoConfigAlias = (webpackConfig) => {
+      try {
+        require.resolve('@plone/volto/config', {
+          paths: [repoRootPath, voltoRootPath],
+        });
+        return webpackConfig;
+      } catch (e) {
+        const configFallbackCandidates = [
+          path.join(voltoRootPath, 'src/config/index.js'),
+          path.join(voltoRootPath, 'src/config/index.jsx'),
+          path.join(voltoRootPath, 'src/config/index.ts'),
+          path.join(voltoRootPath, 'src/config/index.tsx'),
+          path.join(voltoRootPath, 'src/config'),
+        ];
 
-      const configFallback = configFallbackCandidates.find((p) => fs.existsSync(p));
+        const configFallback = configFallbackCandidates.find((p) => fs.existsSync(p));
 
-      if (configFallback) {
-        resultConfig.resolve.alias = {
-          ...resultConfig.resolve.alias,
-          '@plone/volto/config': configFallback,
+        if (!configFallback) return webpackConfig;
+
+        return {
+          ...webpackConfig,
+          resolve: {
+            ...(webpackConfig.resolve || {}),
+            alias: {
+              ...((webpackConfig.resolve && webpackConfig.resolve.alias) || {}),
+              '@plone/volto/config': configFallback,
+            },
+          },
         };
       }
-    }
+    };
 
     const addonPaths = registry
       .getAddons()
@@ -262,6 +273,6 @@ module.exports = {
     // provided in a different manner by Storybook plugins (for example scss
     // loaders).
 
-    return extendedConfig;
+    return ensureVoltoConfigAlias(extendedConfig);
   },
 };
