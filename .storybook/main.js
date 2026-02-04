@@ -2,7 +2,14 @@ const webpack = require('webpack');
 const fs = require('fs');
 const path = require('path');
 
-const projectRootPath = path.resolve('.');
+// Storybook can be executed with a different CWD (e.g. pnpm running from
+// core/packages/volto). Derive paths from this config file location.
+const repoRootPath = path.resolve(__dirname, '..');
+const voltoRootPath = fs.existsSync(
+  path.join(repoRootPath, 'core/packages/volto/razzle.config.js'),
+)
+  ? path.join(repoRootPath, 'core/packages/volto')
+  : repoRootPath;
 
 let lessPlugin, RelativeResolverPlugin, scssPlugin, createConfig;
 
@@ -15,19 +22,19 @@ try {
   // Fallback for different Volto/Razzle versions or CI environments
   try {
     lessPlugin = require(path.join(
-      projectRootPath,
+      repoRootPath,
       'core/packages/volto/webpack-plugins/webpack-less-plugin',
     ));
     RelativeResolverPlugin = require(path.join(
-      projectRootPath,
+      repoRootPath,
       'core/packages/volto/webpack-plugins/webpack-relative-resolver',
     ));
     scssPlugin = require(path.join(
-      projectRootPath,
+      repoRootPath,
       'core/packages/volto/webpack-plugins/webpack-scss-plugin',
     ));
     createConfig = require(path.join(
-      projectRootPath,
+      repoRootPath,
       'core/packages/volto-razzle/config/createConfigAsync.js',
     ));
   } catch (fallbackError) {
@@ -38,8 +45,11 @@ try {
     // Provide minimal fallback implementations (keep Storybook alive)
     lessPlugin = () => ({ modifyWebpackConfig: ({ webpackConfig }) => webpackConfig });
     scssPlugin = { modifyWebpackConfig: ({ webpackConfig }) => webpackConfig };
+    // Webpack expects resolver plugins to implement `apply(compiler)`.
     RelativeResolverPlugin = class {
+      // eslint-disable-next-line no-useless-constructor
       constructor() {}
+      apply() {}
     };
     createConfig = async () => ({
       module: { rules: [] },
@@ -49,7 +59,7 @@ try {
   }
 }
 
-const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
+const razzleConfig = require(path.join(voltoRootPath, 'razzle.config.js'));
 
 const SVGLOADER = {
   test: /icons\/.*\.svg$/,
@@ -153,7 +163,7 @@ module.exports = {
     );
     const { AddonRegistry } = require('@plone/registry/addon-registry');
 
-    const { registry } = AddonRegistry.init(projectRootPath);
+    const { registry } = AddonRegistry.init(repoRootPath);
 
     config = lessPlugin({ registry }).modifyWebpackConfig({
       env: { target: 'web', dev: 'dev' },
@@ -193,7 +203,11 @@ module.exports = {
         fallback: { ...config.resolve.fallback, zlib: false },
         plugins: [
           ...(config.resolve.plugins || []),
-          new RelativeResolverPlugin(registry),
+          ...(RelativeResolverPlugin
+            ? [new RelativeResolverPlugin(registry)].filter(
+                (p) => p && typeof p.apply === 'function',
+              )
+            : []),
         ],
       },
     };
