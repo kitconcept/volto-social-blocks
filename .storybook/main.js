@@ -28,15 +28,24 @@ try {
     ));
     createConfig = require(path.join(
       projectRootPath,
-      'core/packages/razzle/config/createConfigAsync.js',
+      'core/packages/volto-razzle/config/createConfigAsync.js',
     ));
   } catch (fallbackError) {
-    console.warn('Could not load Volto webpack plugins:', e.message);
-    // Provide minimal fallback implementations
-    lessPlugin = () => {};
-    scssPlugin = () => {};
-    RelativeResolverPlugin = class {};
-    createConfig = async () => ({ module: { rules: [] }, plugins: [] });
+    console.warn(
+      'Could not load Volto/Razzle webpack helpers:',
+      fallbackError.message,
+    );
+    // Provide minimal fallback implementations (keep Storybook alive)
+    lessPlugin = () => ({ modifyWebpackConfig: ({ webpackConfig }) => webpackConfig });
+    scssPlugin = { modifyWebpackConfig: ({ webpackConfig }) => webpackConfig };
+    RelativeResolverPlugin = class {
+      constructor() {}
+    };
+    createConfig = async () => ({
+      module: { rules: [] },
+      plugins: [],
+      resolve: { alias: {} },
+    });
   }
 }
 
