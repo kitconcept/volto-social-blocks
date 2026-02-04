@@ -59,7 +59,7 @@ Embed toots from any Mastodon instance directly into your Plone pages.
     },
   },
   args: {
-    mastodonUrl: 'https://mastodon.social/@Mastodon/99664645266851984',
+    mastodonUrl: 'https://mastodon.social/@newsevoce/116008728971720505',
     align: 'center',
     size: 'l',
   },

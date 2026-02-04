@@ -59,7 +59,7 @@ Embed posts from Meta's Threads platform directly into your Plone pages.
     },
   },
   args: {
-    threadsUrl: 'https://www.threads.net/@zuck/post/C9gJOdKu8Gw',
+    threadsUrl: 'https://www.threads.com/@corinthiansfutebolfeminino/post/DUF9FrDCGp6?hl=pt-br',
     align: 'center',
     size: 'l',
   },
