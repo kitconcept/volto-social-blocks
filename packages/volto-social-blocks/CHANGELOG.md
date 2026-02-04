@@ -8,6 +8,31 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0 (2026-01-28)
+
+### Feature
+
+- Added Bluesky block. @humanaice [#37](https://github.com/kitconcept/volto-social-blocks/issue/37)
+- Replace old Twitter icon with X icon @ericof [#42](https://github.com/kitconcept/volto-social-blocks/issue/42)
+- Added Pinterest block. @humanaice [#43](https://github.com/kitconcept/volto-social-blocks/issue/43)
+- Add Linkedin Block @ericof [#44](https://github.com/kitconcept/volto-social-blocks/issue/44)
+- Added TikTok block. @humanaice [#45](https://github.com/kitconcept/volto-social-blocks/issue/45)
+- Update Deutsch translations @ericof 
+- Update Spanish translations @ericof 
+- Update pt_BR translations @ericof 
+
+### Internal
+
+- Refactor `apply_config` @ericof [#38](https://github.com/kitconcept/volto-social-blocks/issue/38)
+- Bump version react-social-media-embed to 2.5.18 @ericof [#39](https://github.com/kitconcept/volto-social-blocks/issue/39)
+- Removes semantic UI & fix Facebook block. @humanaice [#41](https://github.com/kitconcept/volto-social-blocks/issue/41)
+- react-social-media-embed: Replace import `TwitterEmbed` by `XEmbed`. @ericof [#42](https://github.com/kitconcept/volto-social-blocks/issue/42)
+- Add instructions for Co-Pilot. @ericof 
+- Refactor GHA to use a main workflow. @ericof 
+- Remove barrel imports of @plone/volto @ericof 
+- Update codebase to latest cookieplone. @ericof 
+- Updated files to typescript. @humanaice 
+
 ## 1.0.0-alpha.10 (2024-03-28)
 
 ## 1.0.0-alpha.9 (2024-03-28)

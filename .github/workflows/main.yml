@@ -1,19 +1,18 @@
-name: "Volto Social Blocks: CI"
-description: "Main workflow for Volto Social Blocks"
+name: "Main CI"
 
 on:
   push:
   workflow_dispatch:
 
-
 jobs:
+
   config:
     name: "Config: Compute values used in workflow"
     uses: ./.github/workflows/config.yml
 
   code-analysis:
     name: "Code analysis checks"
-    uses: ./.github/workflows/code.yml
+    uses: plone/meta/.github/workflows/frontend-code.yml@2.x
     needs:
         - config
     with:
@@ -21,34 +20,30 @@ jobs:
 
   unit:
     name: "Run unit tests"
-    uses: ./.github/workflows/unit.yml
+    uses: plone/meta/.github/workflows/frontend-unit.yml@2.x
     needs:
         - config
     with:
         node-version: ${{ needs.config.outputs.node-version }}
-
   i18n:
     name: "Run i18n checks"
-    uses: ./.github/workflows/i18n.yml
+    uses: plone/meta/.github/workflows/frontend-i18n.yml@2.x
     needs:
         - config
     with:
         node-version: ${{ needs.config.outputs.node-version }}
 
   acceptance:
-    name: "Acceptance tests"
-    uses: ./.github/workflows/acceptance.yml
+    name: "Run acceptance tests"
+    uses: plone/meta/.github/workflows/frontend-acceptance.yml@2.x
     needs:
-      - config
-      - code-analysis
-      - unit
-      - i18n
+        - config
     with:
-      node-version: ${{ needs.config.outputs.node-version }}
+        node-version: ${{ needs.config.outputs.node-version }}
 
   storybook:
     name: "Storybook"
-    uses: ./.github/workflows/storybook.yml
+    uses: plone/meta/.github/workflows/frontend-storybook.yml@2.x
     needs:
         - config
         - code-analysis
@@ -56,6 +51,7 @@ jobs:
         - i18n
     with:
         node-version: ${{ needs.config.outputs.node-version }}
+        deploy: true
 
   report:
     name: "Final report"
@@ -65,8 +61,8 @@ jobs:
       - config
       - code-analysis
       - unit
-      - i18n
       - acceptance
+      - i18n
       - storybook
     steps:
       - name: Write report
@@ -77,6 +73,6 @@ jobs:
           echo '| config | ${{ needs.config.result }} |' >> $GITHUB_STEP_SUMMARY
           echo '| code-analysis | ${{ needs.code-analysis.result }} |' >> $GITHUB_STEP_SUMMARY
           echo '| unit | ${{ needs.unit.result }} |' >> $GITHUB_STEP_SUMMARY
-          echo '| i18n | ${{ needs.i18n.result }} |' >> $GITHUB_STEP_SUMMARY
           echo '| acceptance | ${{ needs.acceptance.result }} |' >> $GITHUB_STEP_SUMMARY
+          echo '| i18n | ${{ needs.i18n.result }} |' >> $GITHUB_STEP_SUMMARY
           echo '| storybook | ${{ needs.storybook.result }} |' >> $GITHUB_STEP_SUMMARY

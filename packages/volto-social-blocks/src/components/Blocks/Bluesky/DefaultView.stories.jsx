@@ -1,5 +1,15 @@
 import BlueskyDefaultView from './DefaultView';
 
+const withWrapper = (Story, { args }) => {
+  return (
+    <Wrapper anonymous>
+      <div style={{ width: '1000px' }}>
+        <Story {...args} />
+      </div>
+    </Wrapper>
+  );
+};
+
 export default {
   title: 'Public/Blocks/BlueskyBlock',
   component: BlueskyDefaultView,

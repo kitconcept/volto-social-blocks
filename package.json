@@ -1,10 +1,9 @@
 {
   "name": "@kitconcept/volto-social-blocks-dev",
-  "version": "1.0.0-alpha.5",
-  "description": "Volto add-on providing blocks for Twitter, Instagram, Facebook.",
-  "author": "kitconcept",
+  "version": "1.0.0",
+  "description": "Volto add-on providing blocks for Bluesky, X, Instagram, Facebook and other social networks",
+  "author": "kitconcept GmbH",
   "homepage": "https://github.com/kitconcept/volto-social-blocks",
-  "main": "src/index.js",
   "license": "MIT",
   "keywords": [
     "volto-addon",
@@ -12,9 +11,6 @@
     "plone",
     "react"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "start": "VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto start",

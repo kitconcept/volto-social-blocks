@@ -1,4 +1,4 @@
-# Social Blocks for Volto (@kitconcept/volto-social-blocks)
+# 🎨 Social Blocks for Volto (@kitconcept/volto-social-blocks)
 
 Embed social media content from 14 different platforms directly into your [Plone](https://plone.org) pages with [Volto](https://github.com/plone/volto).
 
@@ -39,14 +39,15 @@ This addon provides 14 Volto blocks to embed content from popular social media p
 
 > **Note**: For interactive examples and detailed documentation, check out the [Storybook](https://kitconcept.github.io/volto-social-blocks/).
 
-## Installation
+## 📦 Installation
 
-To install your project, you must choose the method appropriate to your version of Volto.
+Installing `@kitconcept/volto-social-blocks` requires Volto 18 or above.
 
+### 🚀 Adding this package as a dependency
 
-### Volto 18 and later
+To add `@kitconcept/volto-social-blocks` to your project, locate your project's policy package (typically found in the `packages` folder) and edit its `package.json` file.
 
-Add `@kitconcept/volto-social-blocks` to your `package.json`:
+Add `@kitconcept/volto-social-blocks` under `dependencies`:
 
 ```json
 "dependencies": {
@@ -54,59 +55,33 @@ Add `@kitconcept/volto-social-blocks` to your `package.json`:
 }
 ```
 
-Add `@kitconcept/volto-social-blocks` to your `volto.config.js`:
+Then add `@kitconcept/volto-social-blocks` to the `addons` array:
 
-```javascript
-const addons = ['@kitconcept/volto-social-blocks'];
-```
-
-If this package provides a Volto theme, and you want to activate it, then add the following to your `volto.config.js`:
-
-```javascript
-const theme = '@kitconcept/volto-social-blocks';
-```
-
-### Volto 17 and earlier
-
-Create a new Volto project (you can skip this step if you already have one):
-
-```
-npm install -g yo @plone/generator-volto
-yo @plone/volto my-volto-project --addon @kitconcept/volto-social-blocks
-cd my-volto-project
-```
-
-Add `@kitconcept/volto-social-blocks` to your package.json:
-
-```JSON
+```json
 "addons": [
-    "@kitconcept/volto-social-blocks"
-],
-
-"dependencies": {
-    "@kitconcept/volto-social-blocks": "*"
-}
+  "@kitconcept/volto-social-blocks"
+]
 ```
 
-Download and install the new add-on by running:
+### 🚀 Starting the project
 
-```
-yarn install
-```
+After adding `@kitconcept/volto-social-blocks` to your project, run the installation:
 
-Start volto with:
-
-```
-yarn start
+```bash
+make install
 ```
 
-### Test it
+Then start the development server:
 
-Go to http://localhost:3000/, login, create a new page. The social blocks will show up in the Volto blocks chooser.
+```bash
+make start
+```
 
-## 🔒 Privacy & GDPR Compliance
+## ✅ Test installation
 
-### Custom Privacy Consent Notice
+Visit http://localhost:3000/ in a browser, login, and check the new blocks should be available.
+
+### 🔒 Custom Privacy Consent Notice
 
 You can register a custom React component to check for privacy consent and show the user a prompt to confirm accessing external services. This is particularly useful to meet European GDPR requirements.
 
@@ -142,11 +117,11 @@ The [@kitconcept/volto-dsgvo-banner](https://github.com/kitconcept/volto-dsgvo-b
 
 ## Development
 
-The development of this add-on is done in isolation using a new approach using pnpm workspaces and latest `mrs-developer` and other Volto core improvements.
-For this reason, it only works with pnpm and Volto 18 (currently in alpha).
+The development of this add-on is done in isolation using a new approach with pnpm workspaces and latest `mrs-developer` and other Volto core improvements.
+It requires pnpm and Volto 18 or higher.
 
 
-### Prerequisites ✅
+### ✅ Prerequisites
 
 -   An [operating system](https://6.docs.plone.org/install/create-project-cookieplone.html#prerequisites-for-installation) that runs all the requirements mentioned.
 -   [nvm](https://6.docs.plone.org/install/create-project-cookieplone.html#nvm)
@@ -155,7 +130,7 @@ For this reason, it only works with pnpm and Volto 18 (currently in alpha).
 -   [Git](https://6.docs.plone.org/install/create-project-cookieplone.html#git)
 -   [Docker](https://docs.docker.com/get-started/get-docker/) (optional)
 
-### Installation 🔧
+### 🔧 Installation
 
 1.  Clone this repository, then change your working directory.
 
@@ -171,7 +146,7 @@ For this reason, it only works with pnpm and Volto 18 (currently in alpha).
     ```
 
 
-### Make convenience commands
+### 🎯 Make commands
 
 Run `make help` to list the available commands.
 
@@ -202,88 +177,88 @@ ci-acceptance                    Alias for ci-acceptance-test-run-all
 ci-acceptence                    Backward-compatible alias (common typo)
 ```
 
-### Development environment set up
+### 🔧 Development environment setup
 
-Install package requirements.
+Install all package requirements:
 
 ```shell
 make install
 ```
 
-### Start developing
+### 🚀 Start developing
 
-Start the backend.
+Start the backend in one terminal:
 
 ```shell
 make backend-docker-start
 ```
 
-In a separate terminal session, start the frontend.
+In a separate terminal session, start the frontend:
 
 ```shell
 make start
 ```
 
-### Lint code
+### 🧹 Lint code
 
-Run ESlint, Prettier, and Stylelint in analyze mode.
+Run ESlint, Prettier, and Stylelint in analyze mode:
 
 ```shell
 make lint
 ```
 
-### Format code
+### ✨ Format code
 
-Run ESlint, Prettier, and Stylelint in fix mode.
+Run ESlint, Prettier, and Stylelint in fix mode:
 
 ```shell
 make format
 ```
 
-### i18n
+### 🌍 Internationalization (i18n)
 
-Extract the i18n messages to locales.
+Extract i18n messages to locales:
 
 ```shell
 make i18n
 ```
 
-### Unit tests
+### 🧪 Unit tests
 
-Run unit tests.
+Run unit tests:
 
 ```shell
 make test
 ```
 
-### Run Cypress tests
+### 🎯 Run Cypress acceptance tests
 
-Run each of these steps in separate terminal sessions.
+Run each command in separate terminal sessions:
 
-In the first session, start the frontend in development mode.
+**Terminal 1:** Start the frontend in development mode:
 
 ```shell
 make acceptance-frontend-dev-start
 ```
 
-In the second session, start the backend acceptance server.
+**Terminal 2:** Start the backend acceptance server:
 
 ```shell
 make acceptance-backend-start
 ```
 
-In the third session, start the Cypress interactive test runner.
+**Terminal 3:** Start the Cypress interactive test runner:
 
 ```shell
 make acceptance-test
 ```
 
-## Credits
+## 💡 Credits
 
 The development of this add-on was sponsored by kitconcept GmbH.
 
 ![kitconcept GmbH](https://raw.githubusercontent.com/kitconcept/volto-form-builder/master/kitconcept.png)
 
-## License
+## 📄 License
 
 The project is licensed under the MIT license.
