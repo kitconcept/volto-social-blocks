@@ -15,11 +15,11 @@ context('Apple Music Block Acceptance Tests', () => {
       cy.navigate('/document/edit');
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .social .button.appleMusicBlock').click({
+      cy.get('.blocks-chooser .social .button.applemusicBlock').click({
         force: true,
       });
 
-      cy.get('.block.inner.appleMusicBlock .input-wrapper input.social-blocks-input')
+      cy.get('.block.inner.applemusicBlock .input-wrapper input.social-blocks-input')
         .invoke(
           'val',
           'https://music.apple.com/us/album/nevermind/1440783617',

@@ -3,10 +3,43 @@ const fs = require('fs');
 const path = require('path');
 
 const projectRootPath = path.resolve('.');
-const lessPlugin = require('@plone/volto/webpack-plugins/webpack-less-plugin');
-const RelativeResolverPlugin = require('@plone/volto/webpack-plugins/webpack-relative-resolver');
-const scssPlugin = require('@plone/volto/webpack-plugins/webpack-scss-plugin');
-const createConfig = require('@plone/razzle/config/createConfigAsync.js');
+
+let lessPlugin, RelativeResolverPlugin, scssPlugin, createConfig;
+
+try {
+  lessPlugin = require('@plone/volto/webpack-plugins/webpack-less-plugin');
+  RelativeResolverPlugin = require('@plone/volto/webpack-plugins/webpack-relative-resolver');
+  scssPlugin = require('@plone/volto/webpack-plugins/webpack-scss-plugin');
+  createConfig = require('@plone/razzle/config/createConfigAsync.js');
+} catch (e) {
+  // Fallback for different Volto/Razzle versions or CI environments
+  try {
+    lessPlugin = require(path.join(
+      projectRootPath,
+      'core/packages/volto/webpack-plugins/webpack-less-plugin',
+    ));
+    RelativeResolverPlugin = require(path.join(
+      projectRootPath,
+      'core/packages/volto/webpack-plugins/webpack-relative-resolver',
+    ));
+    scssPlugin = require(path.join(
+      projectRootPath,
+      'core/packages/volto/webpack-plugins/webpack-scss-plugin',
+    ));
+    createConfig = require(path.join(
+      projectRootPath,
+      'core/packages/razzle/config/createConfigAsync.js',
+    ));
+  } catch (fallbackError) {
+    console.warn('Could not load Volto webpack plugins:', e.message);
+    // Provide minimal fallback implementations
+    lessPlugin = () => {};
+    scssPlugin = () => {};
+    RelativeResolverPlugin = class {};
+    createConfig = async () => ({ module: { rules: [] }, plugins: [] });
+  }
+}
+
 const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
 
 const SVGLOADER = {

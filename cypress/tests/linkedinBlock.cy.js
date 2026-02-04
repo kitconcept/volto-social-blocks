@@ -15,11 +15,11 @@ context('LinkedIn Block Acceptance Tests', () => {
       cy.navigate('/document/edit');
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .social .button.linkedInBlock').click({
+      cy.get('.blocks-chooser .social .button.linkedinBlock').click({
         force: true,
       });
 
-      cy.get('.block.inner.linkedInBlock .input-wrapper input.social-blocks-input')
+      cy.get('.block.inner.linkedinBlock .input-wrapper input.social-blocks-input')
         .invoke(
           'val',
           'https://www.linkedin.com/posts/plone_plone-conference-2022-activity-6945674096819568640-YHCz',
