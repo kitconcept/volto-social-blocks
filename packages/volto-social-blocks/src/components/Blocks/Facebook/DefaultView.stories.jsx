@@ -5,7 +5,7 @@ import Wrapper from '@plone/volto/storybook';
 const withWrapper = (Story, { args }) => {
   return (
     <Wrapper anonymous>
-      <div style={{ width: '1000px' }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <Story {...args} />
       </div>
     </Wrapper>
@@ -16,6 +16,32 @@ export default {
   title: 'Public/Blocks/FacebookBlock',
   component: FacebookView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component: `
+# Facebook Block
+
+Embed Facebook posts and videos directly into your Plone pages.
+
+## Features
+
+- **Responsive sizes**: Three sizes available (small, medium, large)
+- **Flexible alignment**: Left, center, or right alignment
+- **Support for posts and videos**
+- **Native Facebook embed player**
+
+## How to use
+
+1. Add the Facebook block to your page
+2. Paste a Facebook post or video URL
+3. Adjust size and alignment as needed
+4. The content will be automatically embedded
+        `,
+      },
+    },
+  },
   argTypes: {
     facebookId: {
       name: 'Facebook ID',
@@ -63,7 +89,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };

@@ -7,7 +7,7 @@ import './EditForm.css';
 const withWrapper = (Story, { args }) => {
   return (
     <Wrapper anonymous>
-      <div style={{ width: '1000px' }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <Story {...args} />
       </div>
     </Wrapper>

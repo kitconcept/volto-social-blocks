@@ -21,6 +21,14 @@ const messages = defineMessages({
     id: 'Post url',
     defaultMessage: 'Post url',
   },
+  align: {
+    id: 'Alignment',
+    defaultMessage: 'Alignment',
+  },
+  size: {
+    id: 'Size',
+    defaultMessage: 'Size',
+  },
 });
 
 export default messages;

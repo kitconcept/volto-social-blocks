@@ -7,6 +7,7 @@ import EditForm from '@kitconcept/volto-social-blocks/components/EditForm/EditFo
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 import LinkedInBlockData from './Data';
 import LinkedInBlockView from './View';
@@ -58,7 +59,9 @@ const LinkedInBlockEdit = (props: Props) => {
   return (
     <>
       {postURL ? (
-        <LinkedInBlockView data={data} className={className} />
+        <NonInteractiveWrapper>
+          <LinkedInBlockView data={data} className={className} />
+        </NonInteractiveWrapper>
       ) : (
         <EditForm
           formHeader={intl.formatMessage(messages.linkedInFormHeader)}

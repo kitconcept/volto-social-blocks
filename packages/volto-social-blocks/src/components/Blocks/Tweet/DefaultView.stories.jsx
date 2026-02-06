@@ -6,7 +6,7 @@ import Wrapper from '@plone/volto/storybook';
 const withWrapper = (Story, { args }) => {
   return (
     <Wrapper anonymous>
-      <div style={{ width: '400px' }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <Story {...args} />
       </div>
     </Wrapper>
@@ -17,6 +17,33 @@ export default {
   title: 'Public/Blocks/TweetBlock',
   component: TweetView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component: `
+# X/Twitter Block
+
+Embed posts from X (formerly Twitter) directly into your Plone pages.
+
+## Features
+
+- **Responsive sizes**: Three sizes available (small, medium, large)
+- **Flexible alignment**: Left, center, or right alignment
+- **Theme options**: Light or dark theme
+- **Language support**: Multiple languages available
+- **Privacy option**: Do-not-track support
+
+## How to use
+
+1. Add the X/Twitter block to your page
+2. Paste a post URL or provide the tweet ID
+3. Configure theme, language, and alignment
+4. The post will be automatically embedded
+        `,
+      },
+    },
+  },
   argTypes: {
     tweetId: {
       name: 'Tweet ID',
@@ -90,7 +117,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };

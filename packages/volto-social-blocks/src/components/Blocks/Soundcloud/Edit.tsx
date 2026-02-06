@@ -6,6 +6,7 @@ import EditForm from '../../EditForm/EditForm';
 import withBlockExtensions from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 import SoundcloudBlockData from './Data';
 import SoundcloudBlockView from './View';
@@ -81,7 +82,9 @@ const SoundcloudBlockEdit = (props: Props) => {
 
   return soundcloudId ? (
     <>
-      <SoundcloudBlockView data={data} className={className} />
+      <NonInteractiveWrapper>
+        <SoundcloudBlockView data={data} className={className} />
+      </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
         <SoundcloudBlockData
           data={data}

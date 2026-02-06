@@ -1,16 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrapper';
-
-const SIZES: Record<string, number> = {
-  s: 325,
-  m: 450,
-  l: 600,
-};
+import { POST_WIDTHS } from '../sharedWidths';
 
 export type BlueskyViewProps = {
   blueskyUrl?: string;
   align?: string;
-  size?: keyof typeof SIZES;
+  size?: keyof typeof POST_WIDTHS;
   colorMode?: 'system' | 'light' | 'dark';
   className?: string;
 };
@@ -111,7 +106,7 @@ const BlueskyView = ({
   colorMode = 'system',
   className,
 }: BlueskyViewProps) => {
-  const width = SIZES[size] ?? SIZES.l;
+  const width = POST_WIDTHS[size] ?? POST_WIDTHS.l;
   const linkText = 'View post on Bluesky';
 
   const hostRef = useRef<HTMLDivElement | null>(null);

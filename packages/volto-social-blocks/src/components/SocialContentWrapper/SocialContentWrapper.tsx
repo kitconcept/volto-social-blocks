@@ -38,6 +38,10 @@ function SocialContentWrapper({
     ...(linkText ? { linkText } : {}),
   };
 
+  const wrappedChildren = (
+    <div className="social-embed-container">{children}</div>
+  );
+
   return (
     <div
       className={cx(
@@ -51,10 +55,10 @@ function SocialContentWrapper({
     >
       {CheckPrivacyConsent ? (
         <CheckPrivacyConsent module={tool} data={privacyConsentData}>
-          {children}
+          {wrappedChildren}
         </CheckPrivacyConsent>
       ) : (
-        <>{children}</>
+        <>{wrappedChildren}</>
       )}
     </div>
   );

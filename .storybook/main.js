@@ -62,9 +62,11 @@ const defaultRazzleOptions = {
 
 module.exports = {
   stories: [
+    './*.mdx',
     '../packages/**/*.mdx',
     '../packages/**/*.stories.@(js|jsx|ts|tsx)',
   ],
+  staticDirs: ['../docs/_static'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -97,7 +99,6 @@ module.exports = {
       'web',
       'dev',
       {
-        // clearConsole: false,
         modifyWebpackConfig: razzleConfig.modifyWebpackConfig,
         plugins: razzleConfig.plugins,
       },

@@ -5,7 +5,7 @@ import Wrapper from '@plone/volto/storybook';
 const withWrapper = (Story, { args }) => {
   return (
     <Wrapper anonymous>
-      <div style={{ width: '1000px' }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <Story {...args} />
       </div>
     </Wrapper>
@@ -16,9 +16,35 @@ export default {
   title: 'Public/Blocks/LinkedInBlock',
   component: LinkedInView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component: `
+# LinkedIn Block
+
+Embed LinkedIn posts directly into your Plone pages.
+
+## Features
+
+- **Responsive sizes**: Three sizes available (small, medium, large)
+- **Flexible alignment**: Left, center, or right alignment
+- **Official LinkedIn embed**: Native post display
+- **Professional content**: Share business updates and articles
+
+## How to use
+
+1. Add the LinkedIn block to your page
+2. Paste a LinkedIn post URL
+3. Adjust size and alignment as needed
+4. The post will be automatically embedded
+        `,
+      },
+    },
+  },
   argTypes: {
     postURL: {
-      name: 'Post url',
+      name: 'Post URL',
       control: 'text',
     },
     align: {
@@ -63,7 +89,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };

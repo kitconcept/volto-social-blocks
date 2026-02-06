@@ -23,6 +23,23 @@ export const linkedinSchema = (props: BlockSchemaProps): JSONSchema => {
     required: ['postURL'],
   };
 
+  // Adds an empty `styles` object field under a "Styling" fieldset
   addStyling({ schema, intl });
+
+  // Add styling controls
+  schema.properties.styles.schema.properties.align = {
+    widget: 'align',
+    title: intl.formatMessage(messages.align),
+    actions: ['left', 'center', 'right'],
+  };
+  schema.properties.styles.schema.properties.size = {
+    title: intl.formatMessage(messages.size),
+    widget: 'image_size',
+  };
+
+  // Add the fields to the "Styling" fieldset
+  schema.properties.styles.schema.fieldsets[0].fields.push('align');
+  schema.properties.styles.schema.fieldsets[0].fields.push('size');
+
   return schema;
 };

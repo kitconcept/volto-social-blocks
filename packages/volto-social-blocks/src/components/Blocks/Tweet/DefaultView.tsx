@@ -37,6 +37,8 @@ const TweetView = ({
     },
   };
   const linkText = 'View post on Twitter';
+  const embedKey = `${tweetId}-${theme}-${lang}-${dnt}-${width}`;
+
   return tweetId ? (
     <SocialContentWrapper
       align={align}
@@ -46,6 +48,7 @@ const TweetView = ({
       className={className}
     >
       <XEmbed
+        key={embedKey}
         url={url}
         width={width}
         linkText={linkText}

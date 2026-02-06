@@ -9,6 +9,7 @@ import TweetBlockData from './Data';
 import TweetBlockView from './View';
 import type { TweetBlockFormData as TweetBlockDataType } from './Data';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
@@ -78,7 +79,9 @@ const TweetBlockEdit = (props: Props) => {
 
   return tweetId ? (
     <>
-      <TweetBlockView data={data} className={className} />
+      <NonInteractiveWrapper>
+        <TweetBlockView data={data} className={className} />
+      </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
         <TweetBlockData
           data={data}

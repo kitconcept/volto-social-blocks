@@ -9,6 +9,7 @@ import PinterestBlockData from './Data';
 import PinterestBlockView from './View';
 import type { PinterestBlockFormData as PinterestBlockDataType } from './Data';
 import type { BlockEditPropsWithData } from '../../../types/blocks';
+import NonInteractiveWrapper from '../../NonInteractiveWrapper/NonInteractiveWrapper';
 
 const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 
@@ -81,7 +82,9 @@ const PinterestBlockEdit = (props: Props) => {
 
   return pinterestUrl ? (
     <>
-      <PinterestBlockView data={data} className={className} />
+      <NonInteractiveWrapper>
+        <PinterestBlockView data={data} className={className} />
+      </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
         <PinterestBlockData
           data={data}

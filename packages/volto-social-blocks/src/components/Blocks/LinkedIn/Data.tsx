@@ -8,7 +8,7 @@ import type { BlockSchemaProps, BlocksFormData } from '@plone/types';
 import type { BlockDataFormWrapperProps } from '../../../types/blocks';
 
 export type LinkedInBlockFormData = BlocksFormData &
-  Pick<LinkedInViewProps, 'postURL' | 'align' | 'size'>;
+  Pick<LinkedInViewProps, 'postURL' | 'styles'>;
 
 type LinkedInBlockDataProps = BlockDataFormWrapperProps<LinkedInBlockFormData>;
 

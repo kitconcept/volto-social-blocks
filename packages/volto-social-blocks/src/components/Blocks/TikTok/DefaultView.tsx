@@ -3,7 +3,6 @@ import SocialContentWrapper from '../../SocialContentWrapper/SocialContentWrappe
 import { TikTokEmbed } from 'react-social-media-embed';
 
 const SIZES: Record<string, number> = {
-  // Keep consistent with other blocks in this add-on
   s: 325,
   m: 450,
   l: 500,
@@ -21,7 +20,6 @@ const TikTokView = ({
   align = 'center',
   className,
 }: TikTokViewProps) => {
-  // Keep a single consistent width (we intentionally hide the size option)
   const width = SIZES.s;
   const linkText = 'View post on TikTok';
 
@@ -34,6 +32,7 @@ const TikTokView = ({
       className={className}
     >
       <TikTokEmbed
+        key={tiktokUrl}
         url={tiktokUrl}
         width={width}
         linkText={linkText}

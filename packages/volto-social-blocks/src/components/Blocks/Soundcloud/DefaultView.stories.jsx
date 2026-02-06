@@ -5,7 +5,7 @@ import Wrapper from '@plone/volto/storybook';
 const withWrapper = (Story, { args }) => {
   return (
     <Wrapper anonymous>
-      <div style={{ width: '1000px' }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <Story {...args} />
       </div>
     </Wrapper>
@@ -16,9 +16,35 @@ export default {
   title: 'Public/Blocks/SoundcloudBlock',
   component: SoundcloudView,
   decorators: [withWrapper],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      description: {
+        component: `
+# SoundCloud Block
+
+Embed audio tracks and playlists from SoundCloud directly into your Plone pages.
+
+## Features
+
+- **Responsive sizes**: Three sizes available (small, medium, large)
+- **Flexible alignment**: Left, center, or right alignment
+- **Official SoundCloud player**: Full playback controls
+- **Support for tracks and playlists**
+
+## How to use
+
+1. Add the SoundCloud block to your page
+2. Paste a SoundCloud track or playlist URL
+3. Adjust size and alignment as needed
+4. The audio player will be automatically embedded
+        `,
+      },
+    },
+  },
   argTypes: {
     soundcloudId: {
-      name: 'Soundcloud ID',
+      name: 'SoundCloud URL',
       control: 'text',
     },
     align: {
@@ -63,7 +89,7 @@ export const AlignLeft = {
 };
 export const AlignCenter = {
   args: {
-    align: 'left',
+    align: 'center',
     size: 'l',
   },
 };
