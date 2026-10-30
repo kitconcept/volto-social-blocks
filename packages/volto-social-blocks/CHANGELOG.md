@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 1.1.0 (2026-10-30)
+
+### Feature
+
+- Documented the fourteen social blocks for the `@blocks-schema` endpoint of Volto, so tools and agents can read what each block stores and which URL formats it accepts. Each block's sidebar form now reads its schema from the block configuration, shows the errors stored for the block, and passes the same props as the core block forms. [#55](https://github.com/kitconcept/volto-social-blocks/issue/55)
+- More New Blocks (Threads, Mastondon, Apple Music and Twitch). @humanaice 
+
+### Internal
+
+- Upgraded Volto to 19.6.1 and pinned webpack to Volto's catalog version, so the Storybook build keeps working after lockfile updates. [#55](https://github.com/kitconcept/volto-social-blocks/issue/55)
+
 ## 1.0.0 (2026-01-28)
 
 ### Feature

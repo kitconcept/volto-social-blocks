@@ -1,1 +1,0 @@
-Upgraded Volto to 19.6.1 and pinned webpack to Volto's catalog version, so the Storybook build keeps working after lockfile updates.
