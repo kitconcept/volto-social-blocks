@@ -25,7 +25,9 @@ const messages = defineMessages({
   },
 });
 
-export const appleMusicSchema = (props: BlockSchemaProps): JSONSchema => {
+export const appleMusicSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
   return {
     title: intl.formatMessage(messages.appleMusicBlock),

@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<SoundcloudBlockDataType>;
 
 const SoundcloudBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [soundcloudId, setSoundcloudId] = useState<string | undefined>(
     data.soundcloudId,
   );
@@ -86,14 +77,7 @@ const SoundcloudBlockEdit = (props: Props) => {
         <SoundcloudBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <SoundcloudBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <SoundcloudBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

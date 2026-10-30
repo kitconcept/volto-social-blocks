@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<SpotifyBlockDataType>;
 
 const SpotifyBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [spotifyId, setSpotifyId] = useState<string | undefined>(
     data.spotifyId,
   );
@@ -84,14 +75,7 @@ const SpotifyBlockEdit = (props: Props) => {
         <SpotifyBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <SpotifyBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <SpotifyBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

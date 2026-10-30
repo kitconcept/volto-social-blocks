@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<BlueskyBlockDataType>;
 
 const BlueskyBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [blueskyUrl, setBlueskyUrl] = useState<string | undefined>(
     data.blueskyUrl,
   );
@@ -84,14 +75,7 @@ const BlueskyBlockEdit = (props: Props) => {
         <BlueskyBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <BlueskyBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <BlueskyBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

@@ -3,7 +3,9 @@ import type { JSONSchema } from '@plone/types';
 import messages from '../../../messages';
 import type { BlockSchemaProps } from '@plone/types';
 
-export const linkedinSchema = (props: BlockSchemaProps): JSONSchema => {
+export const linkedinSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
   const schema: JSONSchema = {
     title: intl.formatMessage(messages.linkedinBlock),

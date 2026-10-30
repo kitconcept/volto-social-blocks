@@ -20,7 +20,9 @@ const messages = defineMessages({
   },
 });
 
-export const tiktokSchema = (props: BlockSchemaProps): JSONSchema => {
+export const tiktokSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
 
   return {

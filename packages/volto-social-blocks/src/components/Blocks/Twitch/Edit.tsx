@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<TwitchBlockDataType>;
 
 const TwitchBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [twitchUrl, setTwitchUrl] = useState<string | undefined>(
     data.twitchUrl,
   );
@@ -84,14 +75,7 @@ const TwitchBlockEdit = (props: Props) => {
         <TwitchBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <TwitchBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <TwitchBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

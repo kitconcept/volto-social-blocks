@@ -45,7 +45,9 @@ const messages = defineMessages({
   },
 });
 
-export const mastodonSchema = (props: BlockSchemaProps): JSONSchema => {
+export const mastodonSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
   return {
     title: intl.formatMessage(messages.mastodonBlock),

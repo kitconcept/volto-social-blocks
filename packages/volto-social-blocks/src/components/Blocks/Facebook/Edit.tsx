@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<FacebookBlockDataType>;
 
 const FacebookBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [facebookId, setFacebookId] = useState<string | undefined>(
     data.facebookId,
   );
@@ -84,14 +75,7 @@ const FacebookBlockEdit = (props: Props) => {
         <FacebookBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <FacebookBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <FacebookBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

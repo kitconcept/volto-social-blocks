@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<AppleMusicBlockDataType>;
 
 const AppleMusicBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [appleMusicUrl, setAppleMusicUrl] = useState<string | undefined>(
     data.appleMusicUrl,
   );
@@ -87,14 +78,7 @@ const AppleMusicBlockEdit = (props: Props) => {
         <AppleMusicBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <AppleMusicBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <AppleMusicBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

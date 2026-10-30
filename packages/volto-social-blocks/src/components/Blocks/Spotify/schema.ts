@@ -41,7 +41,9 @@ const messages = defineMessages({
   },
 });
 
-export const spotifySchema = (props: BlockSchemaProps): JSONSchema => {
+export const spotifySchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
   return {
     title: intl.formatMessage(messages.spotifyBlock),

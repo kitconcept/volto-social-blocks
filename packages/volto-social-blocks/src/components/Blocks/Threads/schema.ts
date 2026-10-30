@@ -25,7 +25,9 @@ const messages = defineMessages({
   },
 });
 
-export const threadsSchema = (props: BlockSchemaProps): JSONSchema => {
+export const threadsSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
   return {
     title: intl.formatMessage(messages.threadsBlock),

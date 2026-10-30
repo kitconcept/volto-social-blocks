@@ -56,7 +56,9 @@ const THEMES: Array<[string, MessageDescriptor]> = [
   ['light', messages.themeLight],
 ];
 
-export const tweetSchema = (props: BlockSchemaProps): JSONSchema => {
+export const tweetSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const defaultTheme = config.blocks?.blocksConfig?.tweetBlock?.defaultTheme;
   const defaultLanguage =
     config.blocks?.blocksConfig?.tweetBlock?.defaultLanguage;

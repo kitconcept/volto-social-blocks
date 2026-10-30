@@ -1,5 +1,6 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import config from '@plone/volto/registry';
 import { tweetSchema } from './schema';
 import { useIntl } from 'react-intl';
 import { applySchemaDefaults } from '../../../helpers';
@@ -13,10 +14,24 @@ export type TweetBlockFormData = BlocksFormData &
 type TweetBlockDataProps = BlockDataFormWrapperProps<TweetBlockFormData>;
 
 const TweetBlockData = (props: TweetBlockDataProps) => {
-  const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
-    props;
+  const {
+    data,
+    block,
+    onChangeBlock,
+    blocksConfig = config.blocks.blocksConfig,
+    blocksErrors,
+    navRoot,
+    contentType,
+  } = props;
   const intl = useIntl();
-  const schema = tweetSchema({ intl } satisfies BlockSchemaProps);
+  // `@plone/types` declares `IntlShape['messages']` more narrowly than the
+  // `react-intl` Volto ships. Cast until that is fixed upstream.
+  const schemaIntl = intl as BlockSchemaProps['intl'];
+  const blockSchema = blocksConfig?.[data['@type']]?.blockSchema ?? tweetSchema;
+  const schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ ...props, intl: schemaIntl })
+      : blockSchema;
 
   const formData = applySchemaDefaults(schema, data);
 
@@ -38,6 +53,7 @@ const TweetBlockData = (props: TweetBlockDataProps) => {
       blocksConfig={blocksConfig}
       navRoot={navRoot}
       contentType={contentType}
+      errors={blocksErrors}
     />
   );
 };

@@ -31,16 +31,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<TweetBlockDataType>;
 
 const TweetBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [tweetId, setTweetId] = useState<string | undefined>(data.tweetId);
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
@@ -83,14 +74,7 @@ const TweetBlockEdit = (props: Props) => {
         <TweetBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <TweetBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <TweetBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<MastodonBlockDataType>;
 
 const MastodonBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [mastodonUrl, setMastodonUrl] = useState<string | undefined>(
     data.mastodonUrl,
   );
@@ -87,14 +78,7 @@ const MastodonBlockEdit = (props: Props) => {
         <MastodonBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <MastodonBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <MastodonBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (
