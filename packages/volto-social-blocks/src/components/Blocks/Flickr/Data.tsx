@@ -1,5 +1,6 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import config from '@plone/volto/registry';
 import { applySchemaDefaults, isValidFlickrId } from '../../../helpers';
 import { flickrSchema } from './schema';
 import { useIntl } from 'react-intl';
@@ -13,10 +14,25 @@ export type FlickrBlockFormData = BlocksFormData &
 type FlickrBlockDataProps = BlockDataFormWrapperProps<FlickrBlockFormData>;
 
 const FlickrBlockData = (props: FlickrBlockDataProps) => {
-  const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
-    props;
+  const {
+    data,
+    block,
+    onChangeBlock,
+    blocksConfig = config.blocks.blocksConfig,
+    blocksErrors,
+    navRoot,
+    contentType,
+  } = props;
   const intl = useIntl();
-  const schema = flickrSchema({ intl } satisfies BlockSchemaProps);
+  // `@plone/types` declares `IntlShape['messages']` more narrowly than the
+  // `react-intl` Volto ships. Cast until that is fixed upstream.
+  const schemaIntl = intl as BlockSchemaProps['intl'];
+  const blockSchema =
+    blocksConfig?.[data['@type']]?.blockSchema ?? flickrSchema;
+  const schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ ...props, intl: schemaIntl })
+      : blockSchema;
 
   const formData = applySchemaDefaults(schema, data);
 
@@ -43,6 +59,7 @@ const FlickrBlockData = (props: FlickrBlockDataProps) => {
       blocksConfig={blocksConfig}
       navRoot={navRoot}
       contentType={contentType}
+      errors={blocksErrors}
     />
   );
 };

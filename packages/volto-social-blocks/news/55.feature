@@ -1,0 +1,1 @@
+Documented the fourteen social blocks for the `@blocks-schema` endpoint of Volto, so tools and agents can read what each block stores and which URL formats it accepts. Each block's sidebar form now reads its schema from the block configuration, shows the errors stored for the block, and passes the same props as the core block forms.

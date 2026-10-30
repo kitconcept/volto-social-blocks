@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<InstagramBlockDataType>;
 
 const InstagramBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [instagramId, setInstagramId] = useState<string | undefined>(
     data.instagramId,
   );
@@ -87,14 +78,7 @@ const InstagramBlockEdit = (props: Props) => {
         <InstagramBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <InstagramBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <InstagramBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

@@ -29,7 +29,9 @@ const messages = defineMessages({
   },
 });
 
-export const twitchSchema = (props: BlockSchemaProps): JSONSchema => {
+export const twitchSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
   return {
     title: intl.formatMessage(messages.twitchBlock),

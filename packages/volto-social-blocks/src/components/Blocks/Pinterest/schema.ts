@@ -24,7 +24,9 @@ const messages = defineMessages({
   },
 });
 
-export const pinterestSchema = (props: BlockSchemaProps): JSONSchema => {
+export const pinterestSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
 
   return {

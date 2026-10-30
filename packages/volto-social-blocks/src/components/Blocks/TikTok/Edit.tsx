@@ -31,16 +31,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<TikTokBlockDataType>;
 
 const TikTokBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [tiktokUrl, setTikTokUrl] = useState<string | undefined>(
     data.tiktokUrl,
   );
@@ -83,14 +74,7 @@ const TikTokBlockEdit = (props: Props) => {
         <TikTokBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <TikTokBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <TikTokBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

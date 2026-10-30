@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<ThreadsBlockDataType>;
 
 const ThreadsBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [threadsUrl, setThreadsUrl] = useState<string | undefined>(
     data.threadsUrl,
   );
@@ -84,14 +75,7 @@ const ThreadsBlockEdit = (props: Props) => {
         <ThreadsBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <ThreadsBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <ThreadsBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

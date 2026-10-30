@@ -25,7 +25,9 @@ const messages = defineMessages({
   },
 });
 
-export const flickrSchema = (props: BlockSchemaProps): JSONSchema => {
+export const flickrSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
   return {
     title: intl.formatMessage(messages.flickrBlock),

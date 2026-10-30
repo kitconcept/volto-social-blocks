@@ -31,16 +31,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<PinterestBlockDataType>;
 
 const PinterestBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [pinterestUrl, setPinterestUrl] = useState<string | undefined>(
     data.pinterestUrl,
   );
@@ -86,14 +77,7 @@ const PinterestBlockEdit = (props: Props) => {
         <PinterestBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <PinterestBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <PinterestBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

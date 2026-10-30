@@ -18,4 +18,9 @@ export type BlockDataFormWrapperProps<TData extends BlocksFormData> = {
   data: TData;
   block: BlockEditProps['block'];
   onChangeBlock: BlockEditProps['onChangeBlock'];
-} & Partial<Pick<BlockEditProps, 'blocksConfig' | 'navRoot' | 'contentType'>>;
+} & Partial<
+  Pick<
+    BlockEditProps,
+    'blocksConfig' | 'blocksErrors' | 'navRoot' | 'contentType'
+  >
+>;

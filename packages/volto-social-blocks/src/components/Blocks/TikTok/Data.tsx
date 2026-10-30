@@ -1,5 +1,6 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import config from '@plone/volto/registry';
 import { applySchemaDefaults, isValidTikTokUrl } from '../../../helpers';
 import { tiktokSchema } from './schema';
 import { useIntl } from 'react-intl';
@@ -13,10 +14,25 @@ export type TikTokBlockFormData = BlocksFormData &
 type TikTokBlockDataProps = BlockDataFormWrapperProps<TikTokBlockFormData>;
 
 const TikTokBlockData = (props: TikTokBlockDataProps) => {
-  const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
-    props;
+  const {
+    data,
+    block,
+    onChangeBlock,
+    blocksConfig = config.blocks.blocksConfig,
+    blocksErrors,
+    navRoot,
+    contentType,
+  } = props;
   const intl = useIntl();
-  const schema = tiktokSchema({ intl } satisfies BlockSchemaProps);
+  // `@plone/types` declares `IntlShape['messages']` more narrowly than the
+  // `react-intl` Volto ships. Cast until that is fixed upstream.
+  const schemaIntl = intl as BlockSchemaProps['intl'];
+  const blockSchema =
+    blocksConfig?.[data['@type']]?.blockSchema ?? tiktokSchema;
+  const schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ ...props, intl: schemaIntl })
+      : blockSchema;
 
   const formData = applySchemaDefaults(schema, data);
 
@@ -44,6 +60,7 @@ const TikTokBlockData = (props: TikTokBlockDataProps) => {
       blocksConfig={blocksConfig}
       navRoot={navRoot}
       contentType={contentType}
+      errors={blocksErrors}
     />
   );
 };

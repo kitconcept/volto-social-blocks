@@ -32,16 +32,7 @@ const messages = defineMessages({
 type Props = BlockEditPropsWithData<FlickrBlockDataType>;
 
 const FlickrBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [flickrId, setFlickrId] = useState<string | undefined>(data.flickrId);
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
@@ -82,14 +73,7 @@ const FlickrBlockEdit = (props: Props) => {
         <FlickrBlockView data={data} className={className} />
       </NonInteractiveWrapper>
       <SidebarPortalAny selected={selected}>
-        <FlickrBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <FlickrBlockData {...props} />
       </SidebarPortalAny>
     </>
   ) : (

@@ -40,7 +40,9 @@ const messages = defineMessages({
   },
 });
 
-export const blueskySchema = (props: BlockSchemaProps): JSONSchema => {
+export const blueskySchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
 
   return {

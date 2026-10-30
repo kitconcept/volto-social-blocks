@@ -18,16 +18,7 @@ const SidebarPortalAny = SidebarPortal as React.ComponentType<any>;
 type Props = BlockEditPropsWithData<LinkedInBlockDataType>;
 
 const LinkedInBlockEdit = (props: Props) => {
-  const {
-    data,
-    onChangeBlock,
-    block,
-    selected,
-    className,
-    blocksConfig,
-    navRoot,
-    contentType,
-  } = props;
+  const { data, onChangeBlock, block, selected, className } = props;
   const [postURL, setPostURL] = useState<string | undefined>(data.postURL);
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
@@ -75,14 +66,7 @@ const LinkedInBlockEdit = (props: Props) => {
         />
       )}
       <SidebarPortalAny selected={selected}>
-        <LinkedInBlockData
-          data={data}
-          block={block}
-          onChangeBlock={onChangeBlock}
-          blocksConfig={blocksConfig}
-          navRoot={navRoot}
-          contentType={contentType}
-        />
+        <LinkedInBlockData {...props} />
       </SidebarPortalAny>
     </>
   );

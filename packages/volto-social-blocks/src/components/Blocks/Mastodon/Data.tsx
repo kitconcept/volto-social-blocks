@@ -1,5 +1,6 @@
 import React from 'react';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import config from '@plone/volto/registry';
 import { applySchemaDefaults, isValidMastodonUrl } from '../../../helpers';
 import { mastodonSchema } from './schema';
 import { useIntl } from 'react-intl';
@@ -13,10 +14,25 @@ export type MastodonBlockFormData = BlocksFormData &
 type MastodonBlockDataProps = BlockDataFormWrapperProps<MastodonBlockFormData>;
 
 const MastodonBlockData = (props: MastodonBlockDataProps) => {
-  const { data, block, onChangeBlock, blocksConfig, navRoot, contentType } =
-    props;
+  const {
+    data,
+    block,
+    onChangeBlock,
+    blocksConfig = config.blocks.blocksConfig,
+    blocksErrors,
+    navRoot,
+    contentType,
+  } = props;
   const intl = useIntl();
-  const schema = mastodonSchema({ intl } satisfies BlockSchemaProps);
+  // `@plone/types` declares `IntlShape['messages']` more narrowly than the
+  // `react-intl` Volto ships. Cast until that is fixed upstream.
+  const schemaIntl = intl as BlockSchemaProps['intl'];
+  const blockSchema =
+    blocksConfig?.[data['@type']]?.blockSchema ?? mastodonSchema;
+  const schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ ...props, intl: schemaIntl })
+      : blockSchema;
 
   const formData = applySchemaDefaults(schema, data);
 
@@ -43,6 +59,7 @@ const MastodonBlockData = (props: MastodonBlockDataProps) => {
       blocksConfig={blocksConfig}
       navRoot={navRoot}
       contentType={contentType}
+      errors={blocksErrors}
     />
   );
 };

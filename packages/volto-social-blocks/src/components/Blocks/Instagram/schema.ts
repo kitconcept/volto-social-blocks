@@ -29,7 +29,9 @@ const messages = defineMessages({
   },
 });
 
-export const instagramSchema = (props: BlockSchemaProps): JSONSchema => {
+export const instagramSchema = (
+  props: Pick<BlockSchemaProps, 'intl'>,
+): JSONSchema => {
   const { intl } = props;
   return {
     title: intl.formatMessage(messages.instagramBlock),
